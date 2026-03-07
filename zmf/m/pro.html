@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 problem</title>
+<script>
+        window.onload = function() {
+            // 设置5秒后跳转的时间（5000毫秒）
+            setTimeout(function() {
+                window.location.href = "http://192.168.1.20:8080/i.html";
+            }, 7500);
+        };
+    </script>
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f3f3f3;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+    }
+    .black-link {
+        color: #333; /* 深灰色链接颜色 */
+        text-decoration: none;
+    }
+    .black-link:hover {
+        text-decoration: underline;
+    }
+    h1, h2 {
+        color: #0056b3;
+    }
+    header {
+        
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+    footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .image-container img {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        transition: transform 0.3s ease;
+    }
+    .image-container img:hover {
+        transform: scale(1.1);
+    }
+    #dateTime {
+        float: right;
+        margin: 10px;
+    }
+    .fixed-links {
+            position: fixed; /* 固定定位 */
+            bottom: 0; /* 距离底部0 */
+            left: 0;
+            width: 100%; /* 宽度占满屏幕 */
+            background-color: #f1f1f1; /* 背景颜色 */
+            display: flex; /* 使用flex布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            z-index: 1000; /* 确保在所有标签之上 */
+            padding: 5px 0; /* 上下内边距 */
+            height: 20px;
+            
+        }
+
+        /* 定义单个超链接的样式 */
+        .fixed-links a {
+            display: inline-block; /* 行内块元素 */
+            padding: 5px 10px; /* 内边距 */
+            margin: 0 0px; /* 左右外边距 */
+            border: 0px solid #ccc; /* 边框 */
+            border-radius: 0px; /* 圆角 */
+            text-decoration: none; /* 去掉下划线 */
+            color: #333; /* 文字颜色 */
+            line-height: 5px; /* 使文字垂直居中 */
+        }
+</style>
+
+<body>
+<h1>404 problem!!!</h1>
+<h1>您访问的页面出现故障!!!</h1>
+<p>5秒后将自动跳转到主页</p>
+<div class="fixed-links">
+<a href="http://192.168.1.7:8080/index.html"><h2>返回</h2></a>
+<a href="#">|</a>
+<a href="http://192.168.1.7:8080/index.html"><h2>主页</h2></a>
+<a href="#">|</a>
+<a href="http://192.168.1.7:8080/zq/zqdl.html"><h2>菜单</h2></a>
+</div>
+<audio autoplay>
+  <source src="http://192.168.1.20:8080/music/pro.wav" type="audio/wav">
+  提示语
+</audio>
+</body>
+</html>

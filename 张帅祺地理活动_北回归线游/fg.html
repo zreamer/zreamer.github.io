@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CHINA TREVAL北回归线游|组内分工</title>
+		<style>
+		 header,footer {			           
+            background-color: #aa0000;           
+           color:white;
+			}
+			main {			           
+            background-image: url('img/10.webp');           
+            background-size: cover;           
+            background-position: center;
+            background-repeat: no-repeat;           
+            background-attachment: fixed;
+            margin: 0;
+			}
+			nav a{
+			border: 1px solid orange;
+			border-radius:3px;
+			background-color:orange;
+			}
+			button {
+			background-color:#aa0000;
+			color:white;
+			text-decoration:none;
+			}
+			</style>
+	</head>
+	<body>
+		<header>
+			<h1>CHINA TREVAL北回归线游</h1>
+			<br>
+			<br>
+			<center>
+				<strong>
+					<nav>
+						<a href="index.html"style="color:white;background-color:gray;underpne:none;">主页</a>
+						<a href="fg.html"style="color:white;background-color:red;underpne:none;">启程</a>
+						<a href="lb.html"style="color:white;underpne:none;">第一站：云南省</a>
+						<a href="fb.html"style="color:white;underpne:none;">第二站：广西壮族自治区</a>
+						<a href="qb.html"style="color:white;underpne:none;">第三站：广东省</a>
+						<a href="ai.html"style="color:white;underpne:none;">AI问答</a>
+						<a href="yj.html"style="color:white;underpne:none;">回望</a>
+						<a href="te.html"style="color:white;underpne:none;">关于我们</a>
+					</nav>
+				</strong>
+			</center>
+		</header>
+		<main>
+			<center>
+			<h2>成员</h2>
+			<h3>张帅祺 (组长，网页制作，资料整理)</h3>
+			<h3>王奕然（云南省资料查询）</h3>
+			<h3>苏煜哲（广西壮族自治区资料查询）</h3>
+			<h3>韩启轩（广东省资料查询）</h3>
+			<h2>天气</h2>
+			<iframe src="https://www.weather.com.cn/html/province/yunnan.shtml" width="70%" height="600px"></iframe>
+			<iframe src="https://www.weather.com.cn/html/province/guangxi.shtml" width="70%" height="600px"></iframe>
+			<iframe src="https://www.weather.com.cn/html/province/guangdong.shtml" width="70%" height="600px"></iframe>
+			</center>
+			<a href="index.html"><button>上一页：主页</button></a>	
+			<a href="lb.html"><button>下一页：第一站 云南省</button></a>	
+		</main>	
+		<footer>	
+			<br>
+			<center>
+			<h2>CHINA TREVAL中国游</h2>
+			</center>
+						<audio autoplay  id="myAudio" src="au/2.mp3" id="myAudio"></audio>
+			<div id="status" class="status"></div>
+    
+    <script>
+        const audio = document.getElementById('myAudio');
+        const statusDiv = document.getElementById('status');
+        let playAttempts = 0;
+        const maxPlayAttempts = 5;
+        
+        // 自动播放策略
+        function attemptAutoPlay() {
+            // 重置音频到开始
+            audio.currentTime = 0;
+            
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // 播放成功
+                    statusDiv.textContent = "";
+                    statusDiv.className = "status playing";
+                    playAttempts = 0; // 重置尝试次数
+                })
+                .catch(error => {
+                    // 播放失败
+                    playAttempts++;
+                    statusDiv.textContent = `自动播放被阻止 (尝试 ${playAttempts}/${maxPlayAttempts})。请点击播放按钮或允许自动播放。`;
+                    statusDiv.className = "status not-playing";
+                    
+                    if (playAttempts < maxPlayAttempts) {
+                        // 延迟后再次尝试
+                        setTimeout(attemptAutoPlay, 2000);
+                    }
+                });
+            }
+        }
+        
+        // 检测音频是否在播放
+        function checkIfPlaying() {
+            if (audio.paused) {
+                statusDiv.textContent = "";
+                statusDiv.className = "status not-playing";
+                attemptAutoPlay();
+            } else {
+                statusDiv.textContent = "";
+                statusDiv.className = "status playing";
+            }
+        }
+        
+        // 页面加载后尝试自动播放
+        window.addEventListener('load', function() {
+            document.body.addEventListener('click', function() {
+                attemptAutoPlay();
+                // 移除点击事件，避免重复绑定
+                document.body.removeEventListener('click', arguments.callee);
+            }, { once: true });
+            
+            // 设置循环检测
+            setInterval(checkIfPlaying, 3000);
+        });
+        
+        // 监听音频结束事件，重新播放
+        audio.addEventListener('ended', function() {
+            attemptAutoPlay();
+        });
+    </script>
+			<br>
+		</footer>
+	</body>	
+</html>		
+		

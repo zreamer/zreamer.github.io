@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实时时钟</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
+    #clock {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #date {
+        font-size: 20px;
+    }
+    #time {
+        font-size: 80px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+<div id="clock">
+    <div id="date"></div>
+    <div id="time"></div>
+</div>
+
+<script>
+    function updateClock() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var day = now.getDate();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // 将月份、日期、小时、分钟、秒数格式化为两位数
+        month = (month < 10 ? "0" : "") + month;
+        day = (day < 10 ? "0" : "") + day;
+        hours = (hours < 10 ? "0" : "") + hours;
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        seconds = (seconds < 10 ? "0" : "") + seconds;
+
+        // 构建日期和时间字符串
+        var dateStr = year + "-" + month + "-" + day;
+        var timeStr = hours + ":" + minutes + ":" + seconds;
+
+        // 更新页面上的日期和时间
+        document.getElementById("date").innerHTML = dateStr;
+        document.getElementById("time").innerHTML = timeStr;
+    }
+
+    // 每秒更新时间
+    setInterval(updateClock, 1000);
+    // 页面加载时立即更新时间
+    window.onload = updateClock;
+</script>
+<a href="http://192.168.1.20:8080/i.html">
+	<h2>追逐理想</h2>
+</a>
+<a href="http://192.168.1.20:8080/i.html">
+	<h2>身在亭凉，心在逐梦远航</h2>
+</a>
+<a href="http://192.168.1.20:8080/zq/zqdl.html">
+	<h2>智慧科技，引领我们逐梦远方</h2>
+</a>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CHINA TREVAL北回归线游</title>
+		<style>
+			main {			           
+            background-image: url('img/10.webp');           
+            background-size: cover;           
+            background-position: center;
+            background-repeat: no-repeat;           
+            background-attachment: fixed;
+            margin: 0;
+			}
+			.card1 {
+			position: absolute;
+			top :1300px;
+			width:300px;
+			height:300px;
+			background-color:#ffcfcf;
+			left:40px;
+			}
+			.card2 {
+			position: absolute;
+			top :1300px;
+			width:300px;
+			height:300px;
+			background-color:#ffcfcf;
+			left:370px;
+			}
+			.card3 {
+			position: absolute;
+			top :1300px;
+			width:300px;
+			height:300px;
+			background-color:#ffcfcf;
+			left:690px;
+			}
+			nav a{
+			border: 1px solid orange;
+			border-radius:3px;
+			background-color:orange;
+			}
+			button {
+			background-color:#aa0000;
+			color:white;
+			text-decoration:none;
+			}
+			.card4 {
+			position: absolute;
+			top :230px;
+			width:400px;
+			height:560px;
+			background-color:#ffcfcf;
+			left:1295px;
+			overflow:auto;
+			</style>
+	</head>
+	<body>
+		<header style="background-color:#990000;color:white;">
+			<h1>CHINA TREVAL北回归线游</h1>
+			<br>
+			<br>
+			<center>
+				<strong>
+					<nav>
+						<a href="index.html"style="color:white;background-color:red;underpne:none;">主页</a>
+						<a href="fg.html"style="color:white;underpne:none;">启程</a>
+						<a href="lb.html"style="color:white;underpne:none;">第一站：云南省</a>
+						<a href="fb.html"style="color:white;underpne:none;">第二站：广西壮族自治区</a>
+						<a href="qb.html"style="color:white;underpne:none;">第三站：广东省</a>
+						<a href="ai.html"style="color:white;underpne:none;">AI问答</a>
+						<a href="yj.html"style="color:white;underpne:none;">回望</a>
+						<a href="te.html"style="color:white;underpne:none;">关于我们</a>
+					</nav>
+					<br>
+					<br>
+				</strong>
+			</center>
+		</header>
+		<main>
+			<center>
+				<img src="img/2.webp" style="width:100%;height:auto;" />
+				<h1>路线简介</h1></center>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<div class="card3">
+				<a href="qb.html" style="text-decoration: none;color:black;">
+				
+					<h2>第三站：广东省</h2>				
+							<p>少别华阳万里游</p>
+							<p>近南风景不曾秋</p>
+							<p>红芳绿笋是行路</p>
+							<p>纵有啼猿听却幽</p>
+							<p>岭南郁郁葱葱，生机勃勃，快来广东游玩吧</p>
+							</a>
+			</div>
+			<div class="card2">
+			<a href="fb.html" style="text-decoration: none;color:black;">
+			<h2>第二站：广西壮族自治区</h2>
+			<p>苍苍森八桂，兹地在湘南<br/><br/>江作青罗带，山如碧玉簪。<br/><br/>户多输翠羽，家自种黄柑。<br/><br/>远胜登仙去，飞鸾不暇骖。<br/>桂林山水秀丽，值得探索</p>
+			</a>
+			</div>
+			<div class="card1">
+			<a href="lb.html" style="text-decoration: none;color:black;">
+			<h3>第一站:云南省</h3>
+
+				<p>丽江雪山天下绝，积玉堆琼几千叠。</p>
+				<p>足盘厚地背摩天，衡华真成两丘垤。</p>
+				<p>平生爱作子长游，揽胜探奇不少休。</p>
+				<p>安得乘风临绝顶，倒骑箕尾看神州。</p>
+				<p>玉龙雪山美景值得探索，让我们一探究竟🔍</p>
+				</a>
+			</div>	
+			
+			<a href="fg.html" >
+			<button>下一页：组内分工</button></a>	
+			<br>	<br><br>
+		</main>	
+		<footer style="background-color:#aa0000;color:white;">	
+			<br>
+			<center>
+			<h2>CHINA TREVAL中国游</h2>
+			</center>
+			<audio autoplay controls id="myAudio" src="au/1.mp3" id="myAudio"></audio>
+			<div id="status" ></div>
+    
+    <script>
+        const audio = document.getElementById('myAudio');
+        const statusDiv = document.getElementById('status');
+        let playAttempts = 0;
+        const maxPlayAttempts = 5;
+        function attemptAutoPlay() {
+            audio.currentTime = 0;
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    statusDiv.textContent = "";
+                    statusDiv.className = "status playing";
+                    playAttempts = 0; // 重置尝试次数
+                })
+                .catch(error => {
+                    playAttempts++;
+                    statusDiv.textContent = `自动播放被阻止 (尝试 ${playAttempts}/${maxPlayAttempts})。请点击播放按钮或允许自动播放。`;
+                    statusDiv.className = "status not-playing";
+                    
+                    if (playAttempts < maxPlayAttempts) {
+                        setTimeout(attemptAutoPlay, 2000);
+                    }
+                });
+            }
+        }
+        function checkIfPlaying() {
+            if (audio.paused) {
+                statusDiv.textContent = "";
+                statusDiv.className = "status not-playing";
+                attemptAutoPlay();
+            } else {
+                statusDiv.textContent = "";
+                statusDiv.className = "status playing";
+            }
+        }
+        window.addEventpstener('load', function() {
+            document.body.addEventpstener('cpck', function() {
+                attemptAutoPlay();
+                document.body.removeEventpstener('cpck', arguments.callee);
+            }, { once: true });
+            setInterval(checkIfPlaying, 3000);
+        });
+        audio.addEventpstener('ended', function() {
+            attemptAutoPlay();
+        });
+    </script>
+			<br>
+		</footer>
+	</body>	
+</html>		
+		

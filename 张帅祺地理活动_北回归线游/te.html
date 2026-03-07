@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>关于我们</title>
+		<style>
+		 body {			           
+            background-color:#aa0000;           
+           color:white;
+			}
+			
+			</style>
+	</head>
+	<body>
+		<header >
+			<h1>关于我们</h1>
+			<br>
+			<br>
+		</header>
+		<main>
+			<center>
+				<h1>关于我们</h1>
+				<h3>本网页的html编码均由xxx编写</h3>
+				<h3>其中,所有资料xxx搜集（按照加入本组的时间先后排序）</h3>
+				<h1>本站内容至此结束</h1>               
+				<h1>非常感谢您的访问</h1>
+				<p>本项目为开源项目,点击下面蓝字获取源码</p>
+				<a href="">Source 1(CSDN)</a>
+				<a href="">Source 2(GITHUB)</a>
+				<a href="#" onclick="viewSource(''); return false;">查看源码</a>
+
+<script>
+  function viewSource(url) {
+    window.location.href = 'view-source:' + url;
+  }
+</script>
+			</center>
+			
+		</main>	
+		
+						<audio autoplay  id="myAudio" src="au/0.mp3" id="myAudio"></audio>
+			<div id="status" class="status"></div>
+    
+    <script>
+        const audio = document.getElementById('myAudio');
+        const statusDiv = document.getElementById('status');
+        let playAttempts = 0;
+        const maxPlayAttempts = 5;
+        
+        // 自动播放策略
+        function attemptAutoPlay() {
+            // 重置音频到开始
+            audio.currentTime = 0;
+            
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // 播放成功
+                    statusDiv.textContent = "";
+                    statusDiv.className = "status playing";
+                    playAttempts = 0; // 重置尝试次数
+                })
+                .catch(error => {
+                    // 播放失败
+                    playAttempts++;
+                    statusDiv.textContent = `自动播放被阻止 (尝试 ${playAttempts}/${maxPlayAttempts})。请点击播放按钮或允许自动播放。`;
+                    statusDiv.className = "status not-playing";
+                    
+                    if (playAttempts < maxPlayAttempts) {
+                        // 延迟后再次尝试
+                        setTimeout(attemptAutoPlay, 2000);
+                    }
+                });
+            }
+        }
+        
+        // 检测音频是否在播放
+        function checkIfPlaying() {
+            if (audio.paused) {
+                statusDiv.textContent = "";
+                statusDiv.className = "status not-playing";
+                attemptAutoPlay();
+            } else {
+                statusDiv.textContent = "";
+                statusDiv.className = "status playing";
+            }
+        }
+        
+        // 页面加载后尝试自动播放
+        window.addEventListener('load', function() {
+            // 现代浏览器要求音频播放必须由用户交互触发
+            // 所以这里只是初始化，真正的播放尝试会在用户交互后开始
+            
+            // 添加点击事件监听，用户点击页面任何地方后尝试播放
+            document.body.addEventListener('click', function() {
+                attemptAutoPlay();
+                // 移除点击事件，避免重复绑定
+                document.body.removeEventListener('click', arguments.callee);
+            }, { once: true });
+            
+            // 设置循环检测
+            setInterval(checkIfPlaying, 3000);
+        });
+        
+        // 监听音频结束事件，重新播放
+        audio.addEventListener('ended', function() {
+            attemptAutoPlay();
+        });
+    </script>
+			<br>
+		</footer>
+	</body>	
+</html>		
+		

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>调查问卷</title>
+  <style>
+	.date { text-align: right; }
+	.main { margin-left: 60px; margin-right: 60px; }
+	.error { color: red; }
+	.success { color: green; }
+	#result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="main">
+  <center>
+	<h3>个人主页联系方式获取</h3>
+	<h1>调查问卷</h1>
+  </center>
+  <p class="date">2026.02</p>
+  <center>
+	<table>
+	  <tr>
+		<td>填写须知</td>
+		<td>
+		  <ol>
+			<li>本调查问卷共5道题，均为选择题，请选出全部正确选项</li>
+			<li>本调查问卷无维度方面限制，请自主独立思考，作弊者一经发现将永久拉黑</li>
+			<li>本问卷满分100分。满分者可以获取联系方式</li>
+			<li>作答结束，请点击"提交"并等待响应</li>
+		  </ol>
+		</td>
+	  </tr>
+	</table>
+  </center>
+  
+  <p>1.补全代码</p>
+  <div style="border:2px solid #000">
+	<pre><code>&lt;h1&gt;
+标题
+&lt;!--请在这里补全代码，A.&lt;/h1&gt; B.&lt;\h1&gt; C.&lt;h1/&gt; D.&lt;h1\&gt;--&gt;</code></pre>
+  </div>
+  <label><input type="checkbox" name="q1" value="A">A.A</label>
+  <label><input type="checkbox" name="q1" value="B">B.B</label>
+  <label><input type="checkbox" name="q1" value="C">C.C</label>
+  <label><input type="checkbox" name="q1" value="D">D.D</label>
+  
+  <p>2.像"addEventListener""iPhone"等字符串运用的方法是</p>
+  <label><input type="checkbox" name="q2" value="A">A.苹果法</label>
+  <label><input type="checkbox" name="q2" value="B">B.大写法</label>
+  <label><input type="checkbox" name="q2" value="C">C.驼峰法</label>
+  <label><input type="checkbox" name="q2" value="D">D.无方法</label>
+  
+  <p>3.补全代码。括号里应填</p>
+  <div style="border:2px solid #000">
+	<pre><code>&lt;div id="content"&gt;这是内容&lt;/div&gt;
+&lt;script&gt;
+const constantName = document.getElementById('');
+&lt;/script&gt;</code></pre>
+  </div>
+  <label><input type="checkbox" name="q3" value="A">A.div</label>
+  <label><input type="checkbox" name="q3" value="B">B.content</label>
+  <label><input type="checkbox" name="q3" value="C">C.这是内容</label>
+  <label><input type="checkbox" name="q3" value="D">D.constantName</label>
+  
+  <p>4.一块玻璃中有一个水凸透镜。请问这个水凸透镜对玻璃中的光的作用是</p>
+  <label><input type="checkbox" name="q4" value="A">A.会聚</label>
+  <label><input type="checkbox" name="q4" value="B">B.发散</label>
+  <label><input type="checkbox" name="q4" value="C">C.反射</label>
+  <label><input type="checkbox" name="q4" value="D">D.吸收</label>
+  
+  <p>5.一辆车在一条笔直的道路上匀速行驶，车头灯射出一束光。设车速为<i>v</i>，光速为<i>c</i>。请问这束光相对于地面的速度是</p>
+  <label><input type="checkbox" name="q5" value="A">A.<i>v+c</i></label>
+  <label><input type="checkbox" name="q5" value="B">B.<i>v</i></label>
+  <label><input type="checkbox" name="q5" value="C">C.<i>√(c²+v²)</i></label>
+  <label><input type="checkbox" name="q5" value="D">D.<i>c</i></label>
+  
+  <br><br>
+  <button type="button" onclick="checkAnswers()">提交</button>
+  <div id="result"></div>
+  
+  <script>
+	// 正确答案配置：每道题的正确选项数组
+	const correctAnswers = {
+	  q1: ['A'],      // HTML闭合标签 </h1>
+	  q2: ['C'],      // 驼峰命名法
+	  q3: ['B'],      // getElementById('content')
+	  q4: ['B'],      // 水凸透镜在玻璃中折射率相近，实际为发散（或平面）作用，此处假设答案为发散
+	  q5: ['D']       // 根据相对论，光速恒为c
+	};
+	
+	function checkAnswers() {
+	  let score = 0;
+	  const resultDiv = document.getElementById('result');
+	  let details = [];
+	  
+	  // 遍历每道题
+	  for (let q = 1; q <= 5; q++) {
+		const questionName = 'q' + q;
+		// 获取该题所有选中的值
+		const selected = Array.from(document.querySelectorAll(`input[name="${questionName}"]:checked`))
+							  .map(cb => cb.value)
+							  .sort();
+		// 获取正确答案
+		const correct = correctAnswers[questionName].slice().sort();
+		
+		// 比较数组（长度相同且每个元素相同）
+		const isCorrect = selected.length === correct.length && 
+						 selected.every((val, index) => val === correct[index]);
+		
+		if (isCorrect) {
+		  score += 20;
+		  details.push(`第${q}题：正确 (+20分)`);
+		} else {
+		  details.push(`第${q}题：错误 (选中:[${selected.join(',')}], 正确:UNK)`);
+		}
+	  }
+	  
+	  // 显示结果
+	  resultDiv.innerHTML = `<div class="${score === 100 ? 'success' : 'error'}">
+		<p>得分：${score}/100</p>
+		<p>${score === 100 ? '恭喜！满分通过！联系方式：13126855092(电话/微信)972059313(QQ)972059313@qq.com(邮箱)' : '未获得满分，请检查后重试'}</p>
+		<details>
+		  <summary>查看详情</summary>
+		  ${details.join('<br>')}
+		</details>
+	  </div>`;
+	}
+  </script>
+</div>
+</body>
+</html>

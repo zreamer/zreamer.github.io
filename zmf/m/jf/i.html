@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>积分系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .balance {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>积分系统</h1>
+        <div class="balance">
+            当前积分：<span id="balance">1000</span>
+        </div>
+        <div>
+            <input type="number" id="rechargeAmount" placeholder="请输入充值积分" min="0">
+            <input type="password" id="rechargePassword" placeholder="请输入充值密码">
+            <button onclick="recharge()">充值</button>
+        </div>
+        <div>
+            <input type="number" id="consumeAmount" placeholder="请输入消费积分" min="0">
+            <button onclick="consume()">消费</button>
+        </div>
+    </div>
+
+    <script>
+        // 初始化积分
+        const balanceElement = document.getElementById('balance');
+        const initialBalance = 1000;
+        let balance = localStorage.getItem('balance') || initialBalance;
+        balanceElement.textContent = balance;
+
+        // 充值功能
+        function recharge() {
+            const rechargeAmount = document.getElementById('rechargeAmount').value;
+            const rechargePassword = document.getElementById('rechargePassword').value;
+
+            // 验证充值密码（这里设置为简单的固定密码123456，实际应用中需要更安全的验证方式）
+            if (rechargePassword !== '123456') {
+                alert('充值密码错误！');
+                return;
+            }
+
+            // 更新积分
+            if (rechargeAmount > 0) {
+                balance = parseInt(balance) + parseInt(rechargeAmount);
+                localStorage.setItem('balance', balance);
+                balanceElement.textContent = balance;
+                alert('充值成功！');
+            } else {
+                alert('请输入有效的充值积分！');
+            }
+        }
+
+        // 消费功能
+        function consume() {
+            const consumeAmount = document.getElementById('consumeAmount').value;
+
+            // 验证消费积分
+            if (consumeAmount <= 0) {
+                alert('请输入有效的消费积分（不能为负数或零）！');
+                return;
+            }
+
+            // 检查积分是否足够
+            if (parseInt(balance) >= parseInt(consumeAmount)) {
+                balance = parseInt(balance) - parseInt(consumeAmount);
+                localStorage.setItem('balance', balance);
+                balanceElement.textContent = balance;
+                alert('消费成功！');
+            } else {
+                alert('积分不足，无法完成消费！');
+            }
+        }
+    </script>
+</body>
+</html>

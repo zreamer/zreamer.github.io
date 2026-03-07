@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>逐梦之家|主页</title>
+<style>
+    /* CSS样式 */
+    .black-link {
+        color: black; /* 设置链接颜色为黑色 */
+        text-decoration: none; /* 移除下划线 */
+    }
+
+    /* 可以添加hover样式，当鼠标悬停时显示下划线 */
+
+</style>
+<body>
+<h1>关于</h1>
+<a href="#" class="black-link" id="playStopLink" >
+	<h2>我们是谁</h2>
+    <p>逐梦之家，是一个创新的家庭集体。梦境中寻得一处居处佳，梦随心愿共繁华。家园共筑情谊深，笑谈风月共天涯。在这个充满希望与挑战的地方，我们共同编织着属于每一个人的梦想家园。每一步的进步都离不开大家的努力和坚持，让我们携手前行，筑梦成真！🌟📚#逐梦之路##家庭的力量#</p>
+</a>
+<!-- 音乐文件 -->
+    <audio id="audioPlayer" src="http://192.168.1.20:8080/music/whoys.wav"></audio>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var audioPlayer = document.getElementById('audioPlayer');
+    var playStopLink = document.getElementById('playStopLink');
+
+    playStopLink.addEventListener('click', function(e) {
+        e.preventDefault(); // 阻止超链接默认行为
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            
+        } else {
+            audioPlayer.pause();
+            
+        }
+    });
+});
+        // JavaScript 代码将在这里
+    </script>
+<a href="http://192.168.1.20:8080/index.html">
+	<h2>追逐理想</h2>
+</a>
+<a href="http://192.168.1.20:8080/index.html">
+	<h2>身在亭凉，心在逐梦远航</h2>
+</a>
+<a href="http://192.168.1.20:8080/zq/zqdl.html">
+	<h2>智慧科技，引领我们逐梦远方</h2>
+</a>
+
+</body>
+</html>

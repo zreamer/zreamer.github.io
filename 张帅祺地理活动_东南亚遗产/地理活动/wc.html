@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>探究东南亚世界遗产研究报告|文创产品</title>
+		<style>
+		 header,footer {			           
+            background-color: black;           
+           
+			}
+			main {			           
+            background-image: url('img/10.png');           
+            background-size: cover;           
+            background-position: center;
+            background-repeat: no-repeat;           
+            background-attachment: fixed;
+            margin: 0;
+			}
+			</style>
+	</head>
+	<body>
+		<header style="background-color:black;color:white;">
+			<h1>探究东南亚世界遗产研究报告</h1>
+			<br>
+			<br>
+			<center>
+				<strong>
+					<nav>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="index.html"style="color:white;underline:none;">主页</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="fg.html"style="color:white;underline:none;">组内分工</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="lb.html"style="color:white;underline:none;">遗产名录</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="fb.html"style="color:white;underline:none;">遗产分布</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="qb.html"style="color:white;underline:none;">遗产墙报（汉密吉伊坦山野生动物保护区）</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="wc.html"style="color:white;underline:none;">文创产品</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="lx.html"style="color:white;underline:none;">旅行攻略</a>
+						<a href="#"style="color:white;underline:none;"> | </a>						
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="ai.html"style="color:white;underline:none;">AI问答</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="yj.html"style="color:white;underline:none;">有奖竞答</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						<a href="te.html"style="color:white;underline:none;">关于我们</a>
+						<a href="#"style="color:white;underline:none;"> | </a>
+						
+					</nav>
+				</strong>
+			</center>
+		</header>
+		<main>
+			<center>
+				<h2>东南亚世界遗产文创产品</h2>
+				<img src="img/200.jpg" style="height:auto;width:40%;"/>
+				<h4>猪笼草冰箱贴</h4>
+				<p>猪笼草冰箱贴以其独特的食虫植物形态为核心设计灵感，将自然界的奇妙结构转化为兼具实用性</p>
+				<p>与艺术性的文创产品。设计中，猪笼草标志性的捕虫笼造型被艺术化放大，采用半透明树脂材质</p>
+				<p>模拟笼身晶莹剔透的质感，表面精细刻画笼盖、笼口蜜腺纹路与藤蔓细节，既保留植物原始美感，</p>
+				<p>又赋予产品独特的视觉张力。​</p>
+				<p>功能层面，在捕虫笼底部巧妙嵌入强力磁吸装置，确保稳固吸附的同时，将笼身设计为可开合的</p>
+				<p>微型收纳仓，可存放便签、回形针等小型办公用品，兼具装饰与实用价值。色彩搭配上，采用渐变</p>
+				<p>的绿褐色系模拟自然色泽，搭配荧光色内壁增强视觉冲击力，在夜间形成独特的光影效果。​</p>
+				<p>设计理念深度融合 “自然共生” 与 “趣味互动” 概念，通过将猪笼草捕食昆虫的生存智慧转化为</p>
+				<p>生活中的创意点缀，传递人与自然和谐共处的生态理念，让使用者在日常接触中感受植物世界的神</p>
+				<p>奇魅力。​</p>
+
+			</center>
+			<a href="qb.html">上一页：遗产墙报（汉密吉伊坦山野生动物保护区）</a>	
+			<a href="lx.html">下一页：旅行攻略</a>	
+		</main>	
+		<footer style="background-color:black;color:white;">	
+			<br>
+			<center>
+			<h2>团结一致 共创辉煌</h2>
+			</center>
+						<audio autoplay  id="myAudio" src="au/6.mp3" id="myAudio"></audio>
+			<div id="status" class="status"></div>
+    
+    <script>
+        const audio = document.getElementById('myAudio');
+        const statusDiv = document.getElementById('status');
+        let playAttempts = 0;
+        const maxPlayAttempts = 5;
+        
+        // 自动播放策略
+        function attemptAutoPlay() {
+            // 重置音频到开始
+            audio.currentTime = 0;
+            
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // 播放成功
+                    statusDiv.textContent = "";
+                    statusDiv.className = "status playing";
+                    playAttempts = 0; // 重置尝试次数
+                })
+                .catch(error => {
+                    // 播放失败
+                    playAttempts++;
+                    statusDiv.textContent = `自动播放被阻止 (尝试 ${playAttempts}/${maxPlayAttempts})。请点击播放按钮或允许自动播放。`;
+                    statusDiv.className = "status not-playing";
+                    
+                    if (playAttempts < maxPlayAttempts) {
+                        // 延迟后再次尝试
+                        setTimeout(attemptAutoPlay, 2000);
+                    }
+                });
+            }
+        }
+        
+        // 检测音频是否在播放
+        function checkIfPlaying() {
+            if (audio.paused) {
+                statusDiv.textContent = "";
+                statusDiv.className = "status not-playing";
+                attemptAutoPlay();
+            } else {
+                statusDiv.textContent = "";
+                statusDiv.className = "status playing";
+            }
+        }
+        
+        // 页面加载后尝试自动播放
+        window.addEventListener('load', function() {
+            // 现代浏览器要求音频播放必须由用户交互触发
+            // 所以这里只是初始化，真正的播放尝试会在用户交互后开始
+            
+            // 添加点击事件监听，用户点击页面任何地方后尝试播放
+            document.body.addEventListener('click', function() {
+                attemptAutoPlay();
+                // 移除点击事件，避免重复绑定
+                document.body.removeEventListener('click', arguments.callee);
+            }, { once: true });
+            
+            // 设置循环检测
+            setInterval(checkIfPlaying, 3000);
+        });
+        
+        // 监听音频结束事件，重新播放
+        audio.addEventListener('ended', function() {
+            attemptAutoPlay();
+        });
+    </script>
+			<br>
+		</footer>
+	</body>	
+</html>		
+		

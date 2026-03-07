@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .chat-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .room-controls {
+            margin: 20px 0;
+        }
+
+        .number-input {
+            width: calc(50% - 10px);
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Chat</h1>
+        <div class="room-controls">
+            <button class="button" id="startChat">开始聊天（生成号码）</button>
+            <div>
+                <input type="text" id="roomNumber" placeholder="输入号码" class="number-input">
+                <button class="button" id="joinChat">加入聊天</button>
+            </div>
+        </div>
+        <div id="videoContainer">
+            <video id="localVideo" autoplay muted></video>
+            <video id="remoteVideo" autoplay></video>
+        </div>
+    </div>
+
+    <script>
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const startButton = document.getElementById('startChat');
+        const joinButton = document.getElementById('joinChat');
+        const roomNumberInput = document.getElementById('roomNumber');
+        let roomNumber;
+        let localStream;
+        let peerConnection;
+        let pcConfig = {
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' },
+                { urls: 'stun:stun1.l.google.com:19302' },
+            ],
+        };
+
+        function createRoom() {
+            roomNumber = Math.floor(100000 + Math.random() * 900000); // 6位随机数
+            roomNumberInput.value = roomNumber;
+            console.log(`Your room number is: ${roomNumber}`);
+        }
+
+        startButton.addEventListener('click', () => {
+            if (!localStream) {
+                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                    .then((stream) => {
+                        localVideo.srcObject = stream;
+                        localStream = stream;
+                        createRoom();
+                    })
+                    .catch((error) => {
+                        console.error('Error accessing media devices.', error);
+                    });
+            } else {
+                createRoom();
+            }
+        });
+
+        joinButton.addEventListener('click', () => {
+            const room = roomNumberInput.value.trim();
+            if (!room) {
+                alert('请输入房间号码！');
+                return;
+            }
+
+            if (!localStream) {
+                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                    .then((stream) => {
+                        localVideo.srcObject = stream;
+                        localStream = stream;
+                        joinChat(room);
+                    })
+                    .catch((error) => {
+                        console.error('Error accessing media devices.', error);
+                    });
+            } else {
+                joinChat(room);
+            }
+        });
+
+        function joinChat(room) {
+            // 这里需要一个信令服务器来传递 offer/answer 和 ICE 候选
+            // 这里用 WebRTC 的基本框架
+            peerConnection = new RTCPeerConnection(pcConfig);
+            peerConnection.onicecandidate = handleIceCandidate;
+            peerConnection.ontrack = handleRemoteStreamAdded;
+
+            // Add the local stream to the peer connection
+            localStream.getTracks().forEach((track) => {
+                peerConnection.addTrack(track, localStream);
+            });
+
+            createOffer(room);
+        }
+
+        function createOffer(room) {
+            peerConnection.createOffer()
+                .then((offer) => peerConnection.setLocalDescription(offer))
+                .catch((error) => console.error('Error creating offer:', error));
+
+            // Here, send the offer to the signaling server (e.g., a WebSocket)
+            // For demonstration, we'll log it
+            console.log('Sending offer:', peerConnection.localDescription);
+            // 发送 offer 到服务器，服务器转发给对应的 room
+        }
+
+        function handleIceCandidate(event) {
+            if (event.candidate) {
+                // Send the ICE candidate to the signaling server

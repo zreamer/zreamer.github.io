@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZHUMENG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .message.user {
+            background-color: #007aff;
+            text-align: right;
+        }
+        .message.bot {
+            background-color: #28a745;
+            text-align: left;
+        }
+        .input-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .input-container input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        .input-container button {
+            padding: 10px;
+            border: none;
+            background-color: #007aff;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .input-container button:hover {
+            background-color: #0056b3;
+        }
+        .fixed-links {
+            position: fixed; /* 固定定位 */
+            bottom: 0; /* 距离底部0 */
+            left: 0;
+            width: 100%; /* 宽度占满屏幕 */
+            background-color: #f1f1f1; /* 背景颜色 */
+            display: flex; /* 使用flex布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            z-index: 1000; /* 确保在所有标签之上 */
+            padding: 5px 0; /* 上下内边距 */
+            height: 20px;
+            
+        }
+a{
+    text-decoration: none; /* 去掉下划线 */
+    }
+        /* 定义单个超链接的样式 */
+        .fixed-links a {
+            display: inline-block; /* 行内块元素 */
+            padding: 5px 10px; /* 内边距 */
+            margin: 0 0px; /* 左右外边距 */
+            border: 0px solid #ccc; /* 边框 */
+            border-radius: 0px; /* 圆角 */
+            text-decoration: none; /* 去掉下划线 */
+            color: #333; /* 文字颜色 */
+            line-height: 5px; /* 使文字垂直居中 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>ZHUMENG ChatAI</h1>
+        <div id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="有什么问题尽管问我">
+            <button onclick="sendMessage()">发送</button>
+        </div>
+        <div class="fixed-links">
+<a href="index.html"><h2>返回</h2></a>
+<a href="#">|</a>
+<a href="index.html"><h2>主页</h2></a>
+<a href="#">|</a>
+<a href="zq/zqdl.html"><h2>菜单</h2></a>
+</div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+
+            addMessage('user', message);
+            userInput.value = '';
+
+            
+            
+                  if (message.includes('你') && message.includes('生')) {
+                addMessage('bot', '我的生日是2月16日');
+                
+            } 
+                else if (message.includes('你') && message.includes('乡')) {
+                addMessage('bot', '我的家乡在赤峰市敖汉旗，风景优美，素有小米之乡之称，被评为全球环境五百佳，你的家乡在哪里呢');
+                
+            }
+                    else if (message.includes('养生')) {
+                addMessage('bot', '现在我将为您跳转到逐梦智慧养生，祝您身体健康');
+                setTimeout(() => {
+                    window.location.href = 'http://192.168.1.20:8080/zats/healthindex.html'; // 替换为实际网页地址
+                }, 3000);
+            }else if (message.includes('再见')) {
+                addMessage('bot', '祝您生活愉快，下次，我们不见不散,拜拜');
+                setTimeout(() => {
+                    window.location.href = 'http://192.168.1.20:8080/'; // 替换为实际网页地址
+                }, 3000);
+            }else if (message.includes('你')&& message.includes('谁')) {
+                addMessage('bot', '我是逐梦精灵，一款超级实用的家用AI大模型');
+                
+            }else if (message.includes('早')&& message.includes('好')) {
+                addMessage('bot', '早上好呀！新的一天开始啦，有什么我可以帮你的吗？');
+                
+            }else if (message.includes('相')) {
+                addMessage('bot', '家庭相册里记载着许多难忘的瞬间，现在为您跳转');
+                setTimeout(() => {
+                    window.location.href = 'http://192.168.1.20:8080/xc/xcindex.html'; // 替换为实际网页地址
+                }, 3000);
+            }else if (message.includes('照')) {
+                addMessage('bot', '家庭相册里记载着许多难忘的瞬间，现在为您跳转');
+                setTimeout(() => {
+                    window.location.href = 'http://192.168.1.20:8080/xc/xcindex.html'; // 替换为实际网页地址
+                }, 3000);
+            }else if (message.includes('图')) {
+                addMessage('bot', '家庭相册里记载着许多难忘的瞬间，现在为您跳转');
+                setTimeout(() => {
+                    window.location.href = 'http://192.168.1.20:8080/xc/xcindex.html'; // 替换为实际网页地址
+                }, 3000);
+            }else {
+                addMessage('bot', '抱歉，我没有理解您的指令');
+            }
+        }
+
+        function addMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>

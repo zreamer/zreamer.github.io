@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>逐梦之家|逐梦智慧养生平台|体质自测|阴虚体质自测</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  label {
+    margin-right: 10px;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>阴虚体质自测</h1>
+<p>tips:本站只用于对于自身体质的了解，不会泄露个人信息，请放心使用</p>
+<div class="question">
+  <label>1. 手心、脚心是否容易发热？</label>
+  <input type="radio" name="q1" value="1"> 是
+  <input type="radio" name="q1" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>2. 身体或脸上是否容易发热？</label>
+  <input type="radio" name="q2" value="1"> 是
+  <input type="radio" name="q2" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>3. 皮肤或口唇是否干燥？</label>
+  <input type="radio" name="q3" value="1"> 是
+  <input type="radio" name="q3" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>4. 口唇的颜色是否比一般人红？</label>
+  <input type="radio" name="q4" value="1"> 是
+  <input type="radio" name="q4" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>5. 是否容易便秘或大便干燥？</label>
+  <input type="radio" name="q5" value="1"> 是
+  <input type="radio" name="q5" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>6. 面部两颧是否潮红或偏红？</label>
+  <input type="radio" name="q6" value="1"> 是
+  <input type="radio" name="q6" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>7. 感到眼睛干涩吗？</label>
+  <input type="radio" name="q7" value="1"> 是
+  <input type="radio" name="q7" value="0" checked> 否
+</div>
+
+<div class="question">
+  <label>8. 口干咽燥、总想喝水吗？</label>
+  <input type="radio" name="q8" value="1"> 是
+  <input type="radio" name="q8" value="0" checked> 否
+</div>
+
+<button onclick="calculateScore()">提交</button>
+
+<div id="result"></div>
+
+<script>
+  function calculateScore() {
+    let score = 0;
+    const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+    questions.forEach(function(question) {
+      const value = document.querySelector('input[name="' + question + '"]:checked').value;
+      score += parseInt(value, 10);
+    });
+
+    const result = document.getElementById('result');
+    if (score > 5) {
+      result.textContent = '根据测评结果，您是阴虚体质。';
+    } else {
+      result.textContent = '根据测评结果，您不是阴虚体质。';
+    }
+  }
+</script>
+<div class="fixed-links">
+<a href="http://192.168.1.20:8080/zats/healthindex.html"><h2>返回</h2></a>
+<a href="#">|</a>
+<a href="http://192.168.1.20:8080/index.html"><h2>主页</h2></a>
+<a href="#">|</a>
+<a href="http://192.168.1.20:8080/zq/zqdl.html"><h2>菜单</h2></a>
+</div>
+</body>
+</html>

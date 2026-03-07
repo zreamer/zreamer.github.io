@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CHINA TREVAL中国游|AI问答</title>
+		<style>
+		 header,footer {			           
+            background-color: #aa0000;           
+           
+			}
+			main {			           
+            background-image: url('img/10.webp');           
+            background-size: cover;           
+            background-position: center;
+            background-repeat: no-repeat;           
+            background-attachment: fixed;
+            margin: 0;
+			}
+						nav a{
+			border: 1px solid orange;
+			border-radius:3px;
+			background-color:orange;
+			}
+			button {
+			background-color:#aa0000;
+			color:white;
+			text-decoration:none;
+			}
+			</style>
+	</head>
+	<body>
+		<header style="color:white;">
+			<h1>CHINA TRAVEL北回归线游</h1>
+			<br>
+			<br>
+			<center>
+				<strong>
+					<nav>
+						<a href="index.html"style="color:white;background-color:gray;underpne:none;">主页</a>
+						<a href="fg.html"style="color:white;background-color:gray;underpne:none;">启程</a>
+						<a href="lb.html"style="color:white;background-color:gray;underpne:none;">第一站：云南省</a>
+						<a href="fb.html"style="color:white;background-color:gray;underpne:none;">第二站：广西壮族自治区</a>
+						<a href="qb.html"style="color:white;background-color:gray;underpne:none;">第三站：广东省</a>
+						<a href="ai.html"style="color:white;background-color:red;underpne:none;">AI问答</a>
+						<a href="yj.html"style="color:white;underpne:none;">回望</a>
+						<a href="te.html"style="color:white;underpne:none;">关于我们</a>
+					</nav>
+				</strong>
+			</center>
+		</header>
+		<main>
+			<center>
+				
+				<iframe src="404.html" width="80%" height="600px"></iframe>
+				<p>由于麻省理工学院对HTML接入CloudDB的限制，AI功能暂时不可使用。请扫描屏幕上的二维码下载app，按照提示进行对话</p>
+			</center>
+			<a href="lx.html"><button>上一页：第三站广东省</button></a>	
+			<a href="yj.html"><button>下一页：回望</button></a>	
+		</main>	
+		<footer style="color:white;">	
+			<br>
+			<center>
+			<h2>CHINA TREVAL中国游</h2>
+			</center>
+						<audio autoplay  id="myAudio" src="au/8.mp3" id="myAudio"></audio>
+			<div id="status" class="status"></div>
+    
+    <script>
+        const audio = document.getElementById('myAudio');
+        const statusDiv = document.getElementById('status');
+        let playAttempts = 0;
+        const maxPlayAttempts = 5;
+        
+        // 自动播放策略
+        function attemptAutoPlay() {
+            // 重置音频到开始
+            audio.currentTime = 0;
+            
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // 播放成功
+                    statusDiv.textContent = "";
+                    statusDiv.className = "status playing";
+                    playAttempts = 0; // 重置尝试次数
+                })
+                .catch(error => {
+                    // 播放失败
+                    playAttempts++;
+                    statusDiv.textContent = `自动播放被阻止 (尝试 ${playAttempts}/${maxPlayAttempts})。请点击播放按钮或允许自动播放。`;
+                    statusDiv.className = "status not-playing";
+                    
+                    if (playAttempts < maxPlayAttempts) {
+                        // 延迟后再次尝试
+                        setTimeout(attemptAutoPlay, 2000);
+                    }
+                });
+            }
+        }
+        
+        // 检测音频是否在播放
+        function checkIfPlaying() {
+            if (audio.paused) {
+                statusDiv.textContent = "";
+                statusDiv.className = "status not-playing";
+                attemptAutoPlay();
+            } else {
+                statusDiv.textContent = "";
+                statusDiv.className = "status playing";
+            }
+        }
+        
+        // 页面加载后尝试自动播放
+        window.addEventListener('load', function() {
+            // 现代浏览器要求音频播放必须由用户交互触发
+            // 所以这里只是初始化，真正的播放尝试会在用户交互后开始
+            
+            // 添加点击事件监听，用户点击页面任何地方后尝试播放
+            document.body.addEventListener('click', function() {
+                attemptAutoPlay();
+                // 移除点击事件，避免重复绑定
+                document.body.removeEventListener('click', arguments.callee);
+            }, { once: true });
+            
+            // 设置循环检测
+            setInterval(checkIfPlaying, 3000);
+        });
+        
+        // 监听音频结束事件，重新播放
+        audio.addEventListener('ended', function() {
+            attemptAutoPlay();
+        });
+    </script>
+			<br>
+		</footer>
+	</body>	
+</html>		
+		

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>逐梦之家|站群导航</title>
+</head>
+<body>
+<h1>站群导航</h1>
+<form action="" method="get" id="redirectForm">
+        <input type="text" id="urlInput" name="url" placeholder="你想要的功能尽在这里">
+        <button type="submit">立即使用</button>
+    </form>
+    <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2 {
+    color: #0f0f0f;
+    text-align: center;
+    margin: 20px 0;
+  }
+  form {
+    max-width: 320px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 0px;
+    background-color: #f0f0f0;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+  }
+.fixed-links {
+            position: fixed; /* 固定定位 */
+            bottom: 0; /* 距离底部0 */
+            left: 0;
+            width: 100%; /* 宽度占满屏幕 */
+            background-color: #f1f1f1; /* 背景颜色 */
+            display: flex; /* 使用flex布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            z-index: 1000; /* 确保在所有标签之上 */
+            padding: 5px 0; /* 上下内边距 */
+            height: 20px;
+            
+        }
+
+        /* 定义单个超链接的样式 */
+        .fixed-links a {
+            display: inline-block; /* 行内块元素 */
+            padding: 5px 10px; /* 内边距 */
+            margin: 0 0px; /* 左右外边距 */
+            border: 0px solid #ccc; /* 边框 */
+            border-radius: 0px; /* 圆角 */
+            text-decoration: none; /* 去掉下划线 */
+            color: #333; /* 文字颜色 */
+            line-height: 5px; /* 使文字垂直居中 */
+        }
+  .b {
+      color: #333
+      }
+</style>
+
+    <script>
+        document.getElementById('redirectForm').onsubmit = function(event) {
+            event.preventDefault();
+            var url = document.getElementById('urlInput').value;
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+                window.location.href = url;
+            } else {
+                window.location.href = 'http://' + url;
+            }
+        };
+    </script>
+<h2>本站功能</h2>
+
+<div class="image-container">
+<a href="http://8.155.163.8/zmf/m/ggl/index.html">
+	<img src="http://8.155.163.8/zmf/m/image/l.jpg" style="width: 100px; height: 100px;" />
+</a>
+<a href="http://8.155.163.8/zmf/m/xc/xcindex.html">
+	<img src="http://8.155.163.8/zmf/m/image/xc.jpg" style="width: 100px; height: 100px;" />
+</a>
+<a href="http://8.155.163.8/zmf/m/news/newsi.html">
+	<img src="http://8.155.163.8/zmf/m/image/xw.jpg" style="width: 100px; height: 100px;" />
+</a>
+<a href="http://8.155.163.8/zmf/m/i/i.html">
+	<img src="http://8.155.163.8/zmf/m/image/g.jpg" style="width: 100px; height: 100px;" />
+</a>
+<a href="http://8.155.163.8/zmf/m/clock/c.html">
+	<img src="http://8.155.163.8/zmf/m/image/c.jpg" style="width: 100px; height: 100px;" />
+</a>
+<a href="http://8.155.163.8/zmf/m/p">
+	<img src="https://gips3.baidu.com/it/u=3911566672,973417882&fm=3042&app=3042&f=JPEG&wm=1,baiduai,0,0,13,9&wmo=0,0&w=512&h=512"style="width: 100px; height: 100px;">
+    </a>
+
+        <a href="http://8.155.163.8/zmf/m/zats/healthindex.html">
+            <img src="http://8.155.163.8/zmf/m/image/ys.jpg"style="width: 100px; height: 100px;" alt="Health"/>
+        </a>
+ 
+        <a href="http://8.155.163.8/zmf/m/zmzj/如已下载，请直接打开.apk">
+            <img src="http://8.155.163.8/zmf/m/image/z.jpg" style="width: 100px; height: 100px;"alt="pay"/>
+        </a>
+</div>
+<h2>大家庭站</h2>
+<div class="image-container">
+
+</div>
+<a href=""></a>
+<h2>公共服务</h2>
+<div class="image-container">
+  <a href="http://baidu.com">
+    <img src="https://appimg-drcn.dbankcdn.com/application/icon144/436670ed41914808ae3f25b3ef0ef451.png" style="width: 100px; height: 100px;" />
+  </a>
+  <a href="https://metaso.cn/">
+	<img src="https://appimg-drcn.dbankcdn.com/application/icon144/ed4bc133036a4ab8b9a5dff6b6bb9ef9.png" style="width: 100px; height: 100px;" />
+  </a>
+  <a href="https://h5.weatherol.com.cn/home.html?id=101010100">
+    <img src="https://appimg-drcn.dbankcdn.com/application/icon144/9db3868df7c6482ab8d8c4eac416a84c.png" style="width: 100px; height: 100px;" />
+</a>
+
+<a href="http://m.cnr.cn/#/">
+	<img src="https://appimg-drcn.dbankcdn.com/application/icon144/11aa0128578b49d8818ac6bba77294fb.png" style="width: 100px; height: 100px;" /></img>
+</a>
+<a href="https://www.iq.com/?_from=iqiyi_tw">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/b387919dcc1240ed80bbb1a85d46e225.png" style="width: 100px; height: 100px;" alt="Health"/>
+        </a>
+        <a href="https://www.douyin.com/?is_from_mobile_home=1&recommend=1">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/23908de89b674361a57e945405f5d8c2.png" style="width: 100px; height: 100px;" alt="抖音"/>
+        </a>
+
+<a href="https://zxx.edu.cn">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/71c3c50163d8452eb55ee4404abee23a.png" style="width: 100px; height: 100px;" alt="智慧中小学"/>
+        </a>
+ 
+<a href="http://m.7273.com/down/57224.html">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/1d4db241b9224ed6938a1a14c8bdbfe4.png" style="width: 100px; height: 100px;" alt="NBlab"/>
+        </a>
+        <a href="https://bilibili.com">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/509e12e8482b44fd9497d4927a809a17.png" style="width: 100px; height: 100px;" alt="哔哩哔哩"/>
+</a>
+<a href="https://a.4399.cn/mobile/">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/6081844fe7b34d96a071294c9b2e7bca.png" style="width: 100px; height: 100px;" alt="4399"/>
+</a>
+
+<a href="https://appgallery.huawei.com/Featured">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/72f89e52554e45e9a1a1eb95e20b45de.png" style="width: 100px; height: 100px;" alt="抖音"/>
+</a>
+<a href="https://www.deepseek.com/">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/4a5a804a5e9e495ba04fe477d209ba2b.png" style="width: 100px; height: 100px;" alt="deepseek"/>
+</a>
+<a href="https://h5.waimai.meituan.com/waimai/mindex/home?response_code=0842b7ce969344d593d1e1a9224884c6&request_code=1ea822aa88974d4a9c049bfdc03b9666&responseCode=0842b7ce969344d593d1e1a9224884c6&requestCode=">
+            <img src="https://appimg-drcn.dbankcdn.com/application/icon144/e63559266d5e457786134de3741cf553.png" style="width: 100px; height: 100px;" alt="deepseek"/>
+</a>
+</div>
+<h1>             </h1>
+<div class="fixed-links">
+<a href="http://8.155.163.8/zmf/m/index.html">
+	<h2>返回</h2>
+</a>
+<a href="#">|</a>
+<a href="http://8.155.163.8/zmf/m/index.html">
+	<h2>主页</h2>
+</a>
+<a href="#">|</a>
+<a href="http://8.155.163.8/zmf/m/zq/zqdl.html">
+	<h2>菜单</h2>
+</a>
+</div>
+<audio autoplay>
+  <source src="http://8.155.163.8/zmf/m/music/zq.wav" type="audio/wav">
+  欢迎语
+</audio>	
+</body>
+</html>
