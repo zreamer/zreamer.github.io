@@ -1,22 +1,28 @@
 <script>
-let a = 3; // 从第3页开始
-const ifm = document.getElementById('ifm');
+// 全局页码，一开始是3
+let currentPage = 3;
 
-function f() {
-  a = a + 1;
-  ifm.src = a + '.html';
-}
+window.onload = function() {
+  const ifm = document.getElementById('ifm');
 
-function b() {
-  a = a - 1;
-  ifm.src = a + '.html';
-}
+  // 下一页
+  window.nextPage = function() {
+    currentPage++;
+    ifm.src = currentPage + ".html";
+  };
+
+  // 上一页
+  window.prevPage = function() {
+    currentPage--;
+    ifm.src = currentPage + ".html";
+  };
+};
 </script>
 
-<header style="background-color:#eeeeff;height:10%;">
-  <h1>班级笔记本 The Notebook of Class6</h1><br>
-  <button onclick="b()">上一页</button>
-  <button onclick="f()">下一页</button>
+<header style="background-color:#eeeeff; height:10%;">
+  <h1>班级笔记本 The Notebook of Class6</h1>
+  <button onclick="prevPage()">上一页</button>
+  <button onclick="nextPage()">下一页</button>
 </header>
 
-<iframe src="3.html" style="width:100%;height:90%;" id="ifm"></iframe>
+<iframe src="3.html" style="width:100%; height:90%;" id="ifm"></iframe>
