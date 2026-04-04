@@ -1,55 +1,34 @@
 document.body.insertAdjacentHTML('beforeend', `
-<button id="openCommentBtn" style="
-margin:10px;
-z-index:9999;
-position:fixed;
-bottom:150px;
-right:0;
-background:#555577;
-color:white;
-font-size:20px;
-padding:12px 20px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-">评论区<br>Comment area</button>
+<button id="openComment" style="margin:10px;z-index:9999;position:fixed;bottom:150px;right:0;background:#555577;color:white;font-size:24px;padding:15px;border:none;border-radius:8px;">评论区<br>Comment area</button>
 
-<dialog id="cmta" style="
-border-radius:12px;
-border:none;
-box-shadow:0 0 20px rgba(0,0,0,0.3);
-padding:24px;
-width:90%;
-max-width:380px;
-">
-<h1>请输入评论</h1>
-<h2>Please input your comment</h2>
-<p>由于此网页没有后端，评论内容依赖短信，请确保允许相关权限</p>
-<textarea id="cmtt" style="width:100%;height:100px;margin:10px 0;padding:8px;"></textarea>
-<br>
-<button id="submitComment" style="padding:8px 16px;margin-right:8px;">提交并关闭<br>Submit and close</button>
-<button onclick="document.getElementById('cmta').close()">关闭 Close</button>
+<dialog id="cmtDialog" style="border-radius:12px; border:none; box-shadow:0 0 20px rgba(0,0,0,0.3); padding:24px; width:90%; max-width:400px;">
+  <h1>请输入评论</h1>
+  <h2>Please input your comment</h2>
+  <p>由于此网页没有后端，评论内容依赖短信，请确保允许相关权限Permissions should be allowed.</p>
+  <textarea id="cmtText" style="width:100%; height:120px; margin:10px 0; padding:8px; font-size:16px;"></textarea>
+  <br>
+  <button id="cmtSubmit" style="padding:10px 16px; margin-right:10px;">提交并关闭<br>Submit and close</button>
+  <button id="cmtClose" style="padding:10px 16px;">关闭 Close</button>
 </dialog>
 `);
 
-// JS 逻辑（修复兼容性、作用域、异常处理）
-setTimeout(() => {
-  const btn = document.getElementById('openCommentBtn');
-  const dialog = document.getElementById('cmta');
-  const textarea = document.getElementById('cmtt');
-  const submit = document.getElementById('submitComment');
+// 功能逻辑
+const openBtn = document.getElementById('openComment');
+const dialog = document.getElementById('cmtDialog');
+const submit = document.getElementById('cmtSubmit');
+const closeBtn = document.getElementById('cmtClose');
+const text = document.getElementById('cmtText');
 
-  btn.onclick = () => dialog.showModal();
+openBtn.onclick = () => dialog.showModal();
+closeBtn.onclick = () => dialog.close();
 
-  submit.onclick = () => {
-    const msg = textarea.value.trim();
-    if (!msg) {
-      alert('评论内容为空 Comment is empty');
-      return;
-    }
-    const smsUrl = `sms:13126855092?body=${encodeURIComponent(msg)}`;
-    window.location.href = smsUrl;
-    alert('已经尝试唤起系统短信。若无响应，请检查权限或在手机上打开。');
-    dialog.close();
-  };
-}, 100);
+submit.onclick = () => {
+  const msg = text.value.trim();
+  if (!msg) {
+    alert('评论内容为空 Comment is empty');
+    return;
+  }
+  location.href = `sms:13126855092?body=${encodeURIComponent(msg)}`;
+  alert('已尝试打开短信');
+  dialog.close();
+};
