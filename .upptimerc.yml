@@ -1,0 +1,128 @@
+# ============================================
+# Upptime 配置文件 - zreamer.top 监控
+# ============================================
+
+# 基础信息（必须修改为您的信息）
+owner: zreamer      # 您的 GitHub 用户名
+repo: upptime       # 您的监控仓库名（或您使用的仓库名）
+
+# ============================================
+# 监控目标列表
+# ============================================
+sites:
+
+  # ---------- 主站页面 ----------
+  - name: 🏠 首页
+    url: https://www.zreamer.top/
+    
+  - name: 📋 列表页
+    url: https://www.zreamer.top/list.html
+    
+  - name: 👨‍💻 开发者关于
+    url: https://www.zreamer.top/aboutDeveloper/index.html
+    
+  - name: ℹ️ 关于页面
+    url: https://www.zreamer.top/index.html
+    
+  - name: 📝 开发者博客
+    url: https://www.zreamer.top/aboutDeveloper/blog/index.html
+    
+  - name: 📊 调查页
+    url: https://www.zreamer.top/aboutDeveloper/survey.html
+
+  # ---------- 其他项目 ----------
+  - name: 🔗 ZP网站
+    url: https://www.zreamer.top/others/zpwebsite/index.html
+    
+  - name: 📦 其他页面
+    url: https://www.zreamer.top/others/index.html
+
+  # ---------- 廿四节气 ----------
+  - name: 🌸 立春2026
+    url: https://www.zreamer.top/廿四节气/2026/立春.htm
+
+  # ---------- 地理活动-东南亚遗产 ----------
+  - name: 🏛️ 东南亚-10
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/index.html
+    
+  - name: 🏛️ 东南亚-9
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/qb.html
+    
+  - name: 🏛️ 东南亚-8
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/wc.html
+    
+  - name: 🏛️ 东南亚-7
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/lx.html
+    
+  - name: 🏛️ 东南亚-6
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/ai.html
+    
+  - name: 🏛️ 东南亚-5
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/yj.html
+    
+  - name: 🏛️ 东南亚-4
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/te.html
+    
+  - name: 🏛️ 东南亚-3
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/fg.html
+    
+  - name: 🏛️ 东南亚-2
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/lb.html
+    
+  - name: 🏛️ 东南亚-1
+    url: https://www.zreamer.top/张帅祺地理活动_东南亚遗产/地理活动/fb.html
+
+  # ---------- 地理活动-北回归线游 ----------
+  - name: 🌏 北回归线-7
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/index.html
+    
+  - name: 🌏 北回归线-6
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/fg.html
+    
+  - name: 🌏 北回归线-5
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/lb.html
+    
+  - name: 🌏 北回归线-4
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/fb.html
+    
+  - name: 🌏 北回归线-3
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/qb.html
+    
+  - name: 🌏 北回归线-2
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/ai.html
+    
+  - name: 🌏 北回归线-1
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/yj.html
+    
+  - name: 🌏 北回归线-结束页
+    url: https://www.zreamer.top/张帅祺地理活动_北回归线游/te.html
+
+# ============================================
+# 状态页面配置
+# ============================================
+status-website:
+  # 使用 GitHub Pages 默认路径
+  baseUrl: /upptime    # 修改为您的仓库名
+  
+  # 或使用自定义域名（二选一）
+  # cname: status.zreamer.top
+  
+  # 页面基本信息
+  name: Zreamer 服务状态
+  logoUrl: https://www.zreamer.top/favicon.ico  # 可选：您的网站图标
+  introTitle: "**Zreamer.top 监控面板**"
+  introMessage: 实时监控 zreamer.top 所有页面运行状态，包括主站、地理活动、廿四节气等
+  
+  # 导航栏
+  navbar:
+    - title: 🏠 主页
+      href: https://www.zreamer.top/
+    - title: 📋 列表
+      href: https://www.zreamer.top/list.html
+    - title: 💻 GitHub
+      href: https://github.com/$OWNER/$REPO
+
+# ============================================
+# 可选：自定义工作流配置
+# ============================================
+# 监控间隔已默认为 5 分钟，无需额外配置
