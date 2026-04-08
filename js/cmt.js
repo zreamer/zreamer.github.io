@@ -1,5 +1,5 @@
 document.body.insertAdjacentHTML('beforeend', `
-<button id="openComment" style="margin:10px;z-index:9999;position:fixed;bottom:150px;right:0;background:#555577;color:white;font-size:24px;padding:15px;border:none;border-radius:8px;height:auto;width:auto;">评论区<br>Comment area</button>
+<button id="openComment" style="margin:10px;z-index:9999;position:fixed;bottom:450px;right:0;background:#555577;color:white;font-size:24px;padding:15px;border:none;border-radius:8px;height:auto;width:auto;">评论区<br>Comment area</button>
 
 <dialog id="cmtDialog" style="border-radius:12px; border:none; box-shadow:0 0 20px rgba(0,0,0,0.3); padding:24px; width:90%; max-width:400px;">
   <h1>请输入评论</h1>
