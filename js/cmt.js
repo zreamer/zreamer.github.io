@@ -28,6 +28,6 @@ submit.onclick = () => {
     alert('评论内容为空 Comment is empty');
     return;
   }
-  window.open('http://www.zreamer.top/js/cmt.html?content='+msg);
+  window.location.href='http://www.zreamer.top/js/cmt.html?content='+msg;
   dialog.close();
 };
