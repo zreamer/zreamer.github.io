@@ -4,7 +4,7 @@ document.body.insertAdjacentHTML('beforeend', `
 <dialog id="cmtDialog" style="border-radius:12px; border:none; box-shadow:0 0 20px rgba(0,0,0,0.3); padding:24px; width:90%; max-width:400px;">
   <h1>请输入评论</h1>
   <h2>Please input your comment</h2>
-  <p></p>
+  <p>匿名评论，如果希望得到回复请留下联系方式</p>
   <textarea id="cmtText" style="width:100%; height:120px; margin:10px 0; padding:8px; font-size:16px;"></textarea>
   <br>
   <button id="cmtSubmit" style="padding:10px 16px; margin-right:10px;">提交并关闭<br>Submit and close</button>
