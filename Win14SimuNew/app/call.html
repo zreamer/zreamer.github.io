@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+</head>
+<body style="background-color: #BAE1FF;transition: all 0.3s ease;">
+  <h1 style="width:95%;font-size:4vh;padding:5px;line-height:1;transition: all 0.3s ease;">📞拨号盘</h1>
+  <h1 id="num" style="width:95%;font-size:8vh;padding:5px;line-height:0.1;transition: all 0.3s ease;">0123456789</h1>
+  <style>
+  button{height: 15vh;width:26%;margin: 3vw;border-radius: 10px;border: none;background: rgba(255, 255, 255,0.3);box-shadow: 0px 2px 4px rgba(0,0,0,0.1);font-size: 8rem;transition: all 0.3s ease;}
+  button:hover{height: 17vh;width:29%;margin: 3vw;border-radius: 10px;border: none;background: rgba(230, 230, 255,0.3);box-shadow: 0px 2px 4px rgba(0,0,0,0.6);font-size: 8rem;transition: all 0.3s ease;}
+  
+  </style>
+  <button type="button" onclick="ipt('1')">1</button><button type="button" onclick="ipt('2')">2</button><button type="button" onclick="ipt('3')">3</button><button type="button" onclick="ipt('4')">4</button><button type="button" onclick="ipt('5')">5</button><button type="button" onclick="ipt('6')">6</button><button type="button" onclick="ipt('7')">7</button><button type="button" onclick="ipt('8')">8</button><button type="button" onclick="ipt('9')">9</button><button type="button" onclick="ipt('0')">0</button><button type="button" onclick="del()">Del</button><button type="button" onclick="call()">Cal</button>
+  <script>
+document.getElementById('num').innerHTML='';
+  function ipt(ipt) {
+ 	 document.getElementById('num').innerHTML=document.getElementById('num').innerHTML+ipt;
+  }
+  function del() {
+	  document.getElementById('num').innerHTML='';
+  }function call() {
+	  location.href = 'tel:'+document.getElementById('num').innerHTML;
+ 
+  }
+   </script>
+</body>
+</html>
