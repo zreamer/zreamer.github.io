@@ -39,4 +39,13 @@ top:8vw;left:10.5vw" onclick="refresh()">↻</button>
 </div>
 <iframe src="http://www.chinaso.com/" title="内嵌页面" width="98%" height="89%" style="border-radius:5px;border:none;position:absolute;top:10%;" id="ifr"></iframe><script>function enter() {
 	const ifr=document.getElementById('ifr');	
-	ifr.src=document.get
+	ifr.src=document.getElementById('ipt').value;
+}function handleClick() {
+	const ifr=document.getElementById('ifr');	
+	ifr.src='https://www.zreamer.top';
+}function refresh(parameters) {
+	const ifr=document.getElementById('ifr');
+	let i = ifr.src;
+	ifr.src='about:blank';
+	ifr.src=i;
+}</script></body>
