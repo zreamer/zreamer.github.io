@@ -1,5 +1,14 @@
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3PWw56riQLlb0j24",ck:"3PWw56riQLlb0j24",screenRecord:true})</script>
+
+
+
+
 <style>
-body,html{height: 100%;margin: 0;overflow: hidden;transition: all 0.3s ease;}
+@font-face{
+font-family: Poppins;
+	src:url('img/font.ttf') format('truetype');font-display: swap;	}
+body,html{height: 100%;margin: 0;overflow: hidden;transition: all 0.3s ease;font-family: Poppins;}
 .signIn:hover{width:9vh;height:4vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.8);color:white;font-size:1.5rem}
 .startingChoice{
 	background: #efefff ;
@@ -176,14 +185,14 @@ function badInfomationReport() {
    // 先判断广告元素是否存在
    var adDom = document.getElementById('ad');
    if(!adDom){
-	   alert('广告不存在，无需举报');
+	   alert('The advertisement does not exist');
 	   return;
    }
    // URL编码，防止特殊字符报错
-   var problem = encodeURIComponent('不良信息广告');
+   var problem = encodeURIComponent('advertisementWithBadInformation');
    var adUrl = encodeURIComponent(adDom.src);
    location.href = 'http://www.zreamer.top/index.html?problem=' + problem + '&url=' + adUrl;
-   alert('举报成功!我们将在第一时间处理，很抱歉给您带来了不便');
+   alert('Report successful! We will handle it as soon as possible. We are sorry for the inconvenience caused to you. ');
 }
 </script>
 	</div>
@@ -230,9 +239,9 @@ function badInfomationReport() {
 	
 	
 	
-	<div id="startSelection" class="startSelection"><h2 style="margin:5px;">开始</h2><button type="button" onclick="closeStart()" class="closeStart">收回</button>
+	<div id="startSelection" class="startSelection"><h2 style="margin:5px;">Start</h2><button type="button" onclick="closeStart()" class="closeStart">Close</button>
 	<iframe src="http://m.weather.com.cn/" title="内嵌页面" width="45%" height="70%" style="margin:2.5%;border:none;border-radius:5px"></iframe><iframe src="https://m.cnr.cn/#/" title="内嵌页面" width="45%" height="70%" style="margin:2.5%;border:none;border-radius:5px"></iframe>
-	<h3>应用列表</h3>
+	<h3>Applications list</h3>
 	<div style="display:flex">
 	<div class="icons" onclick="openwindow('about')">
 		<img src="img/about.png" alt="图片描述" >
@@ -274,7 +283,7 @@ function badInfomationReport() {
 	  height: 100%;
 	  display: block;
 	"
-	alt="锁定"
+	alt="LOCK"
   >
 </button>
 	</div></div>
@@ -293,7 +302,7 @@ function badInfomationReport() {
 <div class="alertBox" id="alertBox">
 <h1 id="alertTitle"></h1>
 <p id="alertContent"></p>
-<div><button type="button" onclick="hideAlertBox()">好的</button></div>
+<div><button type="button" onclick="hideAlertBox()">OK</button></div>
 
 </div></div>
 	<div class="screen" id="lock"
@@ -332,7 +341,7 @@ function stt() {
 	setTimeout(() => {
 		document.getElementById('stttpg').style.display='none';
 		document.getElementById('dsktp').style.display='block';
-showAlertBox('Windows14网页版','Windows 14 网页版是一 个开放源项目, 希望让用户在网络上预先体验Windows 14, 内容可能与 Windows 14 正式版本 一致。 使用标准网络技术,例如HTML,CSS和JS 此项目绝不附属于微软,且不应与微软操作系统或产品混淆, 这也不是 Windows365 cloud  本项目中微软、 Windows和其他示范产品是微软公司的商标 本项目中谷歌、 Android和其他示范产品是谷歌公司的商标');	document.getElementById('aud').play();}, 5000);
+showAlertBox('Windows14 Concept','Windows 14 Concept is an open-source project, it aims to make users experience Windows14 in advance, so the content may not consist with Windows14 formal version. This project is created with standard  web technologies, such as HTML5, JS, and CSS. This project does not belong to Microsoft, and should not be confused with Microsoft operating systems or products. It is not Windows365 Cloud  Computer .');	document.getElementById('aud').play();}, 500);
 	
 }
 
