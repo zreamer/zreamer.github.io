@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+  <style>
+@font-face{
+font-family: Consolas;
+	src:url('Consolas.ttf') format('truetype');font-display: swap;	}
+  </style>
+</head>
+<body style="color: white;background:black;font-family:Consolas,sans-serif;padding:15px">
+  <div style="height:95%;width:100%;" id="output">Welcome to ZHUMENG Windows14 Terminal!(C)ZHUMENG(2024-2026) All right reserved.<br>Type 'help' for help and type '^' for ctrl key<br>C:\users\administrator></div>
+  <input placeholder="Type and edit your commands here." style="position:absolute;top:95%;left:0;width:85%;background:black;margin:10px;color:white" id="ipt"></input>
+  <button style="position:absolute;top:95%;left:87%;width:10%;background:black;margin:0px;height:3%;color:white" onclick="send()">Send</button>
+  <script>
+  let echo = 1;
+  const ipt = document.getElementById('ipt');
+  function send() {
+	  const opt = document.getElementById('output');
+	  if (echo==1) {
+	      // 代码块
+	  
+ 	 opt.innerHTML = opt.innerHTML+'<br>C:\\users\\administrator>'+document.getElementById('ipt').value;
+  }if (ipt.value=='version') {
+ 	opt.innerHTML = opt.innerHTML+'<br>Windows 14 Concept by Zreamer\.If you want to turn to Windows12 by StarrySource , please input \'multiplesystem windows12\'';
+  }
+  else if(ipt.value=='@echo off'){
+ 	 echo=0;
+  }else if(ipt.value=='@echo on'){
+ 	 echo=1;
+  }
+  else if (ipt.value.includes('echo')) {
+	  opt.innerHTML = opt.innerHTML+'<br>'+ipt.value.replace('echo ','');
+  }else if (ipt.value.includes('runjs')) {
+	  eval(ipt.value.replace('runjs',''))
+  }
+  else {
+ 	 if (!(ipt.value=='')) {
+ 		 opt.innerHTML = opt.innerHTML+'<br>Command doesn\'t exist:no such file or command';
+	  }
+  }
+  }
+  </script>
+</body>
+</html>
