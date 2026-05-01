@@ -1,13 +1,9 @@
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"3PWw56riQLlb0j24",ck:"3PWw56riQLlb0j24",screenRecord:true})</script>
-
-
-
-
 <style>
 @font-face{
 font-family: Poppins;
-	src:url('img/font.ttf') format('truetype');font-display: swap;	}
+	src:url('../img/font.ttf') format('truetype');font-display: swap;	}
 body,html{height: 100%;margin: 0;overflow: hidden;transition: all 0.3s ease;font-family: Poppins;}
 .signIn:hover{width:9vh;height:4vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.8);color:white;font-size:1.5rem}
 .startingChoice{
@@ -164,7 +160,12 @@ display: flex;transition: all 0.3s ease;}
 }.startdb:hover{
 	height:4.5vh;width: 4.5vh;background: 0;position: absolute;border: none;margin: 1px 0 0 0;top:0;left: 5vh;font-size: 5px;transition: all 0.3s ease;
 }
-.startdb img{width: 4vh;height: 4vh;transition: all 0.3s ease;}
+.startdb img{width: 4vh;height: 4vh;transition: all 0.3s ease;}.tb{
+	height:4vh;width: 4vh;background: 0;position: absolute;border: none;margin: 1px 0 0 0;top:0;left: 10vh;font-size: 5px;transition: all 0.3s ease;
+}.tb:hover{
+	height:4.5vh;width: 4.5vh;background: 0;position: absolute;border: none;margin: 1px 0 0 0;top:0;left: 10vh;font-size: 5px;transition: all 0.3s ease;
+}
+.tb img{width: 4vh;height: 4vh;transition: all 0.3s ease;}
 .bar button img{width: 4vh;height: 4vh;transition: all 0.3s ease;}
 .time{background:#E7F5FF;position: absolute;border: none;margin: 1px 0 0 0;top:0;font-size: 15px; right:0;padding: 10px;border-radius: 50vh;height: 4vh;}
 .startSelection{background: #E7F5FF;margin: 6vh;width: 50vw;height: 50vh;position: absolute;left:calc(25vw - 6vh);bottom:0;border-radius: 5px;padding: 5px;display:none;box-shadow: 0px 2px 4px rgba(0,0,0,0.1);transition: all 0.3s ease;}.startSelection:hover{background: #E7F5FF;margin: 6vh;width: 53vw;height: 53vh;position: absolute;left:calc(25vw - 6vh);bottom:0;border-radius: 5px;padding: 5px;display:none;box-shadow: 0px 2px 4px rgba(0,0,0,0.4);transition: all 0.3s ease;}
@@ -192,7 +193,7 @@ function badInfomationReport() {
    var problem = encodeURIComponent('advertisementWithBadInformation');
    var adUrl = encodeURIComponent(adDom.src);
    location.href = 'http://www.zreamer.top/index.html?problem=' + problem + '&url=' + adUrl;
-   alert('Report successful! We will handle it as soon as possible. We are sorry for the inconvenience caused to you. ');
+   alert('Report successfully! We will handle it as soon as possible. We are sorry for the inconvenience caused to you. ');
 }
 </script>
 	</div>
@@ -232,6 +233,9 @@ function badInfomationReport() {
 	</div><div class="icon" onclick="openwindow('cmpt')">
 		<img src="img/cmpt.png" alt="图片描述" >
 		<p>This Computer</p>
+	</div><div class="icon" onclick="openwindow('terminal')">
+		<img src="img/terminal.png" alt="图片描述" >
+		<p>Terminal</p>
 	</div>
 	
 	
@@ -258,6 +262,9 @@ function badInfomationReport() {
 		
 	</div><div class="icons" onclick="openwindow('call')">
 		<img src="img/call.png" alt="图片描述" >
+		
+	</div><div class="icons" onclick="openwindow('terminal')">
+		<img src="img/terminal.png" alt="图片描述" >
 		
 	</div>
 	<button 
@@ -287,11 +294,25 @@ function badInfomationReport() {
   >
 </button>
 	</div></div>
-	
+	<div class="bar" id="pb" onclick="showTaskBar()">
+	<center style="font-size:2rem;">海内存知己，天涯若比邻</center>
+	</div>
 
-	<div class="bar">
+	<div class="bar" id="taskBar">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 <button type="button" onclick="start()" class="start"><img src="img/2.png" alt="图片描述"></button>
-<button type="button" onclick="startdb()" class="startdb"><img src="img/copilot.svg" alt="图片描述" style="height:5vh;width:5vh"></button><button type="button" class="time" ><p style="margin:5px" id="dateTime">0000/00/00<br>00:00:00</p></button>
+<button type="button" onclick="startdb()" class="startdb"><img src="img/copilot.svg" alt="图片描述" style="height:5vh;width:5vh"></button><button type="button" onclick="takeback()" class="tb" ><img src="img/tb.png" alt="图片描述" style="height:3vh;width:3vh"></button><button type="button" class="time" ><p style="margin:5px" id="dateTime">0000/00/00<br>00:00:00</p></button>
 </div>
 </div>
 
@@ -313,7 +334,28 @@ function badInfomationReport() {
 	<audio id="aud">
 	<source src="img/win12start.mp3" type="audio/mpeg">
 	</audio>
-<script>
+<script>document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
+function takeback() {
+ 	document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
+}
+
+
+
+function takeback() {
+ 	document.getElementById('pb').style.display='block';document.getElementById('taskBar').style.display='none';
+}
+
+
+
+
+
+
+
+
+
+function showTaskBar() {
+ 	document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
+}
 function start() {
  	document.getElementById('startSelection').style.display='block';
 }
