@@ -179,7 +179,7 @@ display: flex;transition: all 0.3s ease;}
 		</div>
 		<div class="button-row">
 			<button type="button" class="startingChoice" onclick="ist()">Install Windows14</button>
-		</div><iframe id="ad" src="https://motorsnag.com/n4ts0082?key=561876b2e8a15a930a9382590c990368" title="内嵌页面" width="100" height="61.8"></iframe>
+		</div><iframe id="ad" src="" title="内嵌页面" width="100" height="61.8"></iframe>
 		<a href="javascript:void(0)" onclick="badInfomationReport()">广告含有不良信息?点击这里反馈...</a>
 <script>
 function badInfomationReport() {
@@ -193,7 +193,7 @@ function badInfomationReport() {
    var problem = encodeURIComponent('advertisementWithBadInformation');
    var adUrl = encodeURIComponent(adDom.src);
    location.href = 'http://www.zreamer.top/index.html?problem=' + problem + '&url=' + adUrl;
-   alert('Report successfully! We will handle it as soon as possible. We are sorry for the inconvenience caused to you. ');
+   alert('Report successful! We will handle it as soon as possible. We are sorry for the inconvenience caused to you. ');
 }
 </script>
 	</div>
@@ -266,6 +266,9 @@ function badInfomationReport() {
 	</div><div class="icons" onclick="openwindow('terminal')">
 		<img src="img/terminal.png" alt="图片描述" >
 		
+	</div><div class="icons" onclick="openwindow('txt')">
+		<img src="img/txt.png" alt="图片描述" >
+		
 	</div>
 	<button 
   type="button" 
@@ -327,8 +330,14 @@ function badInfomationReport() {
 
 </div></div>
 	<div class="screen" id="lock"
-	style="background-image:url('img/lock.jpg');background-repeat: no-repeat;background-size: cover;display: none;justify-content: center;align-items: center;"><div style="justify-content:center;align-items:center;">
-	<img src="img/user.png" alt="图片描述" style="height:20vh;width:auto;justify-content:center;align-items:center;display:flex"><br><center><button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="unlock()" class="signIn">登录</button></center></div>
+	style="background-image:url('img/lock.jpg');background-repeat: no-repeat;background-size: cover;display: none;justify-content: center;align-items: center;">
+	<div style="display:none;" id='tm'><center>
+	<p style="font-size:10rem;color:white">00:00</p>
+	<button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="ulk()" class="signIn">Unlock</button>
+	</center>
+	</div>
+	<div style="justify-content:center;align-items:center;" id="si">
+	<img src="img/user.png" alt="图片描述" style="height:20vh;width:auto;justify-content:center;align-items:center;display:flex"><br><center><button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="unlock()" class="signIn">Sign in</button><br><br><button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="unsign()" class="signIn">Cancel</button></center></div>
 	</div>
 	
 	<audio id="aud">
@@ -345,14 +354,24 @@ function takeback() {
  	document.getElementById('pb').style.display='block';document.getElementById('taskBar').style.display='none';
 }
 
+function unsign() {
+ 	document.getElementById('si').style.display ='none';
+document.getElementById('tm').style.display ='block';
 
 
 
 
 
+}
+function ulk() {
+ 	document.getElementById('si').style.display ='block';
+document.getElementById('tm').style.display ='none';
 
 
 
+
+
+}
 function showTaskBar() {
  	document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
 }
@@ -433,4 +452,4 @@ function startdb() {
 		document.getElementById('lock').style.zIndex=50000;
 		document.getElementById('dsktp').style.display='block';
 	}
-</script>
+			</script>
