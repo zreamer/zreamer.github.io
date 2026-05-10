@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World</title>
+</head>
+<body style="background-color: #BAE1FF;transition: all 0.3s ease;">
+  <h1 style="width:95%;font-size:4vh;padding:5px;line-height:1;transition: all 0.3s ease;">计算器</h1><p id="l" style="line-height:0.3;width:95%;font-size:2vh;padding:5px;line-height:10vh;transition: all 0.3s ease;overflow:auto;">0123456789</p>
+  <h1 id="num" style="line-height:0.3;width:95%;font-size:8vh;padding:5px;line-height:10vh;transition: all 0.3s ease;overflow:auto;">0123456789</h1>
+  <style>
+  button{height: 10vh;width:18%;margin: 3vw;border-radius: 10px;border: none;background: rgba(255, 255, 255,0.3);box-shadow: 0px 2px 4px rgba(0,0,0,0.1);font-size: 5rem;transition: all 0.3s ease;}
+  button:hover{height: 11vh;width:18.5%;margin: 3vw;border-radius: 10px;border: none;background: rgba(230, 230, 255,0.3);box-shadow: 0px 2px 4px rgba(0,0,0,0.6);font-size: 6rem;transition: all 0.3s ease;}
+  input{height: 2vh;width:18%;margin: 3vw;border-radius: 10px;border: none;background: rgba(255, 255, 255,0.3);box-shadow: 0px 2px 4px rgba(0,0,0,0.1);font-size: 5rem;transition: all 0.3s ease;}
+  </style><button type="button" onclick="ipt('k')" style="font-size:2rem">var<br>k</button><button type="button" onclick="ipt('b')" style="font-size:2rem">var<br>b</button><button type="button" onclick="ipt('x')" style="font-size:2rem">var<br>x</button><button type="button" onclick="ipt('y')" style="font-size:2rem">var<br>y</button>
+  <input type="range" name="name" placeholder="" id="k" min="-50" max="50"><input type="range" name="name" placeholder="" id="b" min="-50" max="50"><input type="range" name="name" placeholder="" id="x"><input type="range" name="name" placeholder="" id="y">
+  <button type="button" onclick="ipt('Math.PI')">PI</button><button type="button" onclick="del()">C</button><button type="button" onclick="ipt('(')">(</button><button type="button" onclick="ipt(')')">)</button>
+  <button type="button" onclick="ipt('1')">1</button><button type="button" onclick="ipt('2')">2</button><button type="button" onclick="ipt('3')">3</button><button type="button" onclick="ipt('+')">+</button><button type="button" onclick="ipt('4')">4</button><button type="button" onclick="ipt('5')">5</button><button type="button" onclick="ipt('6')">6</button><button type="button" onclick="ipt('-')">-</button><button type="button" onclick="ipt('7')">7</button><button type="button" onclick="ipt('8')">8</button><button type="button" onclick="ipt('9')">9</button><button type="button" onclick="ipt('*')">×</button><button type="button" onclick="ipt('0')">0</button><button type="button" style="width:42%"onclick="equal()">=</button><button type="button" onclick="ipt('/')">÷</button><button type="button" onclick="ipt('**')"><i>x<sup>y</sup></i></button><button type="button" onclick="ipt('Math.sin(')">sin</button><button type="button" onclick="ipt('Math.cos(')">cos</button><button type="button" onclick="ipt('Math.tan(')">tan</button><button type="button" onclick="ipt('299792458')" style="font-size:3rem;">light<br>speed</button><button type="button" onclick="ipt('Math.sqrt(')"><sup>√x</sup></button><button type="button" onclick="ipt('Math.E')">e</button><button type="button" onclick="ipt('Math.INFINITY')">∞</button>
+  <script>
+  let k = 1;
+let x = 0;
+let y = 0;
+let b = 0;document.getElementById('num').innerHTML='';
+document.getElementById('l').innerHTML='';function equal() {
+  
+	document.getElementById('num').innerHTML=eval(document.getElementById('l').innerHTML);
+  
+}
+
+function ipt(ipt) {
+  document.getElementById('num').innerHTML += ipt;
+  equal();
+}
+function del() {
+  document.getElementById('num').innerHTML = '';
+}
+
+
+// 关键：页面加载完再绑定所有滑动条
+window.onload = function(){
+  // k滑块
+  document.getElementById('k').oninput = function(){
+	k = Number(this.value);
+	equal();
+  }
+  // b滑块
+  document.getElementById('b').oninput = function(){
+	b = Number(this.value);
+	equal();
+  }
+  // x滑块
+  document.getElementById('x').oninput = function(){
+	x = Number(this.value);
+	equal();
+  }
+  // y滑块
+  document.getElementById('y').oninput = function(){
+	y = Number(this.value);
+	equal();
+  }
+}
+  function ipt(ipt) {
+ 	 document.getElementById('l').innerHTML=document.getElementById('l').innerHTML+ipt;equal();
+  }
+  function del() {
+	  document.getElementById('l').innerHTML='';document.getElementById('num').innerHTML='';
+  }function equal() {
+	  document.getElementById('num').innerHTML=eval(document.getElementById('l').innerHTML);
+ 
+  }
+  
+   </script>
+</body>
+</html>
