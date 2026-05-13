@@ -326,7 +326,7 @@ function badInfomationReport() {
 </div>
 
 <div class="window" id="wd" style="display:none;">
-	<iframe src="" style="draggable:true;height:100%;width:100%;border:none;border-radius: 5px;" id="wds"></iframe>
+	<iframe src="" style="draggable:true;height:100%;width:100%;border:solid 10px rgba(0,0,0,0);border-radius: 5px;" id="wds" draggable="true"></iframe>
 	<button type="button" onclick="closeWindow()" style="right:0"><b>╳</b></button><button type="button" onclick="fullWindow()" style="right:3vh"><b>□</b></button><button type="button" onclick="unfullWindow()" style="right:6vh"><b>▅</b></button>
 </div>
 <div class="alertBox" id="alertBox">
@@ -457,6 +457,51 @@ function startdb() {
 		document.getElementById('lock').style.display='none';
 		document.getElementById('lock').style.zIndex=50000;
 		document.getElementById('dsktp').style.display='block';
-	}
+	}const dragBox = document.getElementById('wds');
+ let isDrag = false;
+ let startX, startY;
+ let boxLeft, boxTop;
+ // 统一处理坐标
+ function getPos(e) {
+   // 触屏取第一个触点
+   if (e.type.includes('touch')) {
+	 return {
+	   x: e.touches[0].clientX,
+	   y: e.touches[0].clientY
+	 };
+   }
+   return { x: e.clientX, y: e.clientY };
+ }
+ // 按下 / 触屏开始
+ function startDrag(e) {
+   isDrag = true;
+   const p = getPos(e);
+   startX = p.x;
+   startY = p.y;
+   boxLeft = dragBox.offsetLeft;
+   boxTop = dragBox.offsetTop;
+   e.preventDefault();
+ }
+ // 移动
+ function moveDrag(e) {
+   if (!isDrag) return;
+   const p = getPos(e);
+   let x = boxLeft + (p.x - startX);
+   let y = boxTop + (p.y - startY);
+   dragBox.style.left = x + 'px';
+   dragBox.style.top = y + 'px';
+ }
+ // 结束
+ function endDrag() {
+   isDrag = false;
+ }
+ // 鼠标事件
+ dragBox.addEventListener('mousedown', startDrag);
+ document.addEventListener('mousemove', moveDrag);
+ document.addEventListener('mouseup', endDrag);
+ // 触屏事件
+ dragBox.addEventListener('touchstart', startDrag);
+ document.addEventListener('touchmove', moveDrag);
+ document.addEventListener('touchend', endDrag);
+ document.addEventListener('touchcancel', endDrag);
 </script>
-
