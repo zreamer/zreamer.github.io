@@ -1,0 +1,152 @@
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><!DOCTYPE html>
+<html>
+<head>
+  <title>Zreamer's Personal Community</title>
+  <style>
+@font-face{
+font-family: Consolas;
+	src:url('Consolas.ttf') format('truetype');font-display: swap;	}
+  </style>
+</head>
+<body style="font-family:Consolas,sans-serif;padding:0px">
+ <button style="width:auto;margin:0px;" onclick="yesterday()">Yesterday</button> <button style="width:auto;margin:0px;;" onclick="today()">Today</button><button style="width:auto;margin:0px;" onclick="tomorrow()">Tomorrow</button>
+ 
+ <div style="height:75%;width:100%;overflow:scroll;" id="output"></div><input placeholder="Your name here..." style="width:auto;" id="name">
+  <textarea placeholder="Your message here..." style="width:80%;height:13%" id="message"></textarea>
+  <button style="position:absolute;width:auto;margin:0px;" onclick="send()">Send</button>
+ <script src="../script.js"></script>
+   <script>// 数据库固定配置（从截图提取）
+// 数据库固定配置（从截图提取）
+const DB_INFO = {
+  api: "https://tinywebdb.appinventor.space/api",
+  user: "zreamer",
+  secret: "786a98bf"
+}
+
+/**
+ * 写入数据到 TinyWebDB
+ * @param {string} tag 存储标签key
+ * @param {string} content 要保存的内容（textarea文本/html都支持）
+ * @returns {Promise<string>} 接口返回结果
+ */
+async function writeDB(tag, content) {
+  const form = new FormData();
+  // 固定鉴权参数
+  form.append("user", DB_INFO.user);
+  form.append("secret", DB_INFO.secret);
+  form.append("action", "update");
+  // 业务参数
+  form.append("tag", tag);
+  form.append("value", content);
+
+  try {
+    const res = await fetch(DB_INFO.api, {
+      method: "POST",
+      body: form
+    })
+    return await res.text();
+  } catch (err) {
+    alert("Load failed: " + err.message);
+    return "";
+  }
+}
+
+/**
+ * 从 TinyWebDB 读取数据
+ * @param {string} tag 要读取的标签key
+ * @returns {Promise<string>} 数据库内存储的文本，无数据返回空字符串
+ */
+async function readDB(tag) {
+  const form = new FormData();
+  form.append("user", DB_INFO.user);
+  form.append("secret", DB_INFO.secret);
+  form.append("action", "get");
+  form.append("tag", tag);
+
+  try {
+    const res = await fetch(DB_INFO.api, {
+      method: "POST",
+      body: form
+    })
+    return await res.text();
+  } catch (err) {
+    alert("send failed: " + err.message);
+    return "";
+  }
+}
+
+// 全局日期变量
+const ts = Date.now();
+const todayDay = Math.floor(ts / 86400000);
+let currentDay = todayDay;
+
+// 统一渲染当日留言函数
+async function renderDay(dayNum) {
+  const rawMd = await readDB('zwcommunity'+dayNum);
+  document.getElementById('output').innerHTML = rawMd.replace(/\\/g, "").replace(/[{}"]/g, "").replace(/:/g, " ").replace(todayDay,'');
+}
+
+// 页面初始化加载今日留言
+(async function init() {
+  await renderDay(currentDay);
+})();
+
+// 发送留言函数
+async function send() {
+  const nameInput = document.getElementById('name');
+  const msgInput = document.getElementById('message');
+  const userName = nameInput.value.trim();
+  const userMsg = msgInput.value.trim();
+
+  // 名字或内容任意一个为空，拦截发送
+  if (!userName || !userMsg) {
+    alert('昵称或留言内容不能为空！');
+    return;
+  }
+
+  // 拼接Markdown内容，附带发送时间戳
+  const sendTime = new Date().toLocaleString();
+  const newMsgMd = `# ${userName}\n${userMsg}\n\n---\n`;
+let finalContent=marked.parse(newMsgMd);
+  // 先读取数据库原有内容，拼接新留言（防止覆盖）
+  const oldContent = await readDB(currentDay);
+  const allContent = finalContent + oldContent;
+
+  // 写入数据库
+  await writeDB('zwcommunity'+todayDay, allContent);
+  // 重新渲染页面
+  await renderDay(todayDay);
+  // 清空输入框
+  nameInput.value = "";
+  msgInput.value = "";
+  alert('Send successfully 🎊');
+}
+
+// 切换今日
+async function today() {
+  currentDay = todayDay;
+  await renderDay(currentDay);
+}
+
+// 切换昨日
+async function yesterday() {
+  if (currentDay > 0) {
+    currentDay--;
+    await renderDay(currentDay);
+  } else {
+    alert('No more contents! ');
+  }
+}
+
+// 切换明日
+async function tomorrow() {
+  if (currentDay < todayDay) {
+    currentDay++;
+    await renderDay(currentDay);
+  } else {
+    alert('No more contents! ');
+  }
+}
+</script>
+</body>
+</html>
