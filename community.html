@@ -1,71 +1,855 @@
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Zreamer's Personal Community</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Zreamer Community</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-@font-face{
-font-family: Consolas;
-	src:url('Consolas.ttf') format('truetype');font-display: swap;	}
+    @font-face {
+      font-family: Consolas;
+      src: url('Consolas.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航 */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 16px;
+    }
+
+    .nav-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #1d1d1f;
+    }
+
+    .nav-brand .logo {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #007aff, #5856d6);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-switch {
+      font-size: 12px;
+      color: #007aff;
+      background: rgba(0,122,255,0.08);
+      border: none;
+      padding: 5px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .lang-switch:hover {
+      background: rgba(0,122,255,0.15);
+    }
+
+    /* 日期切换 */
+    .date-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .date-btn {
+      padding: 5px 12px;
+      border: none;
+      background: transparent;
+      color: #86868b;
+      font-size: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .date-btn:hover {
+      background: rgba(0,0,0,0.04);
+      color: #1d1d1f;
+    }
+
+    .date-btn.active {
+      background: rgba(0,122,255,0.1);
+      color: #007aff;
+    }
+
+    /* 主内容 */
+    .main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 16px;
+      padding-bottom: 200px;
+    }
+
+    /* 规则提示 */
+    .rules-banner {
+      background: #fff9e6;
+      border: 1px solid #f0e6c8;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .rules-banner .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .rules-banner .icon svg {
+      width: 100%;
+      height: 100%;
+      color: #d4a017;
+    }
+
+    .rules-banner p {
+      font-size: 13px;
+      color: #8a6d1f;
+      line-height: 1.5;
+    }
+
+    .rules-banner a {
+      color: #007aff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .rules-banner a:hover {
+      text-decoration: underline;
+    }
+
+    /* 消息卡片 */
+    .msg-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .msg-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .msg-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .msg-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .msg-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #1d1d1f;
+    }
+
+    .msg-time {
+      font-size: 12px;
+      color: #86868b;
+      margin-left: 6px;
+    }
+
+    .msg-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .msg-body h1, .msg-body h2, .msg-body h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: #1d1d1f;
+    }
+
+    .msg-body p {
+      margin-bottom: 8px;
+    }
+
+    .msg-body code {
+      background: #f2f2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, 'SF Mono', Monaco, monospace;
+      font-size: 12px;
+      color: #d63384;
+    }
+
+    .msg-body pre {
+      background: #1c1c1e;
+      color: #f5f5f7;
+      padding: 12px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 8px 0;
+    }
+
+    .msg-body pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    .msg-body hr {
+      border: none;
+      border-top: 1px solid #e5e5ea;
+      margin: 12px 0;
+    }
+
+    .msg-body img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 8px 0;
+    }
+
+    .msg-body a {
+      color: #007aff;
+      text-decoration: none;
+    }
+
+    .msg-body a:hover {
+      text-decoration: underline;
+    }
+
+    .msg-body blockquote {
+      border-left: 3px solid #e5e5ea;
+      padding-left: 12px;
+      margin: 8px 0;
+      color: #666;
+    }
+
+    .msg-body ul, .msg-body ol {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+
+    .msg-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+
+    .msg-body th, .msg-body td {
+      border: 1px solid #e5e5ea;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    .msg-body th {
+      background: #f2f2f7;
+      font-weight: 600;
+    }
+
+    /* 输入区 */
+    .input-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 12px 16px 20px;
+      z-index: 99;
+    }
+
+    .input-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .input-name {
+      flex: 0 0 140px;
+      padding: 10px 14px;
+      border: 1px solid #e5e5ea;
+      border-radius: 12px;
+      font-size: 14px;
+      background: #f9f9fb;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .input-name:focus {
+      border-color: #007aff;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,122,255,0.1);
+    }
+
+    .input-msg {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #e5e5ea;
+      border-radius: 12px;
+      font-size: 14px;
+      background: #f9f9fb;
+      outline: none;
+      resize: none;
+      height: 44px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .input-msg:focus {
+      border-color: #007aff;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,122,255,0.1);
+    }
+
+    .btn-send {
+      padding: 10px 20px;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .btn-send:hover {
+      background: #0056b3;
+      transform: translateY(-1px);
+    }
+
+    .btn-send:active {
+      transform: translateY(0);
+    }
+
+    .btn-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .input-hint {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #86868b;
+    }
+
+    .input-hint a {
+      color: #86868b;
+      text-decoration: none;
+    }
+
+    .input-hint a:hover {
+      color: #007aff;
+    }
+
+    /* 空状态 */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #86868b;
+    }
+
+    .empty-state svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      opacity: 0.3;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+    }
+
+    /* 加载动画 */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #86868b;
+      font-size: 13px;
+    }
+
+    /* 规则弹窗 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .modal-header {
+      padding: 20px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: #f2f2f7;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #666;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e5e5ea;
+    }
+
+    .modal-body {
+      padding: 16px 24px 24px;
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .modal-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 16px 0 8px;
+      color: #1d1d1f;
+    }
+
+    .modal-body h3:first-child {
+      margin-top: 0;
+    }
+
+    .modal-body ul {
+      padding-left: 18px;
+      margin: 6px 0;
+    }
+
+    .modal-body li {
+      margin: 4px 0;
+    }
+
+    .modal-footer {
+      padding: 0 24px 20px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+
+    /* 隐藏滚动条但保留功能 */
+    #output::-webkit-scrollbar { width: 0; }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      .input-row {
+        flex-wrap: wrap;
+      }
+      .input-name {
+        flex: 1 1 100%;
+      }
+      .input-msg {
+        flex: 1;
+        min-width: 0;
+      }
+      .nav-brand span {
+        display: none;
+      }
+    }
+
+    /* 发送成功提示 */
+    .toast {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #1c1c1e;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
-<body style="font-family:Consolas,sans-serif;padding:0px">
- <button style="width:auto;margin:0px;" onclick="yesterday()">Yesterday</button><button style="width:auto;margin:0px;" onclick="window.open('index.html')">Back to index page</button> <button style="width:auto;margin:0px;;" onclick="today()">Today</button><button style="width:auto;margin:0px;" onclick="tomorrow()">Tomorrow</button>
- 
- <div style="height:75%;width:100%;overflow:scroll;" id="output"></div><input placeholder="Your name here..." style="width:auto;" id="name">
-  <textarea placeholder="Your message here..." style="width:80%;height:13%" id="message"></textarea>
-  <button style="position:absolute;width:auto;margin:0px;" onclick="send()">Send</button>
- <script src="../script.js"></script>
-   <script>alert(`Please read the rules below carefully and follow them
- 
-1. Post Content Standards
- 
-1.1 All published content shall center on information technology fields, including but not limited to programming development, hardware testing, project sharing, technical troubleshooting, development experience summaries, software/hardware usage tutorials, and technical optimization suggestions.
-1.2 Strictly prohibit commercial advertising, promotion links, spam, repetitive meaningless text, blank posts, and purely water-cooling content without technical thinking and practical experience. All posts need to carry personal practical insights, operation summaries or independent analysis.
-1.3 It is forbidden to post content that only attaches media materials without any textual technical explanation.
- 
-2. Format & Code Publishing Specifications (Markdown & HTML Supported)
- 
-2.1 Permitted formats: Standard Markdown syntax, safe basic HTML tags (text, image, hyperlink, list, table tags only).
-2.2 Prohibited format behaviors:
-a) Embed custom CSS styles, JavaScript scripts, interactive front-end codes, which will cause page layout collapse and website function breakdown;
-b) Use dangerous, obsolete, illegal HTML tags (iframe, script, style, embed, frame etc.) that threaten website stability;
-c) Upload or insert auto-play audio, auto-play unmuted video resources; all multimedia materials must require manual click to play with default mute status;
-d) Limit the number of multimedia attachments in a single post: maximum 5 pictures, 1 short video or 1 audio file to avoid website loading lag;
-2.3 All code blocks shall be wrapped in standard Markdown code blocks for neat display.
- 
-3. Banned Harmful & Restricted Content
- 
-3.1 Illegal content is fully prohibited: national violation materials, pirated resource links, cracking tools, hacking tutorials, virus programs, fraud guides, and other content violating national laws and regulations.
-3.2 Inappropriate content is forbidden: private privacy disclosure of any individual, pornographic adult-only materials, violent, bloody, abusive and insulting text/pictures targeting others.
-3.3 Strict ban on all sensitive discussions, political-related speeches, remarks involving regional disputes and related derived content;
-3.4 Do not publish personal identity information, mobile phone numbers, residential addresses, ID numbers and other private sensitive data of yourself or third parties without authorization.
- 
-4. User Interaction Rules
- 
-4.1 Civilized communication is required in comment areas; personal attacks, quarrels, malicious ridicule, racial/regional discrimination and abusive language are not allowed.
-4.2 Do not repeatedly harass other users through private messages or comment replies, and do not send mass private messages for promotion.
-4.3 Do not quote or tamper with other users’ posts without authorization for slander or misleading.
- 
-5. Violation Reporting & Disposal Rules
- 
-5.1 Reporting channel: If you find any post, comment or private message violating the above rules, send a complaint email to  972059313@qq.com .
-5.2 Required information for complaints: Link of violating content, screenshot evidence, brief violation description.
-5.3 Disposal standards for violations:
- 
-- Minor violations (water post, excessive media, disorganized format): Reminder edit + hidden post temporarily;
-- Medium violations (advertising, auto-play media, uncivilized comments): Post deletion + 3-day account ban;
-- Severe violations (illegal, pornographic, political sensitive, privacy leakage, personal abuse): Permanent account ban + complete removal of all related content.
- 
-6. Supplementary Supplementary Provisions
- 
-6.1 The community management team reserves the right to judge whether the content violates the rules based on the above clauses;
-6.2 These rules will be updated irregularly according to the operation of the community, and all users shall abide by the latest released version;
-6.3 If you have questions about the rules, you can send consultation emails to the reporting mailbox.`);
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="logo">Z</div>
+        <span data-i18n="brand">Zreamer Community</span>
+      </div>
+      <div class="nav-right">
+        <div class="date-bar">
+          <button class="date-btn" onclick="yesterday()" data-i18n="yesterday">Yesterday</button>
+          <button class="date-btn active" onclick="today()" data-i18n="today">Today</button>
+          <button class="date-btn" onclick="tomorrow()" data-i18n="tomorrow">Tomorrow</button>
+        </div>
+        <button class="lang-switch" onclick="toggleLang()" id="langBtn">中文</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主内容 -->
+  <main class="main">
+    <!-- 规则提示 -->
+    <div class="rules-banner">
+      <div class="icon">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      </div>
+      <div>
+        <p data-i18n="rulesHint">Please read the rules before posting. IT content only, no ads or harmful content. <a href="#" onclick="showRules();return false;" data-i18n="viewRules">View Full Rules →</a></p>
+      </div>
+    </div>
+
+    <!-- 消息列表 -->
+    <div id="output">
+      <div class="loading" data-i18n="loading">Loading...</div>
+    </div>
+  </main>
+
+  <!-- 输入区 -->
+  <div class="input-area">
+    <div class="input-inner">
+      <div class="input-row">
+        <input type="text" id="name" class="input-name" placeholder="Nickname..." data-i18n-placeholder="namePlaceholder">
+        <textarea id="message" class="input-msg" placeholder="Share your tech thoughts..." data-i18n-placeholder="msgPlaceholder" rows="1"></textarea>
+        <button class="btn-send" onclick="send()" id="sendBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          <span data-i18n="send">Send</span>
+        </button>
+      </div>
+      <div class="input-hint">
+        <span data-i18n="supports">Supports Markdown & safe HTML</span>
+        <a href="index.html" data-i18n="backIndex">← Back to Index</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Sent successfully!</div>
+
+  <!-- 规则弹窗 -->
+  <div class="modal-overlay" id="rulesModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 data-i18n="rulesTitle">Community Rules</h2>
+        <button class="modal-close" onclick="hideRules()">×</button>
+      </div>
+      <div class="modal-body" id="rulesContent"></div>
+      <div class="modal-footer">
+        <button class="btn-primary" onclick="hideRules()" data-i18n="gotIt">Got it</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ========== 多语言配置 ==========
+const i18n = {
+  en: {
+    brand: "Zreamer Community",
+    yesterday: "Yesterday",
+    today: "Today",
+    tomorrow: "Tomorrow",
+    rulesHint: "Please read the rules before posting. IT content only, no ads or harmful content.",
+    viewRules: "View Full Rules →",
+    loading: "Loading...",
+    namePlaceholder: "Nickname...",
+    msgPlaceholder: "Share your tech thoughts...",
+    send: "Send",
+    supports: "Supports Markdown & safe HTML",
+    backIndex: "← Back to Index",
+    rulesTitle: "Community Rules",
+    gotIt: "Got it",
+    sendSuccess: "Sent successfully!",
+    sendFail: "Send failed: ",
+    nameEmpty: "Nickname and message cannot be empty!",
+    noMore: "No more contents!",
+    submitting: "Message submitting, please wait!",
+    rulesContent: `
+<h3>1. Post Content Standards</h3>
+<ul>
+<li>All content must focus on information technology: programming, hardware testing, project sharing, troubleshooting, tutorials, optimization.</li>
+<li>No commercial ads, spam, meaningless posts, or content without practical insights.</li>
+<li>Media attachments must include technical explanations.</li>
+</ul>
+<h3>2. Format & Code Specifications</h3>
+<ul>
+<li>Permitted: Standard Markdown, safe HTML tags (text, image, link, list, table).</li>
+<li>Prohibited: Custom CSS, JavaScript, interactive code, dangerous tags (iframe, script, style, embed, frame).</li>
+<li>No auto-play audio/video. Manual click-to-play with mute by default.</li>
+<li>Max 5 images, 1 short video or 1 audio per post.</li>
+<li>Wrap all code in Markdown code blocks.</li>
+</ul>
+<h3>3. Banned Content</h3>
+<ul>
+<li>Illegal content, pirated resources, cracking tools, hacking tutorials, viruses, fraud guides.</li>
+<li>Privacy disclosure, adult content, violence, abuse, insults.</li>
+<li>Sensitive political discussions, regional disputes.</li>
+<li>Personal identity info, phone numbers, addresses, ID numbers without authorization.</li>
+</ul>
+<h3>4. Interaction Rules</h3>
+<ul>
+<li>Civilized communication. No personal attacks, quarrels, ridicule, discrimination, or abusive language.</li>
+<li>No harassment via private messages or mass promotions.</li>
+<li>Do not quote or tamper with others' posts for slander.</li>
+</ul>
+<h3>5. Violation Reporting</h3>
+<ul>
+<li>Report to: <b>972059313@qq.com</b></li>
+<li>Include: Link, screenshot, brief description.</li>
+<li>Minor: Reminder + hidden temporarily. Medium: Delete + 3-day ban. Severe: Permanent ban + removal.</li>
+</ul>
+<h3>6. Supplementary</h3>
+<ul>
+<li>Management reserves the right to judge violations.</li>
+<li>Rules updated irregularly; latest version applies.</li>
+<li>Questions: send to reporting email.</li>
+</ul>`
+  },
+  zh: {
+    brand: "Zreamer 社区",
+    yesterday: "昨天",
+    today: "今天",
+    tomorrow: "明天",
+    rulesHint: "发帖前请阅读社区规则。仅限技术内容，禁止广告和违规内容。",
+    viewRules: "查看完整规则 →",
+    loading: "加载中...",
+    namePlaceholder: "昵称...",
+    msgPlaceholder: "分享你的技术想法...",
+    send: "发送",
+    supports: "支持 Markdown 和安全 HTML",
+    backIndex: "← 返回主页",
+    rulesTitle: "社区规则",
+    gotIt: "知道了",
+    sendSuccess: "发送成功！",
+    sendFail: "发送失败：",
+    nameEmpty: "昵称和留言内容不能为空！",
+    noMore: "没有更多内容了！",
+    submitting: "消息正在提交，请稍候！",
+    rulesContent: `
+<h3>1. 发帖内容标准</h3>
+<ul>
+<li>所有内容须围绕信息技术领域：编程开发、硬件测试、项目分享、故障排查、教程、优化建议。</li>
+<li>禁止商业广告、垃圾信息、无意义灌水，以及缺乏实践思考的内容。</li>
+<li>媒体附件必须附文字技术说明。</li>
+</ul>
+<h3>2. 格式与代码规范</h3>
+<ul>
+<li>允许：标准 Markdown 语法、安全的基础 HTML 标签（文本、图片、链接、列表、表格）。</li>
+<li>禁止：自定义 CSS、JavaScript、交互式前端代码；危险标签（iframe、script、style、embed、frame 等）。</li>
+<li>禁止自动播放音视频，须手动点击播放，默认静音。</li>
+<li>单帖最多 5 张图片、1 个短视频或 1 个音频。</li>
+<li>所有代码须用 Markdown 代码块包裹。</li>
+</ul>
+<h3>3. 禁止内容</h3>
+<ul>
+<li>违法违规内容、盗版资源、破解工具、黑客教程、病毒程序、诈骗指南。</li>
+<li>泄露他人隐私、色情内容、暴力血腥、辱骂攻击。</li>
+<li>敏感政治讨论、地域争端及相关衍生内容。</li>
+<li>未经授权发布个人身份信息、手机号、住址、身份证号等。</li>
+</ul>
+<h3>4. 互动规则</h3>
+<ul>
+<li>评论区文明交流，禁止人身攻击、争吵、恶意嘲讽、歧视、辱骂。</li>
+<li>禁止通过私信或评论反复骚扰他人，禁止群发推广私信。</li>
+<li>禁止擅自引用或篡改他人帖子进行诽谤误导。</li>
+</ul>
+<h3>5. 违规举报与处理</h3>
+<ul>
+<li>举报邮箱：<b>972059313@qq.com</b></li>
+<li>需提供：违规链接、截图证据、简要说明。</li>
+<li>轻微违规（灌水、媒体过多、格式混乱）：提醒修改 + 临时隐藏。</li>
+<li>中度违规（广告、自动播放、不文明评论）：删帖 + 封禁 3 天。</li>
+<li>严重违规（违法、色情、政治敏感、隐私泄露、人身攻击）：永久封禁 + 清除全部相关内容。</li>
+</ul>
+<h3>6. 附则</h3>
+<ul>
+<li>管理团队保留依据上述条款判定违规的权利。</li>
+<li>规则将根据社区运营情况不定期更新，以最新发布版本为准。</li>
+<li>对规则有疑问可发邮件至举报邮箱咨询。</li>
+</ul>`
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+  document.getElementById('langBtn').textContent = lang === 'en' ? '中文' : 'English';
+
+  // 更新所有带有 data-i18n 的元素
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // 更新 placeholder
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key]) el.placeholder = t[key];
+  });
+
+  // 更新规则内容
+  document.getElementById('rulesContent').innerHTML = t.rulesContent;
+
+  // 更新 html lang
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+}
+
+function toggleLang() {
+  setLang(currentLang === 'en' ? 'zh' : 'en');
+}
+
+// ========== 规则弹窗 ==========
+function showRules() {
+  document.getElementById('rulesModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function hideRules() {
+  document.getElementById('rulesModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('rulesModal').addEventListener('click', function(e) {
+  if (e.target === this) hideRules();
+});
+
+// ========== 数据库配置 ==========
 const DB_INFO = {
   api: "https://tinywebdb.appinventor.space/api",
   user: "zreamer",
   secret: "786a98bf"
-}
+};
+
 let isWriting = false;
 
 async function writeDB(tag, content) {
@@ -76,13 +860,10 @@ async function writeDB(tag, content) {
   form.append("tag", tag);
   form.append("value", content);
   try {
-    const res = await fetch(DB_INFO.api, {
-      method: "POST",
-      body: form
-    })
+    const res = await fetch(DB_INFO.api, { method: "POST", body: form });
     return await res.text();
   } catch (err) {
-    alert("Load failed: " + err.message);
+    showToast(i18n[currentLang].sendFail + err.message, true);
     return "";
   }
 }
@@ -94,89 +875,151 @@ async function readDB(tag) {
   form.append("action", "get");
   form.append("tag", tag);
   try {
-    const res = await fetch(DB_INFO.api, {
-      method: "POST",
-      body: form
-    })
+    const res = await fetch(DB_INFO.api, { method: "POST", body: form });
     return await res.text();
   } catch (err) {
-    alert("send failed: " + err.message);
+    showToast(i18n[currentLang].sendFail + err.message, true);
     return "";
   }
 }
 
+// ========== 日期逻辑 ==========
 const ts = Date.now();
 const todayDay = Math.floor(ts / 86400000);
 let currentDay = todayDay;
 
-// 读取直接输出HTML，不解析MD
-async function renderDay(dayNum) {
-  const rawHtml = await readDB('zwcommunity'+dayNum);
-  document.getElementById('output').innerHTML = rawHtml;
+// 更新日期按钮状态
+function updateDateBtns() {
+  const btns = document.querySelectorAll('.date-btn');
+  const offsets = [-1, 0, 1];
+  btns.forEach((btn, i) => {
+    const targetDay = todayDay + offsets[i];
+    btn.classList.toggle('active', currentDay === targetDay);
+    btn.disabled = targetDay < 0;
+    btn.style.opacity = targetDay < 0 ? '0.3' : '1';
+  });
 }
 
-(async function init() {
-  await renderDay(currentDay);
-})();
+// 渲染消息
+async function renderDay(dayNum) {
+  const output = document.getElementById('output');
+  output.innerHTML = '<div class="loading">' + i18n[currentLang].loading + '</div>';
 
+  const rawHtml = await readDB('zwcommunity' + dayNum);
+
+  if (!rawHtml || rawHtml.trim() === '' || rawHtml.includes('Not Found')) {
+    output.innerHTML = `
+      <div class="empty-state">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        <p>${currentLang === 'en' ? 'No messages yet. Be the first to share!' : '暂无消息，快来抢沙发！'}</p>
+      </div>
+    `;
+  } else {
+    output.innerHTML = rawHtml;
+    // 为消息内容添加样式类
+    output.querySelectorAll('h1, h2, h3').forEach(h => {
+      h.style.fontSize = '15px';
+      h.style.marginBottom = '6px';
+      h.style.color = '#1d1d1f';
+    });
+  }
+  updateDateBtns();
+}
+
+// ========== 发送消息 ==========
 async function send() {
-  if(isWriting) return alert("Message submitting, please wait!");
+  if (isWriting) {
+    showToast(i18n[currentLang].submitting, true);
+    return;
+  }
+
   const nameInput = document.getElementById('name');
   const msgInput = document.getElementById('message');
   const userName = nameInput.value.trim();
   const userMsg = msgInput.value.trim();
 
   if (!userName || !userMsg) {
-    alert('昵称或留言内容不能为空！');
+    showToast(i18n[currentLang].nameEmpty, true);
     return;
   }
+
   isWriting = true;
-  try{
+  const sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+
+  try {
     const sendTime = new Date().toLocaleString();
-    // 仅发送时把MD转HTML
     const newMsgMd = `# ${userName}\n${sendTime}\n${userMsg}\n\n---\n`;
     const newHtml = marked.parse(newMsgMd);
 
-    // 固定读取今日数据，所有发送全部写入今日tag
-    const oldContent = await readDB('zwcommunity'+todayDay);
-    // 新消息拼在最前面，追加不覆盖
+    const oldContent = await readDB('zwcommunity' + todayDay);
     const allContent = newHtml + oldContent;
 
-    // 强制写入今日，固定 todayDay
-    await writeDB('zwcommunity'+todayDay, allContent);
-    // 发送完成刷新当前浏览页面
+    await writeDB('zwcommunity' + todayDay, allContent);
     await renderDay(currentDay);
     nameInput.value = "";
     msgInput.value = "";
-    alert('Send successfully 🎊');
-  }catch(e){
-    alert("Send failed: " + e.message);
-  }finally{
+    showToast(i18n[currentLang].sendSuccess, false);
+  } catch(e) {
+    showToast(i18n[currentLang].sendFail + e.message, true);
+  } finally {
     isWriting = false;
+    sendBtn.disabled = false;
   }
 }
 
+// ========== 日期切换 ==========
 async function today() {
   currentDay = todayDay;
   await renderDay(currentDay);
 }
+
 async function yesterday() {
   if (currentDay > 0) {
     currentDay--;
     await renderDay(currentDay);
   } else {
-    alert('No more contents! ');
+    showToast(i18n[currentLang].noMore, true);
   }
 }
+
 async function tomorrow() {
   if (currentDay < todayDay) {
     currentDay++;
     await renderDay(currentDay);
   } else {
-    alert('No more contents! ');
+    showToast(i18n[currentLang].noMore, true);
   }
 }
 
+// ========== Toast 提示 ==========
+function showToast(msg, isError) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.style.background = isError ? '#ff3b30' : '#1c1c1e';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ========== 初始化 ==========
+(async function init() {
+  setLang('en');
+  await renderDay(currentDay);
+
+  // 首次访问显示规则（可选，取消注释则启用）
+  // if (!localStorage.getItem('rulesRead')) {
+  //   showRules();
+  //   localStorage.setItem('rulesRead', '1');
+  // }
+})();
+
+// Enter 发送
+ document.getElementById('message').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    send();
+  }
+});
 </script>
 </body>
 </html>
