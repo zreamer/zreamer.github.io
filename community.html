@@ -9,36 +9,72 @@ font-family: Consolas;
   </style>
 </head>
 <body style="font-family:Consolas,sans-serif;padding:0px">
- <button style="width:auto;margin:0px;" onclick="yesterday()">Yesterday</button> <button style="width:auto;margin:0px;;" onclick="today()">Today</button><button style="width:auto;margin:0px;" onclick="tomorrow()">Tomorrow</button>
+ <button style="width:auto;margin:0px;" onclick="yesterday()">Yesterday</button><button style="width:auto;margin:0px;" onclick="window.open('index.html')">Back to index page</button> <button style="width:auto;margin:0px;;" onclick="today()">Today</button><button style="width:auto;margin:0px;" onclick="tomorrow()">Tomorrow</button>
  
  <div style="height:75%;width:100%;overflow:scroll;" id="output"></div><input placeholder="Your name here..." style="width:auto;" id="name">
   <textarea placeholder="Your message here..." style="width:80%;height:13%" id="message"></textarea>
   <button style="position:absolute;width:auto;margin:0px;" onclick="send()">Send</button>
  <script src="../script.js"></script>
-   <script>// 数据库固定配置（从截图提取）
-// 数据库固定配置（从截图提取）
+   <script>alert(`Please read the rules below carefully and follow them
+ 
+1. Post Content Standards
+ 
+1.1 All published content shall center on information technology fields, including but not limited to programming development, hardware testing, project sharing, technical troubleshooting, development experience summaries, software/hardware usage tutorials, and technical optimization suggestions.
+1.2 Strictly prohibit commercial advertising, promotion links, spam, repetitive meaningless text, blank posts, and purely water-cooling content without technical thinking and practical experience. All posts need to carry personal practical insights, operation summaries or independent analysis.
+1.3 It is forbidden to post content that only attaches media materials without any textual technical explanation.
+ 
+2. Format & Code Publishing Specifications (Markdown & HTML Supported)
+ 
+2.1 Permitted formats: Standard Markdown syntax, safe basic HTML tags (text, image, hyperlink, list, table tags only).
+2.2 Prohibited format behaviors:
+a) Embed custom CSS styles, JavaScript scripts, interactive front-end codes, which will cause page layout collapse and website function breakdown;
+b) Use dangerous, obsolete, illegal HTML tags (iframe, script, style, embed, frame etc.) that threaten website stability;
+c) Upload or insert auto-play audio, auto-play unmuted video resources; all multimedia materials must require manual click to play with default mute status;
+d) Limit the number of multimedia attachments in a single post: maximum 5 pictures, 1 short video or 1 audio file to avoid website loading lag;
+2.3 All code blocks shall be wrapped in standard Markdown code blocks for neat display.
+ 
+3. Banned Harmful & Restricted Content
+ 
+3.1 Illegal content is fully prohibited: national violation materials, pirated resource links, cracking tools, hacking tutorials, virus programs, fraud guides, and other content violating national laws and regulations.
+3.2 Inappropriate content is forbidden: private privacy disclosure of any individual, pornographic adult-only materials, violent, bloody, abusive and insulting text/pictures targeting others.
+3.3 Strict ban on all sensitive discussions, political-related speeches, remarks involving regional disputes and related derived content;
+3.4 Do not publish personal identity information, mobile phone numbers, residential addresses, ID numbers and other private sensitive data of yourself or third parties without authorization.
+ 
+4. User Interaction Rules
+ 
+4.1 Civilized communication is required in comment areas; personal attacks, quarrels, malicious ridicule, racial/regional discrimination and abusive language are not allowed.
+4.2 Do not repeatedly harass other users through private messages or comment replies, and do not send mass private messages for promotion.
+4.3 Do not quote or tamper with other users’ posts without authorization for slander or misleading.
+ 
+5. Violation Reporting & Disposal Rules
+ 
+5.1 Reporting channel: If you find any post, comment or private message violating the above rules, send a complaint email to  972059313@qq.com .
+5.2 Required information for complaints: Link of violating content, screenshot evidence, brief violation description.
+5.3 Disposal standards for violations:
+ 
+- Minor violations (water post, excessive media, disorganized format): Reminder edit + hidden post temporarily;
+- Medium violations (advertising, auto-play media, uncivilized comments): Post deletion + 3-day account ban;
+- Severe violations (illegal, pornographic, political sensitive, privacy leakage, personal abuse): Permanent account ban + complete removal of all related content.
+ 
+6. Supplementary Supplementary Provisions
+ 
+6.1 The community management team reserves the right to judge whether the content violates the rules based on the above clauses;
+6.2 These rules will be updated irregularly according to the operation of the community, and all users shall abide by the latest released version;
+6.3 If you have questions about the rules, you can send consultation emails to the reporting mailbox.`);
 const DB_INFO = {
   api: "https://tinywebdb.appinventor.space/api",
   user: "zreamer",
   secret: "786a98bf"
 }
+let isWriting = false;
 
-/**
- * 写入数据到 TinyWebDB
- * @param {string} tag 存储标签key
- * @param {string} content 要保存的内容（textarea文本/html都支持）
- * @returns {Promise<string>} 接口返回结果
- */
 async function writeDB(tag, content) {
   const form = new FormData();
-  // 固定鉴权参数
   form.append("user", DB_INFO.user);
   form.append("secret", DB_INFO.secret);
   form.append("action", "update");
-  // 业务参数
   form.append("tag", tag);
   form.append("value", content);
-
   try {
     const res = await fetch(DB_INFO.api, {
       method: "POST",
@@ -51,18 +87,12 @@ async function writeDB(tag, content) {
   }
 }
 
-/**
- * 从 TinyWebDB 读取数据
- * @param {string} tag 要读取的标签key
- * @returns {Promise<string>} 数据库内存储的文本，无数据返回空字符串
- */
 async function readDB(tag) {
   const form = new FormData();
   form.append("user", DB_INFO.user);
   form.append("secret", DB_INFO.secret);
   form.append("action", "get");
   form.append("tag", tag);
-
   try {
     const res = await fetch(DB_INFO.api, {
       method: "POST",
@@ -75,60 +105,61 @@ async function readDB(tag) {
   }
 }
 
-// 全局日期变量
 const ts = Date.now();
 const todayDay = Math.floor(ts / 86400000);
 let currentDay = todayDay;
 
-// 统一渲染当日留言函数
+// 读取直接输出HTML，不解析MD
 async function renderDay(dayNum) {
-  const rawMd = await readDB('zwcommunity'+dayNum);
-  document.getElementById('output').innerHTML = rawMd.replace(/\\/g, "").replace(/[{}"]/g, "").replace(/:/g, " ").replace(todayDay,'');
+  const rawHtml = await readDB('zwcommunity'+dayNum);
+  document.getElementById('output').innerHTML = rawHtml;
 }
 
-// 页面初始化加载今日留言
 (async function init() {
   await renderDay(currentDay);
 })();
 
-// 发送留言函数
 async function send() {
+  if(isWriting) return alert("Message submitting, please wait!");
   const nameInput = document.getElementById('name');
   const msgInput = document.getElementById('message');
   const userName = nameInput.value.trim();
   const userMsg = msgInput.value.trim();
 
-  // 名字或内容任意一个为空，拦截发送
   if (!userName || !userMsg) {
     alert('昵称或留言内容不能为空！');
     return;
   }
+  isWriting = true;
+  try{
+    const sendTime = new Date().toLocaleString();
+    // 仅发送时把MD转HTML
+    const newMsgMd = `# ${userName}\n${sendTime}\n${userMsg}\n\n---\n`;
+    const newHtml = marked.parse(newMsgMd);
 
-  // 拼接Markdown内容，附带发送时间戳
-  const sendTime = new Date().toLocaleString();
-  const newMsgMd = `# ${userName}\n${userMsg}\n\n---\n`;
-let finalContent=marked.parse(newMsgMd);
-  // 先读取数据库原有内容，拼接新留言（防止覆盖）
-  const oldContent = await readDB(currentDay);
-  const allContent = finalContent + oldContent;
+    // 固定读取今日数据，所有发送全部写入今日tag
+    const oldContent = await readDB('zwcommunity'+todayDay);
+    // 新消息拼在最前面，追加不覆盖
+    const allContent = newHtml + oldContent;
 
-  // 写入数据库
-  await writeDB('zwcommunity'+todayDay, allContent);
-  // 重新渲染页面
-  await renderDay(todayDay);
-  // 清空输入框
-  nameInput.value = "";
-  msgInput.value = "";
-  alert('Send successfully 🎊');
+    // 强制写入今日，固定 todayDay
+    await writeDB('zwcommunity'+todayDay, allContent);
+    // 发送完成刷新当前浏览页面
+    await renderDay(currentDay);
+    nameInput.value = "";
+    msgInput.value = "";
+    alert('Send successfully 🎊');
+  }catch(e){
+    alert("Send failed: " + e.message);
+  }finally{
+    isWriting = false;
+  }
 }
 
-// 切换今日
 async function today() {
   currentDay = todayDay;
   await renderDay(currentDay);
 }
-
-// 切换昨日
 async function yesterday() {
   if (currentDay > 0) {
     currentDay--;
@@ -137,8 +168,6 @@ async function yesterday() {
     alert('No more contents! ');
   }
 }
-
-// 切换明日
 async function tomorrow() {
   if (currentDay < todayDay) {
     currentDay++;
@@ -147,6 +176,7 @@ async function tomorrow() {
     alert('No more contents! ');
   }
 }
+
 </script>
 </body>
 </html>
