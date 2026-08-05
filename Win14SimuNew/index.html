@@ -1,4 +1,13 @@
-
+<meta name="description" content="Zhubuntu is a web Android desktop environment that imitated Ubuntu GNOME desktop environment's user interface">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.25, viewport-fit=cover, interactive-widget=overlays-content">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta lang="en">
+<link rel="stylesheet" href="style.css">
 <style>
 @font-face{
 font-family: Poppins;
@@ -48,35 +57,33 @@ display: flex;transition: all 0.3s ease;}
 }
 .icon {
 	height: auto;
-	width: 110px;
+	width: 15vw;
 	margin: 15px;
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	gap: 1vw;
 	cursor: pointer;
 	position: relative;transition: all 0.3s ease;
 }.icon:hover{
 	height: auto;
-	width: 115px;
 	margin: 15px;
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
 	cursor: pointer;
 	position: relative;transition: all 0.3s ease;
 	background: rgba(255,255,355,0.3);border-radius: 5px;box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
 }
 .icon img {
-	height: 90px;
-	width: 90px;
+	height: 90%;
+	width: 90%;
 	border-radius: 5px;transition: all 0.3s ease;
 	position: relative;
-	top: 9.5px;left: 9.5px;
+	top: 5%;left: 5%;
 }
 .icon p {
 	text-align: center;
 	margin: 0;
-	font-size: 20px;
+	font-size: 0.8em;
 	color: #000;
 	width: 100%;
 	position: static;transition: all 0.3s ease;
@@ -84,7 +91,7 @@ display: flex;transition: all 0.3s ease;}
 
 .icons {
 	height: auto;
-	width: 40px;
+	width: 8vw;
 	margin: 5px;
 	flex-direction: column;
 	gap: 0px;
@@ -92,8 +99,8 @@ display: flex;transition: all 0.3s ease;}
 	position: relative;transition: all 0.3s ease;
 }
 .icons img {
-	height: 40px;
-	width: 40px;
+	height: 7vw;
+	width: 7vw;
 	border-radius: 5px;transition: all 0.3s ease;
 }
 .icons p {
@@ -127,23 +134,19 @@ display: flex;transition: all 0.3s ease;}
 	left:10%;
 	border-radius: 5px;
 	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
-	padding: 10px;
-}.alertBox:hover{
 	padding: 0px;
- 	background: rgba(220, 243, 255, 0.6);transition: all 0.3s ease;
-	z-index: 20000;
-	display: none;
-	height: 60vh;
-	width: 60vw;
-	position: absolute;
-	top :10%;
-	left:10%;
-	border-radius: 5px;
-	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);padding: 15px;
 }
-.alertBox div{position: absolute;height: 3vh;width: 60vw;bottom:0;background:rgba(0, 0, 60, 0.1);border-radius: 0 0 5px 5px;transition: all 0.3s ease;}
-.alertBox div button{background: #2B64A5;color: white;border: none;border-radius: 5px;margin: 10px;position: absolute;right:0;bottom:0;width: 100px;height: 1.8vh;font-size:1vh;transition: all 0.3s ease;}
-.alertBox div button:hover{background: #2B64ff;color: white;border: none;border-radius: 5px;margin: 10px;position: absolute;right:0;bottom:0;width: 100px;height: 1.8vh;font-size:1vh;transition: all 0.3s ease;}
+.alertBox div{position: absolute;height: 6vh;width: 60vw;bottom:0;background:rgba(0, 0, 60, 0.1);border-radius: 0 0 5px 5px;transition: all 0.3s ease;margin:0;}
+.alertBox h1,p{
+    margin:10px;
+}
+.alertBox main{
+    height:54vh;
+    width:60vw;
+    overflow-y: scroll;
+}
+.alertBox div button{background: #2B64A5;color: white;border: none;border-radius: 5px;margin: 10px;position: absolute;right:0;bottom:0;width: 100px;height: 4vh;font-size:1em;transition: all 0.3s ease;}
+.alertBox div button:hover{background: #2B64ff;color: white;border: none;border-radius: 5px;margin: 10px;width: 100px;height: 4.2vh;font-size:1.1em;transition: all 0.3s ease;}
 .window button{height:2vh;width: 2vh;background: #bae1ff;position: absolute;border-radius: 50%;border: none;margin: 3px;top:0;font-size: 10px;transition: all 0.3s ease;box-shadow:1px 1px 1px 2px rgba(255,255,255,0.3)}
 .window button:hover{height:2vh;width: 2vh;background: #aad1ff;position: absolute;border-radius: 50%;border: none;margin: 3px;top:0;font-size: 10px;transition: all 0.3s ease;}
 .bar{background: 0;width: 50vw;height: 5vh;position: absolute;margin: 0px;bottom:0;left:25vw;transition: all 0.3s ease;}.bar:hover{background: rgba(225,225,255,0.1);width: 52vw;height: 5vh;position: absolute;margin: 0px;bottom:0;left:25vw;transition: all 0.3s ease;padding: 0 10px 10px 10px;}
@@ -167,8 +170,8 @@ display: flex;transition: all 0.3s ease;}
 .tb img{width: 4vh;height: 4vh;transition: all 0.3s ease;}
 .bar button img{width: 4vh;height: 4vh;transition: all 0.3s ease;}
 .time{background:#E7F5FF;position: absolute;border: none;margin: 1px 0 0 0;top:0;font-size: 15px; right:0;padding: 10px;border-radius: 50vh;height: 4vh;}
-.startSelection{background: #E7F5FF;margin: 6vh;width: 50vw;height: 50vh;position: absolute;left:calc(25vw - 6vh);bottom:0;border-radius: 5px;padding: 5px;display:none;box-shadow: 0px 2px 4px rgba(0,0,0,0.1);transition: all 0.3s ease;}.startSelection:hover{background: #E7F5FF;margin: 6vh;width: 53vw;height: 53vh;position: absolute;left:calc(25vw - 6vh);bottom:0;border-radius: 5px;padding: 5px;display:none;box-shadow: 0px 2px 4px rgba(0,0,0,0.4);transition: all 0.3s ease;}
-.closeStart{border-radius: 5px;height: 30px;margin: 8px;background: #d7e5ee;position: absolute;top:0;right:0;border: none;transition: all 0.3s ease;}
+.startSelection{background: #E7F5FF;margin: 6vh;width: 80vw;height: 50vh;position: absolute;left:calc(5vw - 6vh);bottom:0;border-radius: 5px;padding: 5px;display:none;box-shadow: 0px 2px 4px rgba(0,0,0,0.1);transition: all 0.3s ease;overflow:scroll;}
+.closeStart{border-radius: 5px;height: 30px;margin: 8px;background: #d7e5ee;position: absolute;top:0;right:0;border: none;transition: all 0.3s ease;}.addapps{border-radius: 5px;height: 30px;margin: 8px;background: #d7e5ee;border: none;transition: all 0.3s ease;}
 .closeStart:hover{border-radius: 5px;height: 40px;margin: 8px;background: #d7e5ff;position: absolute;top:0;right:0;border: none;transition: all 0.3s ease;}
 html, body {
   margin: 0;
@@ -187,23 +190,7 @@ html, body {
 		</div>
 		<div class="button-row">
 			<button type="button" class="startingChoice" onclick="ist()">Install Windows14</button>
-		</div><iframe id="ad" src="" title="内嵌页面" width="100" height="61.8"></iframe>
-		<a href="javascript:void(0)" onclick="badInfomationReport()">广告含有不良信息?点击这里反馈...</a>
-<script>
-function badInfomationReport() {
-   // 先判断广告元素是否存在
-   var adDom = document.getElementById('ad');
-   if(!adDom){
-	   alert('The advertisement does not exist');
-	   return;
-   }
-   // URL编码，防止特殊字符报错
-   var problem = encodeURIComponent('advertisementWithBadInformation');
-   var adUrl = encodeURIComponent(adDom.src);
-   location.href = 'http://www.zreamer.top/index.html?problem=' + problem + '&url=' + adUrl;
-   alert('Report successful! We will handle it as soon as possible. We are sorry for the inconvenience caused to you. ');
-}
-</script>
+		</div>
 	</div>
 </div>
 
@@ -223,10 +210,7 @@ function badInfomationReport() {
 		<img src="img/about.png" alt="图片描述" >
 		<p>About me</p>
 	</div>
-	<div class="icon" onclick="openwindow('word')">
-		<img src="https://res.cdn.office.net/files/fabric-cdn-prod_20251117.001/assets/brand-icons/product/svg/word_16x1.svg" alt="图片描述" >
-		<p>Microsoft Word</p>
-	</div>
+	
 	<div class="icon" onclick="openwindow('browser')">
 		<img src="https://edgestatic.azureedge.net/shared/cms/lrs1c69a1j/section-images/29bfeef37eef4ca3bcf962274c1c7766-png-w265.avif" alt="图片描述" >
 		<p>Microsoft Edge</p>
@@ -238,23 +222,37 @@ function badInfomationReport() {
 	</div><div class="icon" onclick="openwindow('call')">
 		<img src="img/call.png" alt="图片描述" >
 		<p>Call</p>
-	</div><div class="icon" onclick="openwindow('cmpt')">
-		<img src="img/cmpt.png" alt="图片描述" >
-		<p>This Computer</p>
-	</div><div class="icon" onclick="openwindow('terminal')">
-		<img src="img/terminal.png" alt="图片描述" >
-		<p>Terminal</p>
 	</div>
 	
 	
-	
-	
+	<div class="modal-mask" id="maskAddApp">
+<div class="modal-box" id="aa">
+<div class="modal-header"><img src="img/add.svg"  style="height:2vh;width:auto;margin-right:1vh;">Add application icons</div>
+<div class="modal-content">
+    <h3>Add Android Applications</h3>
+<input placeholder="Type your application name..." id="userAppName"/>
+<br>
+<input placeholder="Type your application URI..." id="userAppURI"/><input placeholder="Type your application icon url..." id="userAppIcon"/>
+<br>
+<button onclick="sbmta()">Submit</button>
+<button type="button" onclick="document.getElementById('maskAddApp').style.display='none';">Cancel</button>
+<h3>Install Lanyue .zap Package</h3>
+<!-- 微调ID为uploadInput匹配JS，保留原有元素 -->
+<input type="file" id='uploadInput'>
+<!-- 微调按钮功能：点击触发文件选择，避免重复绑定事件 -->
+<button onclick="document.getElementById('uploadInput').click()">Submit</button>
+</div>
+<button type="button" class="sc" onclick="document.getElementById('maskAddApp').style.display='none';" style="right:0;height:2vh;width: 2vh;background: #bae1ff;position: absolute;border-radius: 50%;border: none;margin: 3px;top:0;font-size: 10px;transition: all 0.3s ease;box-shadow:1px 1px 1px 2px rgba(255,255,255,0.3)"><b>╳</b></button>
+</div>
+</div>
+
 	
 	
 	<div id="startSelection" class="startSelection"><h2 style="margin:5px;">Start</h2><button type="button" onclick="closeStart()" class="closeStart">Close</button>
-	<iframe src="http://m.weather.com.cn/" title="内嵌页面" width="45%" height="70%" style="margin:2.5%;border:none;border-radius:5px"></iframe><iframe src="https://m.cnr.cn/#/" title="内嵌页面" width="45%" height="70%" style="margin:2.5%;border:none;border-radius:5px"></iframe>
+	<iframe src="http://m.weather.com.cn/" title="内嵌页面" width="95%" height="35%" style="margin:2.5%;border:none;border-radius:5px"></iframe><iframe src="https://m.cnr.cn/#/" title="内嵌页面" width="95%" height="55%" style="margin:2.5%;border:none;border-radius:5px"></iframe>
 	<h3>Applications list</h3>
-	<div style="display:flex">
+    <button type="button" onclick="document.getElementById('maskAddApp').style.display='block'" class="addapps">Add your own apps</button>
+	<div style="display:flex;overflow-x:scroll;width:100%">
 	<div class="icons" onclick="openwindow('about')">
 		<img src="img/about.png" alt="图片描述" >
 		
@@ -311,8 +309,8 @@ function badInfomationReport() {
   >
 </button>
 	</div></div>
-	<div class="bar" id="pb" onclick="showTaskBar()">
-	<center style="font-size:2rem;">海内存知己，天涯若比邻</center>
+	<div class="bar" style="width:95vw;left:2.5%" id="pb" onclick="showTaskBar()">
+	<center style="font-size:1rem;">But there are times it is sad, in the long dream.</center>
 	</div>
 
 	<div class="bar" id="taskBar">
@@ -329,35 +327,37 @@ function badInfomationReport() {
 	
 	
 <button type="button" onclick="start()" class="start"><img src="img/2.png" alt="图片描述"></button>
-<button type="button" onclick="startdb()" class="startdb"><img src="img/copilot.svg" alt="图片描述" style="height:5vh;width:5vh"></button><button type="button" onclick="takeback()" class="tb" ><img src="img/tb.png" alt="图片描述" style="height:3vh;width:3vh"></button><button type="button" class="time" ><p style="margin:5px" id="dateTime">0000/00/00<br>00:00:00</p></button>
+<button type="button" onclick="startdb()" class="startdb"><img src="img/copilot.svg" alt="图片描述" style="height:5vh;width:5vh"></button><button type="button" onclick="takeback()" class="tb" ><img src="img/tb.png" alt="图片描述" style="height:3vh;width:3vh"></button><button type="button" class="time" ><p style="margin:0px" id="dateTime">0000/00/00<br>00:00:00</p></button>
 </div>
 </div>
 
-<div class="window" id="wd" style="display:none;">
-	<iframe src="" style="draggable:true;height:100%;width:100%;border-radius: 5px;border:none;" id="wds" draggable="true"></iframe>
+<div class="window" id="wd" style="display:none;padding:none;border:none;">
+	<center style="height:5%;width:100%;background-color:#2b64a5;color:white">Untitled</center><iframe src="" style="draggable:true;height:95%;width:100%;border-radius: 5px;border:none;margin:none;border:none" id="wds" draggable="true"></iframe>
 	<button type="button" onclick="closeWindow()" style="right:0"><b>╳</b></button><button type="button" onclick="fullWindow()" style="right:3vh"><b>□</b></button><button type="button" onclick="unfullWindow()" style="right:6vh"><b>▅</b></button><button type="button" onmouseup="mv()" style="right:9vh"><b>M</b></button><button type="button" onmouseup="mv()" style="left:0"><b>M</b></button>
 </div>
 <div class="alertBox" id="alertBox">
+    <main>
 <h1 id="alertTitle"></h1>
-<p id="alertContent"></p>
+<p id="alertContent"></p></main>
 <div><button type="button" onclick="hideAlertBox()">OK</button></div>
 
 </div></div>
 	<div class="screen" id="lock"
 	style="background-image:url('img/lock.jpg');background-repeat: no-repeat;background-size: cover;display: none;justify-content: center;align-items: center;">
 	<div style="display:none;" id='tm'><center>
-	<p style="font-size:10rem;color:white">00:00</p>
-	<button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="ulk()" class="signIn">Unlock</button>
+	<p style="font-size:5rem;color:white" id="lockTime">00:00</p>
+	<button type="button" style="width:40vw;height:6vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1rem" onclick="ulk()" class="signIn">Unlock</button>
 	</center>
 	</div>
 	<div style="justify-content:center;align-items:center;" id="si">
-	<img src="img/user.png" alt="图片描述" style="height:20vh;width:auto;justify-content:center;align-items:center;display:flex"><br><center><button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="unlock()" class="signIn">Sign in</button><br><br><button type="button" style="width:8vh;height:3vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1.5rem" onclick="unsign()" class="signIn">Cancel</button></center></div>
+	<img src="img/user.png" alt="图片描述" style="height:20vh;width:auto;justify-content:center;align-items:center;display:flex"><br><center><button type="button" style="width:40vw;height:6vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1rem" onclick="unlock()" class="signIn">Sign in</button><br><br><button type="button" style="width:40vw;height:6vh;border-radius:10px;border:2px solid #fff;background-color:rgba(255,255,255,0.5);color:white;font-size:1rem" onclick="unsign()" class="signIn">Cancel</button></center></div>
 	</div>
 	
 	<audio id="aud">
 	<source src="img/win12start.mp3" type="audio/mpeg">
 	</audio>
-<script>document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
+<script>
+    stt();document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
 function takeback() {
  	document.getElementById('pb').style.display='none';document.getElementById('taskBar').style.display='block';
 }
@@ -445,10 +445,11 @@ wd.style.right = '0';wds.style.borderRadius = '0';
 	wd.style.zIndex='10000';
 	wd.style.top = '50px';wd.style.left = '50px';wd.style.borderRadius = '5px';wds.style.borderRadius = '5px';
 }
-const dateTime = new Date;
-setInterval(() => {
- 	document.getElementById('dateTime').innerHTML=`${dateTime.getFullYear()}:${String(dateTime.getMonth()+1).padStart(2,'0')}:${String(dateTime.getDate()).padStart(2,'0')}<br>${String(dateTime.getHours()).padStart(2,'0')}:${String(dateTime.getMinutes()).padStart(2,'0')}:${String(dateTime.getSeconds()).padStart(2,'0')}`;
-}, 1);
+
+setInterval(() => {const dateTime = new Date;
+ 	document.getElementById('dateTime').innerHTML=`${String(dateTime.getHours()).padStart(2,'0')}:${String(dateTime.getMinutes()).padStart(2,'0')}:${String(dateTime.getSeconds()).padStart(2,'0')}`;
+     document.getElementById('lockTime').innerHTML=`${String(dateTime.getHours()).padStart(2,'0')}:${String(dateTime.getMinutes()).padStart(2,'0')}:${String(dateTime.getSeconds()).padStart(2,'0')}`;
+}, 1000);
 function startdb() {
   document.getElementById('wds').src='https://www.doubao.com/';	wd.style.display = 'block';
 	wd.style.height='70vh';
