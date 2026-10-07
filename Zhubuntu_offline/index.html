@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="description" content="Zhubuntu is a web Android desktop environment that imitated Ubuntu GNOME desktop environment's user interface">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.25, viewport-fit=cover, interactive-widget=overlays-content">
+<meta charset="UTF-8">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="../style.css">
+<style>
+    button{
+        height:6vh;
+        border-radius:2vh;
+        border:none;
+        width:17vw;
+        background-color:#447799;
+        color:white;
+        font-weight: bold;
+    }
+    progress {
+        width:100%;
+        height:14px;
+        margin-top:8px;
+    }
+</style>
+</head>
+<body style="padding:10px;padding-top:0;margin:0;">
+
+  <!-- 三页容器，初始全部隐藏 -->
+  <div id="c1" class="page">
+    <h1>Welcome to use ZHUBUNTU!</h1>
+    <p>Zhubuntu isn't the distribution of Ubuntu. It is just an open‑source Android desktop environment, like GNOME's style. It is easy‑to‑use ,always for free, and safe. If you have any problems ,please send me an email 📧 to 972059313@qq.com. </p>
+    <img src="boot/icons/zhubuntu.svg" style="width:80%;height:auto">
+  </div>
+  <div id="c2" class="page">
+    <h1>Plenty of Internal Applications for You</h1>
+    <p>There are plenty internal apps  developed by us, such as calculator,  browser, and novel reader. They're free , stylish , open‑source and safe, no advertisement,  no virus. You can also add your apps that have installed on your phone to ZHUBUNTU desktop. </p>
+    <img src="http://song.zreamer.top/zubuntu/img/3.webp" style="width:18%;height:auto">
+    <img src="http://song.zreamer.top/zubuntu/img/2.webp" style="width:18%;height:auto">
+    <img src="http://song.zreamer.top/zubuntu/img/1.webp" style="width:18%;height:auto">
+    <img src="http://song.zreamer.top/zubuntu/img/4.jpg" style="width:18%;height:auto">
+    <img src="http://song.zreamer.top/zubuntu/img/5.png" style="width:18%;height:auto">
+  </div>
+  <div id="c3" class="page">
+    <h1>Together ,Chase Our Poetry and Beyond</h1>
+    <p>This project is developed by two junior high students ,Zreamer and Song130103 .If you have some good ideas ,send us an email to 972059313@qq.com. This project belongs to everyone, you can download the source code and edit it .Let us build ZHUBUNTU together. </p>
+  </div>
+<div id="c4" class="page">
+    <p>1. First, click here to download and install via browser  and Any Launcher (by Tumuyan)
+        <br>2. Second, open Any Launcher, click 选择应用=>优先从后台切换到前台=>Via.
+        <br>3.Third, open Via, and click the lower right corner => Settings=> General=> Homepage => type "http://song.zreamer.top/zubuntu/index.html"
+        <br>4. Then ,click 设置桌面 (if it quit by flashing, please go to System settings=>Application settings=Default Desktop app =>AnyLauncher)<br>5. After that, return to this page and set your homepage to song.zreamer.top/zubuntu/ol/boot/launch.html.<br>6.Finally, install Zhubuntu</p>
+        <button onclick="install();">Install</button><br>
+        <progress id="pro"></progress>
+        <a href="boot/launch.html">Enter Now</a>
+  </div>
+
+  <button onclick="next()" style="position:fixed;bottom:0px;right:0px;">Next</button>
+  <button onclick="forward()" style="position:fixed;bottom:0px;left:0px;">Forward</button>
+
+<script src="../script.js"></script>
+<script>
+const content = ["c1", "c2", "c3","c4"];
+const totalPage = content.length;
+let n = 1;
+const fileList=[
+  'boot/launch.html','boot/bootaction.js',
+  'lanyue_core.js',
+  'usr/bin/zde/main.zap',
+  'etc/zdesktop/preference/desktop_dock_icon.dat',
+  'usr/bin/wechat/main.zap',
+  'usr/bin/appInstaller/main.zap',
+  'usr/bin/poetryReady/main.zap',
+  'etc/poetryReady/presets/FacingTheSeaWithSpringBloom.md',
+  'usr/bin/zedit/main.zap',
+  'usr/bin/lockscreen/main.zap',
+  'usr/bin/call/main.zap','usr/bin/droideasiester/main.zap','usr/bin/fileManager/main.zap','usr/bin/applicationsList/main.zap','etc/applicationsList/apps.json','usr/share/icons/Yaru/256x256/mimetypes/html.png.base64','usr/share/icons/Yaru/256x256/mimetypes/js.png.base64','usr/share/icons/Yaru/256x256/mimetypes/defalt.png.base64','usr/share/icons/Yaru/256x256/mimetypes/zap.png.base64','etc/fileManager/openMethod.json','usr/share/icons/Yaru/256x256/mimetypes/png.png.base64','usr/share/icons/Yaru/256x256/mimetypes/json.png.base64'
+  ,'usr/share/icons/Yaru/256x256/mimetypes/folder.png.base64',
+  'usr/bin/firefox/main.zap','usr/share/sounds/dialog-warning.oga.base64','usr/share/sounds/dialog-complete.oga.base64','usr/share/sounds/dialog-error.oga.base64','usr/share/sounds/bell.oga.base64'
+];
+let pro;
+
+window.onload = function() {
+  pro = document.getElementById('pro');
+  pro.max = fileList.length;
+  pro.value = 0;
+  hideAll();
+  showCurrent();
+}
+
+// 隐藏所有页面
+function hideAll() {
+  content.forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  })
+}
+
+// 显示当前页码
+function showCurrent() {
+  document.getElementById(`c${n}`).style.display = 'block';
+}
+
+// 下一页
+function next() {
+  if (n < totalPage) {
+    hideAll();
+    n++;
+    showCurrent();
+  } else {
+    alert('No more contents, it is the last page.Click the x button to quit installing guide.');
+  }
+}
+
+// 上一页
+function forward() {
+  if (n > 1) {
+    hideAll();
+    n--;
+    showCurrent();
+  } else {
+    alert('No more contents, it is the first page.');
+  }
+}
+
+// IndexedDB 封装Promise版本
+async function dbSet(id, val) {
+    return new Promise((resolve, reject)=>{
+        const request = indexedDB.open("Zhubuntu", 1);
+        request.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains("main")) {
+                db.createObjectStore("main", { keyPath: "id" });
+            }
+        };
+        request.onsuccess = (e) => {
+            const db = e.target.result;
+            const tx = db.transaction("main", "readwrite");
+            const store = tx.objectStore("main");
+            store.put({ id, data: val });
+            tx.oncomplete = ()=>resolve();
+        };
+        request.onerror = (err) => reject(err);
+    })
+}
+
+function dbGet(id, cb) {
+    const request = indexedDB.open("simpleDB", 1);
+    request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains("main")) {
+            db.createObjectStore("main", { keyPath: "id" });
+        }
+    };
+    request.onsuccess = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains("main")) {
+            cb(null);
+            return;
+        }
+        const tx = db.transaction("main");
+        const store = tx.objectStore("main");
+        const query = store.get(id);
+        query.onsuccess = () => cb(query.result?.data ?? null);
+    };
+    request.onerror = (err) => console.error("dbGet 数据库打开失败", err);
+}
+async function install(){
+   // 1. 先尝试打开数据库拿到句柄，然后立刻关闭释放连接
+
+    pro.value = 0;
+    for(let i=0;i<fileList.length;i++){
+        const res = await fetch(fileList[i]);
+        const text = await res.text();
+        await dbSet('/'+fileList[i], text);
+        pro.value = i+1;
+    }
+    alert("✅ Install complete! Reenter your honepage to enter Zhubuntu");
+}
+// 全屏逻辑
+</script>
+</body>
+</html>
