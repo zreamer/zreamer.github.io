@@ -1,0 +1,235 @@
+/* ================== 全局状态 ================== */
+let fileList = [];
+let parentFileDirectory = '/';
+
+// 本次渲染产生的所有 objectURL，切换目录时统一释放（现在base64不再生成blob，保留这个函数兼容旧逻辑）
+let currentObjectURLs = [];
+function releaseAllObjectURLs() {
+  currentObjectURLs.forEach(u => { try { URL.revokeObjectURL(u); } catch (e) {} });
+  currentObjectURLs = [];
+}
+
+/* ================== dbGet 的 Promise 封装（带超时） ================== */
+function dbGetPromise(path, timeout = 3000) {
+  return new Promise(resolve => {
+    let done = false;
+    const timer = setTimeout(() => {
+      if (!done) {
+        done = true;
+        console.warn('[dbGetPromise] 超时未回调:', path);
+        resolve(undefined);
+      }
+    }, timeout);
+    try {
+      dbGet(path, res => {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        resolve(res);
+      });
+    } catch (e) {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      console.error('[dbGetPromise] 调用 dbGet 抛错:', path, e);
+      resolve(undefined);
+    }
+  });
+}
+
+/* ================== 读取所有 key ================== */
+function getKeyList(callback) {
+  const req = indexedDB.open("Zhubuntu", 1);
+  req.onerror = (e) => {
+    console.error("打开数据库失败", e);
+    callback([]);
+  };
+  req.onsuccess = e => {
+    const db = e.target.result;
+    const tx = db.transaction("main", "readonly");
+    tx.onerror = (err) => console.error("事务错误", err);
+    const store = tx.objectStore("main");
+    const keyReq = store.getAllKeys();
+    keyReq.onsuccess = ev => callback(ev.target.result);
+    keyReq.onerror = ev => { console.error("getAllKeys 失败", ev); callback([]); };
+    tx.oncomplete = () => db.close();
+  };
+}
+
+/* ================== 读base64图标，库里只存纯base64，不带data:image前缀 ================== */
+async function loadIconBase64(dbPath) {
+  const raw = await dbGetPromise(dbPath);
+  if (raw === undefined || raw === null || typeof raw !== "string") {
+    console.warn('[loadIconBase64] 数据库无此key或不是字符串:', dbPath);
+    return null;
+  }
+  const b64 = raw.trim();
+  // 拼接前缀
+  return `${b64}`;
+}
+
+/* ================== 打开文件 ================== */
+function openFile(fullFilePath) {
+  dbGet('/etc/fileManager/openMethod.json', (res) => {
+    if (!res) { console.warn("找不到 openMethod.json"); return; }
+    let openCfg;
+    try { openCfg = JSON.parse(res); }
+    catch (e) { console.error("openMethod.json 解析失败", e); return; }
+    const ext = fullFilePath.split('.').pop().toLowerCase();
+    const appName = openCfg[ext];
+    if (!appName) { console.warn(`没有后缀${ext}对应的打开程序`); return; }
+    dbSet(`/tmp/${appName}/fileOpen.cache`, fullFilePath);
+    openAndRun(`/usr/bin/${appName}/main.zap`);
+  });
+}
+
+/* ================== 主入口：加载当前目录 ================== */
+window.loadAllFileDirectory = async function loadAllFileDirectory() {
+  console.log("loadAllFileDirectory 进入目录:", JSON.stringify(parentFileDirectory));
+
+  releaseAllObjectURLs();
+  fileList = [];
+
+  const keyArr = await new Promise(resolve => getKeyList(resolve));
+  console.log("拿到 keyArr 数量:", keyArr.length);
+
+  const iconKeys = keyArr.filter(k => k.indexOf('/icon/') >= 0);
+  if (iconKeys.length === 0) {
+    console.warn('[诊断] 数据库里没有任何 /icon/ 开头的 key —— 图标文件本身没写进去！');
+  } else {
+    console.log('[诊断] icon 相关 key 示例:', iconKeys.slice(0, 10));
+  }
+
+  const prefix = parentFileDirectory.endsWith('/')
+    ? parentFileDirectory
+    : parentFileDirectory + '/';
+
+  for (const fullKey of keyArr) {
+    if (fullKey === parentFileDirectory) continue;
+    if (!fullKey.startsWith(prefix)) continue;
+    const rest = fullKey.slice(prefix.length);
+    if (!rest) continue;
+    const name = rest.split('/')[0];
+    if (!name) continue;
+    if (!fileList.includes(name)) fileList.push(name);
+  }
+  console.log("本目录子项 fileList:", fileList);
+
+  let htmlBuf = "";
+  for (const itemName of fileList) {
+    const dotIdx = itemName.lastIndexOf('.');
+    const isFile = dotIdx > 0 && dotIdx < itemName.length - 1;
+    const ext = isFile ? itemName.slice(dotIdx + 1).toLowerCase() : '';
+    // 图标key：/usr/share/icons/Yaru/256x256/mimetypes/{后缀}.png.base64
+    const iconDbPath = isFile
+      ? `/usr/share/icons/Yaru/256x256/mimetypes/${ext}.png.base64`
+      : `/usr/share/icons/Yaru/256x256/mimetypes/folder.png.base64`;
+
+    htmlBuf += `
+<div class="file-item" data-name="${itemName}" data-isfile="${isFile}" data-iconpath="${iconDbPath}">
+  <img class="file-icon" alt="${itemName}" width="36" height="36">
+  <div class="filename">${itemName}</div>
+</div>`;
+  }
+
+  const listEl = document.getElementById('fileGraphicList');
+  listEl.innerHTML = htmlBuf;
+  document.getElementById('currentPathText').innerText = parentFileDirectory;
+
+  const defaultSrc = await loadIconBase64('/usr/share/icons/Yaru/256x256/mimetypes/default.png.base64');
+  if (!defaultSrc) {
+    console.warn('[诊断] 连 default.png.base64 都读不到，所有图标将显示 alt 文本');
+  }
+
+  const items = listEl.querySelectorAll('.file-item');
+  for (const item of items) {
+    const iconPath = item.dataset.iconpath;
+    const imgEl = item.querySelector('.file-icon');
+    if (!imgEl) continue;
+
+    if (defaultSrc) imgEl.src = defaultSrc;
+
+    let src = null;
+    if (iconPath !== '/usr/share/icons/Yaru/256x256/mimetypes/default.png.base64') {
+      src = await loadIconBase64(iconPath);
+    } else {
+      src = defaultSrc;
+    }
+
+    if (src && imgEl.isConnected) {
+      imgEl.src = src;
+      imgEl.removeAttribute('data-fallback');
+    } else if (!src && imgEl.isConnected && !defaultSrc) {
+      imgEl.setAttribute('data-fallback', '1');
+    }
+  }
+
+  console.log("图标渲染完成");
+};
+
+/* ================== 后退目录 ================== */
+function goBackDirectory() {
+  console.log("【goBackDirectory】原始路径=", JSON.stringify(parentFileDirectory));
+  if (parentFileDirectory === "/") { console.log("已是根目录"); return; }
+  let noTailSlash = parentFileDirectory.replace(/\/$/, "");
+  const lastSlashIndex = noTailSlash.lastIndexOf("/");
+  if (lastSlashIndex <= 0) {
+    parentFileDirectory = "/";
+  } else {
+    parentFileDirectory = noTailSlash.substring(0, lastSlashIndex) + "/";
+  }
+  console.log("【goBackDirectory】跳转后=", JSON.stringify(parentFileDirectory));
+  loadAllFileDirectory();
+}
+
+/* ================== HTML 片段（含样式，全部在一个字符串里） ================== */
+const content = `
+<style>
+#pathBar{padding:8px;background:#222;color:#fff;margin-bottom:8px;display:flex;gap:8px;align-items:center;}
+#fileGraphicList{display:grid;grid-template-columns:repeat(auto-fill,120px);gap:8px;padding:8px;}
+.file-item{padding:12px;background:none;color:#000;text-align:center;border-radius:6px;cursor:pointer;}
+.file-item:hover{border:3px solid #fff;}
+.file-icon{margin:0 auto 4px;display:block;object-fit:contain;width:36px;height:36px;}
+.file-icon[data-fallback="1"]{background:#ddd;border-radius:4px;}
+.filename{font-size:13px;word-break:break-all;}
+</style>
+<div id="pathBar">
+  <button id="btnBack">Back</button>
+  <span id="currentPathText">/</span>
+</div>
+<div id="fileGraphicList"></div>
+`;
+
+/* ================== 启动窗口 ================== */
+runInWindow(content, 'File');
+
+/* ================== 事件绑定 ================== */
+document.getElementById("btnBack").onclick = goBackDirectory;
+
+document.getElementById("fileGraphicList").onclick = function (e) {
+  const item = e.target.closest(".file-item");
+  if (!item) return;
+  const dirName = item.dataset.name;
+  const isFile = item.dataset.isfile === "true";
+  const fullPath = parentFileDirectory.replace(/\/$/, '') + '/' + dirName;
+
+  if (isFile) {
+    openFile(fullPath);
+  } else {
+    parentFileDirectory = fullPath + '/';
+    loadAllFileDirectory();
+  }
+};
+
+/* ================== 首次加载 ================== */
+loadAllFileDirectory();
+
+/* ================== 退出 ================== */
+window.quitApp = function quitApp() {
+  const content = '';
+  document.getElementById('lyappwindow').style.display = 'none';
+  document.getElementById('applist').style.display = 'block';
+  document.getElementById('lyappwindow').style.width = '85vw';
+  d = 0;
+  document.getElementById('lyappwindow').style.left = '15vw';
+};

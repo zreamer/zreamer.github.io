@@ -1,0 +1,21 @@
+const content=`<style>
+section{width:100%;margin-bottom:5px;}
+section:hover{background-color:#ffffff33}</style><div id="allApplicationsList"></div>`;
+
+
+
+dbGet(`/etc/applicationsList/apps.dat`,res=>{document.getElementById('allApplicationsList').innerHTML=res;});
+runInWindow(content,'All Application');
+document.getElementById('lyappwindow').style.backgroundColor='#00000099';
+window.quitApp=function quitApp(){
+    const content='';
+    document.getElementById('lyappwindow').style.display='none';
+    document.getElementById('applist').style.display='block';
+    document.getElementById('lyappwindow').style.width='85vw';
+    d=0;
+    document.getElementById('lyappwindow').style.left='15vw';document.getElementById('lyappwindow').style.backgroundColor='none';
+}
+window.openAppFromAppList=function openAppFromAppList(){
+
+
+}

@@ -1,0 +1,9 @@
+{
+  "Executer": "/usr/bin/appInstaller/main.zap",
+  "Zedit": "/usr/bin/zedit/main.zap",
+  "Call": "/usr/bin/call/main.zap",
+  "Nautilus": "/usr/bin/fileManager/main.zap",
+  "Poetry Ready": "/usr/bin/poetryReady/main.zap",
+  "Droid Easiester":"/usr/bin/droideasiester/main.zap",
+  "Basic Webpage Browser":"/usr/bin/firefox/main.zap"
+}

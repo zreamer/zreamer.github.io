@@ -1,0 +1,31 @@
+<script>
+function dbGet(id, cb) {
+    const request = indexedDB.open("Zhubuntu", 1);
+    request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains("main")) {
+            db.createObjectStore("main", { keyPath: "id" });
+        }
+    };
+    request.onsuccess = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains("main")) {
+            cb(null);
+            return;
+        }
+        const tx = db.transaction("main");
+        const store = tx.objectStore("main");
+        const query = store.get(id);
+        query.onsuccess = () => cb(query.result?.data ?? null);
+    };
+    request.onerror = (err) => console.error("dbGet 数据库打开失败", err);
+}
+
+dbGet('/boot/launch.html',res=>{
+    const iframe = document.createElement('iframe');
+    iframe.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;margin:0;padding:0;";
+    document.body.innerHTML = "";
+    document.body.appendChild(iframe);
+    iframe.srcdoc = res;
+})
+</script>
