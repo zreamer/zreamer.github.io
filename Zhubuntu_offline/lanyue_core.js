@@ -1,4 +1,33 @@
-// 全屏触发代码（无问题，保留)
+// 保存初始屏幕高度
+const initH = visualViewport ? visualViewport.height : window.innerHeight;
+const htmlEl = document.documentElement;
+
+function setLock(lock) {
+  if (lock) {
+    htmlEl.style.height = initH + "px";
+    htmlEl.style.overflow = "hidden";
+  } else {
+    htmlEl.style.height = "";
+    htmlEl.style.overflow = "";
+  }
+}
+
+if (visualViewport) {
+  visualViewport.addEventListener("resize", () => {
+    const now = visualViewport.height;
+    // 高度差大于120px，判定键盘弹出
+    if (initH - now > 120) {
+      setLock(true);
+      // 激活元素滚入视野
+      const act = document.activeElement;
+      if(["INPUT","TEXTAREA"].includes(act.tagName)){
+        setTimeout(()=>act.scrollIntoView({block:'center',behavior:'smooth'}),100);
+      }
+    } else {
+      setLock(false);
+    }
+  });
+}// 全屏触发代码（无问题，保留)
 function lydecode(a){
     // 修复：初始化转换后的代码
     let finalCode = a;
