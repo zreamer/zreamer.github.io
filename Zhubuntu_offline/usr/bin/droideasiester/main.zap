@@ -6,7 +6,7 @@ const content=`<div style="margin:5px;"><details><summary>Add Applications</summ
 <input placeholder="Type your application URI..." id="userAppURI" />
 <button onclick="sbmta()" style="background-color:#447799;border-radius:5px;border:none;color:white">Submit</button>
 </div></details>
-<h3>Android Applications List</h3>
+<h3>Android Applications List</h3><iframe height="1" weight="1" id="droidopener"></iframe>
 <div id="droidapplist">
 
 </div></div>`;
@@ -38,7 +38,7 @@ window.renderDroidAppList=function renderDroidAppList(){
 
 // 点击打开链接
 window.openDroidApp = function(url){
-    window.open(url);
+    document.getElementById('droidopener').src=url;
 };
 
 // 长按删除应用
