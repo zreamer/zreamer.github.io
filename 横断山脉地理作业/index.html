@@ -1,0 +1,162 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body style="background-color: rgb(194, 255, 192);color: rgb(31, 31, 31);font-family: 'Microsoft YaHei';">
+<h1 style="display: block;z-index: 2;position: absolute;top: 0;left: 20px;" id="title">横断山脉旅游业研究</h1>
+<div id="content" style="display:block;height: calc(100vh - 110px);width: 100%;overflow: auto;margin:20px;margin-top: 80px;position: relative;z-index: 1;">
+</div>
+<button id="back" style="position: fixed;bottom: 10px;left: 10px;z-index: 2;">返回</button>
+<button id="next" style="position: fixed;bottom: 10px;right: 10px;z-index: 2;">下一页</button>
+<style>
+.card {
+border-radius: 5px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+line-height: 1.8;
+padding: 16px 20px;
+margin-bottom: 24px;
+}
+.card h2 {
+margin-top: 0;
+}
+</style>
+</body>
+<script>
+const title=[null,null,"开发条件","开发的有利影响","开发的不利影响","可持续发展建议","习题精析",null];
+const content=[
+``,`<div style="text-align: center;justify-content: center;display: flex;align-items: center;"><h1 style="margin-top:250px;font-size:2.3em">横断山区旅游业发展研究报告</h1></div>`,
+`<div class="card" style="background-color: rgba(200, 250, 200, 0.72);height: 90%;width:40%;float:left;margin:10px;"><h2>旅游业开发有利条件</h2><ol>
+<li><strong>旅游资源独特丰富：</strong>横断山区山高谷深，垂直地带性明显，雪山、冰川、峡谷、湖泊、森林和草甸并存；藏、彝、纳西、傈僳等民族文化丰富，自然景观与人文风情相互映衬。</li>
+<li><strong>资源集群状况较好：</strong>香格里拉、泸沽湖、虎跳峡、稻城亚丁和怒江大峡谷等景点可串联成多样化的旅游线路。</li>
+<li><strong>市场潜力较大：</strong>生态旅游、徒步和自驾游需求不断增长，昆明、成都等西南城市也提供了一定的客源基础。</li>
+<li><strong>政策支持：</strong>西部大开发、乡村振兴及生态文旅相关政策，为发展特色旅游和带动当地就业提供了支持。</li>
+</ol></div><div class="card" style="background-color: rgba(250, 200, 200, 0.72);height: 90%;width:40%;float:left;margin:10px;"><h2>旅游业开发不利条件</h2><ol>
+<li><strong>地形地质条件差，交通不便: </strong>山高谷深，地势起伏极大；地质活动活跃，滑坡、泥石流多发。公路曲折，建设成本高、通行耗时长，可达性差，大型交通设施建设难度大。</li>
+<li><strong>生态环境脆弱</strong>
+垂直生态系统很敏感，一旦植被破坏很难恢复；旅游开发容易造成水土流失、生物栖息地破坏；高海拔区域环境承载力低，游客容量有限。</li>
+<li><strong>基础设施不足</strong>
+山区经济落后，城镇分散，酒店、餐饮、医疗、应急救援设施配套差；水电、通讯保障不稳定。</li>
+<li><strong>旅游季节性强</strong>
+冬季寒冷多冰雪，雨季多地质灾害，适合旅游时间短；淡旺季游客数量差距巨大，淡季设施闲置。</li>
+<li><strong>自然灾害风险高</strong>
+地震、滑坡、泥石流、山洪频发，旅游安全隐患大，防灾、救援难度高。</li>
+<li><strong>社会限制</strong>
+多民族聚居，开发需要兼顾当地传统文化保护；部分区域属于生态保护区，开发受严格管控。
+</ol></div>`,
+`<div class="card" style="background-color: rgba(200, 250, 200, 0.72);height: 90%;width:26%;float:left;margin:10px;"><h2>经济层面</h2><ol>
+ <li><strong>带动区域经济发展</strong>：把横断山区丰富的自然景观、民族文化资源转化为经济收入，增加地方财政。</li>
+ <li><strong>促进产业结构调整</strong>：减少对伐木、采矿业等资源型产业依赖，推动第三产业发展。</li>
+ <li><strong>增加就业岗位</strong>：催生导游、民宿、餐饮、交通、纪念品等岗位，提高当地居民收入。</li>
+ <li><strong>带动基础设施建设</strong>：推动公路、通信、供水、住宿等配套设施完善，改善山区交通条件。</li>
+</ol></div><div class="card" style="background-color: rgba(210, 250, 210, 0.72);height: 90%;width:26%;float:left;margin:10px;"><h2>社会层面</h2><ol>
+ <li><strong>促进民族文化保护与交流</strong>：横断山区多少数民族，旅游带动民族传统文化、手工艺保护；促进不同地区人群文化交流。</li>
+ <li><strong>提高居民生活水平</strong>：居民可通过民宿、特产售卖增收，提升生活质量。</li>
+ <li><strong>提升区域知名度</strong>：吸引游客，提高横断山区（三江并流、香格里拉、稻城亚丁等）的知名度。</li>
+</ol></div><div class="card" style="background-color: rgba(220, 250, 220, 0.72);height: 90%;width:26%;float:left;margin:10px;"><h2>生态层面（合理开发的前提下）</h2><ol>
+ <li><strong>促进生态保护意识提升</strong>：旅游业依赖优美生态，促使当地保护森林、河湖、生物多样性。</li>
+ <li><strong>为生态保护提供资金</strong>：旅游收入可投入自然保护区维护、植被修复。</li>
+</ol></div>`,
+`<div class="card" style="background-color: rgba(250, 200, 200, 0.72);height: 90%;width:90%;float:left;margin:10px;"><h2>开发的不利影响</h2><ol>
+<li><strong>生态环境</strong>：生态脆弱，易破坏植被，加剧水土流失、地质灾害；污染河湖，破坏生物多样性。</li>
+<li><strong>地质安全</strong>：板块交界，地质不稳定；景区建设增加滑坡泥石流风险，安全隐患大。</li>
+<li><strong>社会文化</strong>：民俗过度商业化，冲击少数民族原生文化；抬高物价，挤占本地居民资源。</li>
+<li><strong>经济</strong>：基建成本高；旅游季节性强，收入不稳定；容易造成产业单一。</li>
+</ol></div>`,
+`<div class="card" style="background-color: rgba(200, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>生态保护优先</h2><ol>
+ <li>划定生态保护红线，<strong>限制大规模景区开发</strong>，禁止在核心保护区、野生动物栖息地修建宾馆、公路。</li>
+ <li>控制游客最大承载量，实行预约制，旺季限流，避免游客过度踩踏地表。</li>
+ <li>完善污水、垃圾收集转运体系，山区垃圾外运处理；推广太阳能等清洁能源，减少污染。</li>
+ <li>修建道路、观景台尽量采用<strong>架空、少挖山</strong>的工程方式，减少山体扰动，降低滑坡泥石流风险。</li>
+</ol></div><div class="card" style="background-color: rgba(210, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>防灾与基础设施</h2><ol>
+<li>建立地质灾害监测预警系统，雨季发布预警，危险路段设置警示牌。</li>
+<li>优先修建小型观光步道，避开地质不稳定区域，不大规模开山修路。</li>
+<li>配套通信、医疗应急站点，完善应急救援设施，提升旅游安全保障。</li>
+</ol></div><div class="card" style="background-color: rgba(220, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>民族文化可持续发展</h2><ol>
+<li>保护原生少数民族文化，避免民俗过度商业化。</li>
+<li>扶持本地居民经营民宿、手工艺品，让本地人共享旅游收益。</li>
+<li>发展原生态文化体验游，尊重当地风俗，设置文明旅游提示。</li>
+</ol></div><div class="card" style="background-color: rgba(230, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>产业与管理</h2><ol>
+<li>发展生态研学、小众徒步旅游，不盲目大规模大众观光。</li>
+<li>推动产业多元化，避免经济过度依赖旅游业；开发淡季旅游项目，平衡淡旺季收入。</li>
+<li>规范旅游市场，管控物价，宣传文明旅游。</li>
+</ol></div>`,
+`
+
+<div class="card" style="background-color: rgba(200, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>横断山区发展旅游业最突出的优势旅游资源条件是（&emsp;）。</h2>
+<div class="options" onclick="checkAnswer(1,'A')">A. 地形平坦开阔，配套设施完善</div>
+<div class="options" onclick="checkAnswer(1,'B')"><mark>B. 垂直地域分异显著，自然景观多样，兼有少数民族人文风情</mark></div>
+<div class="options" onclick="checkAnswer(1,'C')">C. 距离东部客源市场近，出行耗时短</div>
+<div class="options" onclick="checkAnswer(1,'D')">D. 气候全年温和，无地质灾害</div>
+</div>
+
+<div class="card" style="background-color: rgba(200, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>下列不属于横断山区旅游业开发限制性条件的是（&emsp;）。</h2>
+<div class="options" onclick="checkAnswer(2,'A')">A. 山高谷深，交通通达度低</div>
+<div class="options" onclick="checkAnswer(2,'B')">B. 地质条件复杂，地质灾害多发</div>
+<div class="options" onclick="checkAnswer(2,'C')">C. 生态脆弱，环境承载力较小</div>
+<div class="options" onclick="checkAnswer(2,'D')"><mark>D. 景观独特，旅游资源集群状况好</mark></div>
+</div>
+
+
+
+<div class="card" style="background-color: rgba(200, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>大规模开发横断山区旅游业，可能带来的生态问题主要是（&emsp;）。</h2>
+<div class="options" onclick="checkAnswer(3,'A')">A. 土地荒漠化大范围扩张</div>
+<div class="options" onclick="checkAnswer(3,'B')"><mark>B. 游客活动破坏植被，加剧水土流失，干扰珍稀生物栖息地</mark></div>
+<div class="options" onclick="checkAnswer(3,'C')">C. 土壤盐碱化加剧</div>
+<div class="options" onclick="checkAnswer(3,'D')">D. 地面沉降，地下水枯竭</div>
+</div>
+
+
+
+
+
+
+<div class="card" style="background-color: rgba(200, 240, 255, 0.72);height: 40%;width:40%;float:left;margin:10px;"><h2>为实现横断山区旅游业可持续发展，合理措施是（&emsp;）。</h2>
+<div class="options" onclick="checkAnswer(4,'A')">A. 大面积砍伐森林，修建大型酒店、停车场</div>
+<div class="options" onclick="checkAnswer(4,'B')"><mark>B. 控制游客数量，划定生态保护区，完善生态型旅游步道</mark></div>
+<div class="options" onclick="checkAnswer(4,'C')">C. 优先大规模开采矿产，再配套发展旅游</div>
+<div class="options" onclick="checkAnswer(4,'D')">D. 大力修建盘山公路，所有景点无条件对外开放</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`,`<div style="text-align: center;justify-content: center;display: flex;align-items: center;"><h1 style="margin-top:250px;font-size:2.3em">感谢观看</h1></div>`
+];
+addEventListener("load",function(){
+let contentDiv=document.getElementById("content");
+let backButton=document.getElementById("back");
+let nextButton=document.getElementById("next");
+let page=1;
+function updateContent(){
+contentDiv.innerHTML=content[page];
+document.getElementById("title").innerText=title[page];
+    }
+backButton.addEventListener("click",function(){
+if(page>1){
+page--;
+updateContent();
+        }
+    });
+nextButton.addEventListener("click",function(){
+if(page<7){
+page++;
+updateContent();
+        }
+    });
+updateContent();
+});
+</script>
