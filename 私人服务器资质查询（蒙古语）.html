@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="mn" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ᠬᠤᠪᠢ ᠶᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠴᠢᠨ᠎ᠠ ᠪᠠᠶᠢᠴᠠᠯᠭ᠎ᠠ</title>
+<link rel="icon" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171615'/%3E%3Crect x='5' y='5' width='22' height='22' fill='%2352a535'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%23171615'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+Mongolian:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://www.minecraft.net/webui/mc-components.min.css">
+<link rel="font" href="mcae.ttf">
+<style>
+  body { font-family: 'Noto Sans Mongolian','Noto Sans SC',system-ui,sans-serif; line-height: 1.8; }
+  h1, h2, h3, p, li, button, strong, span, input { font-family: 'Noto Sans Mongolian','Noto Sans SC',system-ui,sans-serif; }
+  .mc-i18n-lang { display:inline-block; margin:0 0 10px; padding:2px 10px; border:2px solid var(--mc-core-grey-4, #6b6562); color: var(--mc-core-grey-2, #d0c5c0); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; }
+  @media (max-width: 640px) { body { padding: 8px; } }
+  .mn-vertical { writing-mode: vertical-rl; height: auto; }
+  .mn-vertical h2 { border-left: 0; border-top: 4px solid #52a535; padding-top: 8px; }
+  .mn-vertical input { max-width: 22em; }
+</style>
+</head>
+<body dir="ltr" class="mn-body mn-vertical" style="
+
+margin:0;padding:10px;background-color:#000000;color:rgb(253, 255, 255)">
+<button type="button" onclick="tgMongol()" style="margin:0 0 12px;padding:6px 12px;border:2px solid #52a535;background:#171615;color:#ede5e2;cursor:pointer">ᠪᠣᠳᠣᠭᠠᠳᠠᠢ / ᠬᠠᠵᠤᠭᠤ</button>
+<h1><b>ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠴᠢᠨ᠎ᠠ ᠪᠠᠶᠢᠴᠠᠯᠭ᠎ᠠ<sup>BETA</sup></b></h1>
+<style>
+    html{
+  --mc-core-green-6: #2a641c;
+  --mc-core-green-5: #3c8527;
+  --mc-core-green-4: #52a535;
+  --mc-core-green-3: #6cc349;
+  --mc-core-green-2: #86d562;
+  --mc-core-green-1: #a0e081;
+  --mc-core-grey-6: #262423;
+  --mc-core-grey-5: #3d3938;
+  --mc-core-grey-4: #6b6562;
+  --mc-core-grey-3: #aba09c;
+  --mc-core-grey-2: #d0c5c0;
+  --mc-core-grey-1: #ede5e2;
+  --mc-core-rich-black: #000;
+  --mc-core-off-black: #171615;
+  --mc-core-white: #fff;
+  --mc-core-off-white: #fcf5f1;
+  --mc-core-gradient-dark-grey: linear-gradient(180deg,#3d3938,#262423 50%,#171615);
+  --mc-core-gradient-green: linear-gradient(180deg,#6cc349,#52a535 50%,#3c8527);
+  --mc-core-gradient-light-grey: linear-gradient(180deg,#fcf5f1,#ede5e2 50%,#d0c5c0);
+  --mc-vanilla-green-6: #2a641c;
+  --mc-vanilla-green-5: #3c8527;
+  --mc-vanilla-green-4: #52a535;
+  --mc-vanilla-green-3: #6cc349;
+  --mc-vanilla-green-2: #86d562;
+  --mc-vanilla-green-1: #a0e081;
+  --mc-vanilla-brown-6: #492d1f;
+  --mc-vanilla-brown-5: #66412c;
+  --mc-vanilla-brown-4: #805539;
+  --mc-vanilla-brown-3: #976746;
+  --mc-vanilla-brown-2: #ad7a54;
+  --mc-vanilla-brown-1: #c28e64;
+  --mc-vanilla-blue-6: #002fae;
+  --mc-vanilla-blue-5: #0040c8;
+  --mc-vanilla-blue-4: #0855db;
+  --mc-vanilla-blue-3: #1e6eea;
+  --mc-vanilla-blue-2: #3a87f4;
+  --mc-vanilla-blue-1: #5b9ffb;
+  --mc-vanilla-grey-6: #262423;
+  --mc-vanilla-grey-5: #3d3938;
+  --mc-vanilla-grey-4: #6b6562;
+  --mc-vanilla-grey-3: #aba09c;
+  --mc-vanilla-grey-2: #d0c5c0;
+  --mc-vanilla-grey-1: #ede5e2;
+  --mc-vanilla-coldgrey-6: #2c2f3a;
+  --mc-vanilla-coldgrey-5: #3d4250;
+  --mc-vanilla-coldgrey-4: #4d5466;
+  --mc-vanilla-coldgrey-3: #5d647a;
+  --mc-vanilla-coldgrey-2: #6c748c;
+  --mc-vanilla-coldgrey-1: #8089a2;
+  --mc-legends-light-blue-6: #339cd7;
+  --mc-legends-light-blue-5: #39b9eb;
+  --mc-legends-light-blue-4: #4ad5ff;
+  --mc-legends-light-blue-3: #70dfff;
+  --mc-legends-light-blue-2: #95e8ff;
+  --mc-legends-light-blue-1: #acf2ff;
+  --mc-legends-dark-blue-6: #001236;
+  --mc-legends-dark-blue-5: #00215c;
+  --mc-legends-dark-blue-4: #00337d;
+  --mc-legends-dark-blue-3: #003bab;
+  --mc-legends-dark-blue-2: #005dcf;
+  --mc-legends-dark-blue-1: #007ff2;
+  --mc-legends-light-orange-6: #de7523;
+  --mc-legends-light-orange-5: #e89133;
+  --mc-legends-light-orange-4: #f1ad42;
+  --mc-legends-light-orange-3: #f6c25a;
+  --mc-legends-light-orange-2: #fad36f;
+  --mc-legends-light-orange-1: #fddf93;
+  --mc-legends-ultra-dark-blue: #071927;
+  --mc-legends-ultra-dark-orange: #271505;
+  --mc-dungeons-orange-6: #de5b0d;
+  --mc-dungeons-orange-5: #ff791a;
+  --mc-dungeons-orange-4: #ffa41f;
+  --mc-dungeons-orange-3: #ffc42b;
+  --mc-dungeons-orange-2: #ffd953;
+  --mc-dungeons-orange-1: #fff27a;
+  --mc-dungeons-red-6: #8f1f0b;
+  --mc-dungeons-red-5: #b42d10;
+  --mc-dungeons-red-4: #da3a16;
+  --mc-dungeons-red-3: #ff481b;
+  --mc-dungeons-red-2: #ff6d3a;
+  --mc-dungeons-red-1: #ff925b;
+  --mc-dungeons-mulberry-6: #190d19;
+  --mc-dungeons-mulberry-5: #32122a;
+  --mc-dungeons-mulberry-4: #4f1030;
+  --mc-dungeons-mulberry-3: #530f33;
+  --mc-dungeons-mulberry-2: #6c0e37;
+  --mc-dungeons-mulberry-1: #7b0d3a;
+  --mc-dungeons2-rich-blue: #002da5;
+  --mc-dungeons2-blue-6: #010d29;
+  --mc-dungeons2-blue-5: #011d47;
+  --mc-dungeons2-blue-4: #013565;
+  --mc-dungeons2-blue-3: #005483;
+  --mc-dungeons2-blue-2: #146f95;
+  --mc-dungeons2-blue-1: #298aa5;
+  --mc-dungeons2-cyan-6: #03bde1;
+  --mc-dungeons2-cyan-5: #03dafa;
+  --mc-dungeons2-cyan-4: #36e6ff;
+  --mc-dungeons2-cyan-3: #6cefff;
+  --mc-dungeons2-cyan-2: #a3f7ff;
+  --mc-dungeons2-cyan-1: #d9fcff;
+  --mc-dungeons2-red-6: #210d0d;
+  --mc-dungeons2-red-5: #640f0a;
+  --mc-dungeons2-red-4: #8f1f0b;
+  --mc-dungeons2-red-3: #b42d10;
+  --mc-dungeons2-red-2: #da3a16;
+  --mc-dungeons2-red-1: #ff481b;
+  --mc-dungeons2-light-orange: #fdfdc2;
+  --mc-realms-deep-blue-7: #050029;
+  --mc-realms-deep-blue-6: #0c0248;
+  --mc-realms-deep-blue-5: #210a80;
+  --mc-realms-deep-blue-4: #401cac;
+  --mc-realms-deep-blue-3: #643acb;
+  --mc-realms-deep-blue-2: #8d68e0;
+  --mc-realms-deep-blue-1: #bca4ec;
+  --mc-realms-pink-6: #7f007a;
+  --mc-realms-pink-5: #a40094;
+  --mc-realms-pink-4: #d812b4;
+  --mc-realms-pink-3: #e833c2;
+  --mc-realms-pink-2: #f460d2;
+  --mc-realms-pink-1: #fb95e2;
+  --mc-marketplace-gold-6: #94540e;
+  --mc-marketplace-gold-5: #b87918;
+  --mc-marketplace-gold-4: #db9f21;
+  --mc-marketplace-gold-3: #ffc42b;
+  --mc-marketplace-gold-2: #ffd953;
+  --mc-marketplace-gold-1: #fff27a;
+  --mc-marketplace-grey-6: #262423;
+  --mc-marketplace-grey-5: #3d3938;
+  --mc-marketplace-grey-4: #6b6562;
+  --mc-marketplace-grey-3: #aba09c;
+  --mc-marketplace-grey-2: #d0c5c0;
+  --mc-marketplace-grey-1: #ede5e2;
+  --mc-marketplace-gradient-gold: linear-gradient(270deg,#fff27a,#ffc42b);
+  --mc-default--fontlist: "Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-gellix--fontlist: "Gellix","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-vanilla-fontlist: "MinecraftTenv2","MinecraftTen","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-dungeons-fontlist: "Minecraft-Fivev2","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-dungeons2-fontlist: "MinecraftSixteen","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-realms-fontlist: "MinecraftTenv2","MinecraftTen","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-legends-fontlist: "MinecraftSeven-v2","MinecraftSeven","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-text-highlight-fontlist: "SFMono-Regular","Menlo","Monaco","Consolas","Liberation Mono","Courier New",monospace;
+  --mc-default-focus: #1157be;
+  --mc-default-caution: #e2b923;
+  --mc-default-warning: #ca3636;
+  --mc-default-warning-2: #ff605e;
+    }
+    h2{
+        color: var(--mc-core-green-5);
+        border-inline-start: 4px solid var(--mc-core-green-5);
+        padding-inline-start: 10px;
+    }
+</style>
+
+            <h2>ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠮᠡᠳᠡᠭᠡ</h2>
+            <ul>
+                <li>ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠬᠠᠶᠢᠭ:<input placeholder="ᠬᠠᠶᠢᠭ ᠢᠶᠠᠨ ᠣᠷᠤᠭᠤᠯᠤᠭᠲᠤᠨ" id="adript" class="MC_SearchBoxB_input" style="background-color: transparent;
+  border: 0;
+  color: var(--mc-core-white);
+  flex: 1;
+  font-family: var(--mc-legends-fontlist);
+  font-size: 1rem;
+  font-weight: 400;
+  height: auto;
+  line-height: normal;
+  width:unset;
+  margin: 0;border:#3c8527 solid 2px;"></li>
+                <li><strong>ᠬᠡᠪ ᠦᠨ ᠳᠤᠭ᠎ᠠ</strong>：<span id="version">Minecraft Java Edition 26.3 Fabric (Modded)</span></li>
+                <li><strong>ᠠᠴᠢᠶᠠᠭᠰᠠᠨ ᠨᠡᠮᠡᠯᠲᠡ</strong>：<span id="mods">X-ray</span></li>
+                <li><strong>ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠪᠠᠶᠢᠳᠠᠯ</strong>：<span id="allowance">Allow</span></li></ul>
+               
+            <h2>ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ</h2>
+            <p id="logs">Zreamer joined the game<br>
+            Zreamer completed the challenge [Server Environment Protector]<br>
+            Zreamer left the game
+            </p>
+            <h2>AI ᠰᠢᠨᠵᠢᠯᠭ᠎ᠠ</h2>
+            <p id="ai_analyze">ᠡᠨᠳᠡ AI ᠰᠢᠨᠵᠢᠯᠭ᠎ᠠ ᠶᠢᠨ ᠬᠠᠷᠢᠭᠤᠯᠲᠠ ᠬᠠᠷᠠᠭᠳᠠᠨ᠎ᠠ᠃ ᠤᠳᠠᠭᠠᠨ ᠴᠠᠭ ᠲᠤ ᠦᠰᠦᠭ ᠬᠠᠷᠠᠭᠳᠠᠬᠤ ᠦᠭᠡᠢ ᠪᠣᠯᠪᠠᠯ ᠰᠠᠨᠠᠭᠠᠯ ᠪᠣᠯᠤᠭᠳᠤᠭ᠎ᠠᠢ᠂ AI ᠬᠡᠯᠡ ᠶᠢᠨ ᠮᠣᠳᠡᠯ ᠨᠣᠭᠤᠳ ᠰᠤᠷᠬᠤ ᠪᠠᠶᠢᠨ᠎ᠠ᠃</p>
+        
+            <h2>ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠵᠢᠭᠰᠠᠭᠠᠯᠲᠠ</h2>
+            <p id="list">katherin-featuring.tun.ply.gg</p>
+        
+             <button id="next"  style="box-shadow: inset 0 -6px 0 var(--mc-vanilla-green-6),inset 0 6px 0 var(--mc-vanilla-green-4);
+  color: var(--mc-core-white);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;border: 2px solid var(--mc-core-grey-6);
+  display: inline-flex;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  min-width: 4.75rem;
+  padding: .9375rem 1.75rem;
+    padding-right: 1.75rem;
+  text-decoration: none;background: linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--mc-vanilla-green-5);
+" class="MC_Button MC_Button_Hero MC_Glyph_Link_B MC_Button" onclick="nextServer()">ᠳᠠᠷᠠᠭ᠎ᠠ</button>
+            <button onclick="prev()" style="box-shadow: inset 0 -6px 0 var(--mc-vanilla-green-6),inset 0 6px 0 var(--mc-vanilla-green-4);
+  color: var(--mc-core-white);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;border: 2px solid var(--mc-core-grey-6);
+  display: inline-flex;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  min-width: 4.75rem;
+  padding: .9375rem 1.75rem;
+    padding-right: 1.75rem;
+  text-decoration: none;background: linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--mc-vanilla-green-5);
+" class="MC_Button MC_Button_Hero MC_Glyph_Link_B MC_Button">ᠡᠮᠦᠨᠡᠬᠢ</button>
+        <br>
+<button onclick="alert(`# ᠬᠤᠪᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠡᠵᠡᠨ ᠪᠣᠯᠤᠨ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠤᠭᠤᠳ ᠤᠨ ᠬᠡᠯᠡᠴᠡᠯ (ᠬᠤᠪᠢ ᠶᠢᠨ ᠰᠠᠨᠠᠯ)
+
+## 0 ᠡᠷᠬᠡᠮ ᠵᠢᠷᠤᠮ
+0.1 ᠡᠨ᠎ᠡ ᠬᠡᠯᠡᠴᠡᠯ ᠨᠢ ᠤᠯᠤᠰ ᠤᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠬᠠᠤᠯᠢ᠂ ᠰᠤᠶᠤᠮᠪᠤ ᠠᠮᠤᠭᠤᠯᠠᠩ ᠤᠨ ᠬᠠᠤᠯᠢ᠂ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠨ ᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ ᠬᠠᠤᠯᠢ ᠪᠣᠶᠤ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠨ ᠢ ᠰᠤᠶᠤᠮᠪᠤ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠳᠤ ᠰᠢᠩᠭᠡᠭᠦᠯᠡᠬᠦ ᠡᠴᠡ ᠰᠡᠷᠭᠢᠶᠢᠯᠡᠬᠦ ᠲᠤᠭᠤᠷᠠᠢ ᠵᠠᠷᠯᠢᠭ ᠵᠡᠷᠭᠡ ᠤᠯᠤᠰ ᠤᠨ ᠬᠠᠤᠯᠢ ᠵᠢᠷᠤᠮ ᠪᠣᠯᠤᠨ ᠪᠣᠳᠤᠭᠠᠯᠢ ᠪᠢᠴᠢᠭ ᠳᠦ ᠦᠨᠳᠦᠰᠦᠯᠡᠨ ᠵᠣᠬᠢᠶᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠣᠯᠤᠭᠠᠳ᠂ ᠳᠣᠲᠣᠷ᠎ᠠ ᠶᠢᠨ ᠬᠤᠪᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠡᠬᠣᠯᠣᠭᠢ ᠶᠢ ᠵᠠᠰᠠᠬᠤ ᠳᠤ ᠬᠡᠷᠡᠭᠯᠡᠭᠳᠡᠨ᠎ᠡ᠃
+0.2 ᠡᠨ᠎ᠡ ᠬᠡᠯᠡᠴᠡᠯ ᠤᠨ ᠲᠣᠳᠣᠷᠬᠠᠶᠢᠯᠠᠯᠲᠠ: «ᠡᠵᠡᠨ» ᠭᠡᠳᠡᠭ ᠨᠢ ᠣᠯᠠᠨ ᠤᠯᠤᠰ ᠤᠨ ᠰᠤᠶᠤᠮᠪᠤ ᠳᠤ ᠬᠤᠪᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠢ ᠪᠠᠶᠢᠭᠤᠯᠤᠨ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠨ᠂ ᠣᠯᠠᠨ ᠲᠦᠮᠡᠨ ᠳᠦ ᠰᠤᠶᠤᠮᠪᠤ ᠶᠢᠨ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠦᠢᠯᠡᠴᠢᠯᠭᠡ ᠶᠢ ᠬᠠᠩᠭᠠᠳᠠᠭ ᠬᠦᠮᠦᠨ ᠢ ᠬᠡᠯᠡᠨ᠎ᠡ; «ᠲᠣᠭᠯᠣᠭᠴᠢ» ᠭᠡᠳᠡᠭ ᠨᠢ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠳᠤ ᠬᠣᠯᠪᠣᠭᠳᠠᠨ ᠲᠣᠭᠯᠣᠬᠤ ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠢ ᠬᠡᠯᠡᠨ᠎ᠡ᠃
+0.3 ᠡᠨ᠎ᠡ ᠬᠡᠯᠡᠴᠡᠯ ᠳᠤᠮᠳᠠᠳᠤ ᠤᠯᠤᠰ ᠤᠨ ᠬᠡᠷᠦ ᠭᠠᠵᠠᠷ ᠤᠨ ᠪᠦᠭᠦᠳᠡ ᠬᠤᠪᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠢ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠭᠴᠢ ᠪᠣᠯᠤᠨ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠲᠤ ᠬᠠᠮᠤᠭ ᠤᠨ ᠠᠪᠠᠯᠢ ᠶᠢᠨ ᠵᠠᠩᠬᠢᠯ ᠪᠣᠯᠤᠨ᠎ᠠ: ᠬᠠᠤᠯᠢ ᠳᠤ ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠨ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠬᠤ᠂ ᠢᠷᠭᠡᠨᠴᠢᠯᠡᠵᠦ ᠲᠣᠭᠯᠣᠬᠤ᠂ ᠡᠷᠬᠡᠮ ᠵᠢᠷᠤᠮ ᠢ ᠪᠠᠶᠢᠭᠤᠯᠤᠬᠤ᠃
+
+## 1 ᠨᠡᠶᠢᠲᠡ ᠵᠢᠷᠤᠮ ᠤᠨ ᠳᠦᠷᠢᠮ
+1.1 ᠪᠦᠭᠦᠳᠡ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠨᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠠᠯᠪᠠᠨᠢ EULA ᠶᠢ ᠡᠷᠬᠡᠮᠯᠡᠬᠦ ᠬᠡᠷᠡᠭᠲᠡᠢ᠂ ᠠᠯᠪᠠᠨᠢ ᠵᠣᠬᠢᠶᠠᠯ ᠤᠨ ᠡᠷᠬᠡ ᠶᠢ ᠵᠠᠰᠠᠬᠤ ᠦᠢᠯᠡ ᠬᠣᠷᠢᠭᠲᠠᠢ᠃
+1.2 ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠠᠭᠤᠯᠭ᠎ᠠ᠂ ᠰᠡᠳᠦᠪ᠂ ᠦᠵᠡᠭᠳᠡᠬᠦᠨ᠂ ᠦᠰᠦᠭ᠂ ᠦᠯᠢᠭᠡᠷ ᠪᠣᠯᠤᠨ ᠨᠡᠶᠢᠭᠡᠮ ᠤᠨ ᠦᠭᠡ ᠬᠡᠯᠡ ᠨᠢ ᠰᠣᠴᠢᠶᠠᠯᠢᠰᠲ᠋ ᠤᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠦᠨᠡ ᠶᠢᠨ ᠦᠵᠡᠯ ᠲᠠᠢ ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠭᠳᠠᠵᠤ᠂ ᠡᠷᠭᠢᠯᠲᠡᠢ᠂ ᠡᠷᠦᠭᠦᠯ ᠢᠷᠡᠭᠡᠨᠴᠢᠯᠡᠭᠰᠡᠨ ᠪᠠᠶᠢᠬᠤ ᠶᠢ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠨ᠎ᠡ᠃ ᠤᠯᠤᠰ ᠲᠥᠷᠦ ᠶᠢᠨ ᠬᠡᠷᠡᠭ ᠳᠤ ᠬᠣᠯᠪᠣᠭᠳᠠᠭᠰᠠᠨ᠂ ᠡᠰᠡᠷᠭᠦᠦ᠂ ᠲᠡᠦᠬᠡ ᠶᠢ ᠬᠠᠵᠠᠭᠠᠷᠠᠭᠤᠯᠤᠭᠰᠠᠨ᠂ ᠡᠮᠡᠭᠡᠯ ᠰᠠᠷᠨᠢᠭᠤᠯ᠂ ᠰᠠᠢᠨ ᠪᠤᠰᠤ ᠵᠢᠯᠳᠦᠷ ᠵᠡᠷᠭᠡ ᠬᠣᠷᠢᠭᠲᠠᠢ ᠠᠭᠤᠯᠭ᠎ᠠ ᠶᠢ ᠪᠠᠶᠢᠭᠤᠯᠤᠨ᠂ ᠳᠡᠯᠭᠡᠭᠡᠨ᠂ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠬᠤ ᠨᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ᠃
+1.3 ᠰᠡᠷᠪᠢᠰ ᠢ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠭᠴᠢ ᠨᠢ ᠵᠥᠪᠬᠡᠨ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ᠂ UUID᠂ ᠨᠠᠰᠤ ᠵᠡᠷᠭᠡ **ᠰᠢᠩᠭᠡᠭᠦᠯᠡᠯ ᠡᠴᠡ ᠰᠡᠷᠭᠢᠶᠢᠯᠡᠬᠦ ᠪᠣᠯᠤᠨ ᠬᠠᠤᠯᠢ ᠶᠢᠨ ᠵᠠᠰᠠᠯᠭ᠎ᠠ ᠳᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ ᠮᠡᠳᠡᠭᠡ** ᠶᠢ ᠴᠤᠭᠯᠠᠵᠤ ᠪᠣᠯᠤᠨ᠎ᠠ; ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠢᠭᠤᠴ᠎ᠠ ᠶᠢ ᠬᠡᠷᠡᠭ ᠡᠴᠡ ᠬᠡᠲᠦᠭᠡᠷᠡ ᠴᠤᠭᠯᠠᠬᠤ᠂ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠶᠢᠨ ᠳᠡᠳᠦᠭᠰᠡᠨ ᠢ ᠰᠠᠶᠢᠨ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ ᠦᠭᠡᠢ ᠪᠠᠶᠢᠬᠤ᠂ ᠬᠦᠮᠦᠰ ᠦᠨ ᠮᠡᠳᠡᠭᠡ ᠶᠢ ᠢᠯᠡᠷᠡᠭᠦᠯᠬᠦ᠂ ᠬᠤᠳᠠᠯᠳᠤᠬᠤ᠂ ᠬᠠᠤᠯᠢ ᠪᠤᠰᠤ ᠠᠰᠢᠭᠯᠠᠬᠤ ᠨᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ᠃
+
+## 2 ᠡᠵᠡᠨ ᠦ ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠳᠦᠷᠢᠮ
+2.1 ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠰᠢᠰᠲᠧᠮ ᠳᠤ ᠬᠠᠤᠯᠢ ᠳᠤ ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠨ ᠬᠣᠯᠪᠣᠭᠳᠠᠬᠤ
+ᠰᠢᠠᠷᠳᠠᠯᠭ᠎ᠠ ᠬᠠᠩᠭᠠᠭᠰᠠᠨ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠡᠵᠡᠨ ᠨᠢ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠲᠠᠯᠠᠪ ᠳᠤ ᠰᠠᠶᠢᠳᠤᠷ ᠬᠣᠯᠪᠣᠭᠳᠠᠵᠤ᠂ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠶᠢᠨ ᠭᠠᠷᠤᠯᠲᠠ ᠶᠢ ᠪᠠᠶᠢᠭᠤᠯᠤᠨ᠂ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ ᠢ ᠴᠢᠯᠤᠭᠡᠨ ᠳᠠᠭᠠᠶᠢᠯᠠᠬᠤ᠂ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠦᠢᠯᠡᠴᠢᠯᠭᠡ ᠶᠢ ᠲᠣᠭᠲᠤᠮᠵᠢᠲᠠᠢ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠬᠤ ᠶᠢ ᠬᠠᠩᠭᠠᠵᠤ᠂ ᠳᠦᠷᠢᠮᠯᠡᠭᠰᠡᠨ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢ ᠡᠰᠡᠷᠬᠡᠭᠡᠯ ᠦᠭᠡᠢ ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃
+
+2.2 ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠴᠠᠭ ᠤᠨ ᠬᠣᠷᠢᠭ᠎ᠠ ᠶᠢ ᠴᠢᠩ ᠳᠠᠭᠠᠨ ᠡᠷᠬᠡᠮᠯᠡᠬᠦ
+ᠰᠡᠷᠪᠢᠰ ᠨᠢ ᠰᠢᠩᠭᠡᠭᠦᠯᠡᠯ ᠡᠴᠡ ᠰᠡᠷᠭᠢᠶᠢᠯᠡᠬᠦ ᠴᠠᠭ ᠤᠨ ᠳᠦᠷᠢᠮ ᠢ ᠴᠢᠩ ᠳᠠᠭᠠᠨ ᠪᠢᠡᠯᠡᠭᠡᠵᠦ᠂ ᠨᠡᠭᠡᠭᠡᠯᠲᠡ ᠶᠢᠨ ᠴᠠᠭ ᠢ ᠳᠦᠷᠢᠮᠯᠡᠨ᠎ᠡ:
+- ᠠᠵᠢᠯ ᠤᠨ ᠡᠳᠦᠷ (ᠳᠠᠸᠠ ᠡᠴᠡ ᠪᠠᠰᠠᠩ ᠬᠦᠷᠲᠡᠯᠡ): ᠵᠥᠪᠬᠡᠨ 17:00—22:00 ᠴᠠᠭ ᠲᠤ ᠨᠡᠭᠡᠭᠡᠨ᠎ᠡ
+- ᠭᠠᠷᠠᠭ ᠤᠨ ᠲᠡᠭᠦᠰᠭᠡᠯ ᠪᠣᠯᠤᠨ ᠬᠠᠤᠯᠢ ᠶᠢᠨ ᠪᠠᠶᠢᠷ ᠤᠨ ᠡᠳᠦᠷ: ᠵᠥᠪᠬᠡᠨ 06:00—22:00 ᠴᠠᠭ ᠲᠤ ᠨᠡᠭᠡᠭᠡᠨ᠎ᠡ
+ᠪᠤᠰᠤᠳ ᠴᠠᠭ ᠲᠤ **ᠰᠡᠷᠪᠢᠰ ᠢ ᠨᠡᠭᠡᠵᠦ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠬᠤ ᠨᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ**᠂ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠦᠨ ᠰᠣᠨᠢ ᠳᠤ ᠨᠡᠭᠡᠵᠦ ᠲᠣᠭᠯᠣᠬᠤ᠂ ᠬᠢᠴᠢᠶᠡᠯ ᠡᠴᠡ ᠳᠤᠯᠳᠠᠵᠤ ᠲᠣᠭᠯᠣᠬᠤ ᠵᠡᠷᠭᠡ ᠠᠰᠠᠭᠤᠳᠠᠯ ᠢ ᠤᠨᠳᠤᠰᠤ ᠡᠴᠡ ᠨᠢ ᠲᠠᠰᠤᠯᠬᠤ᠃
+
+2.3 ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠦᠨ ᠲᠥᠯᠦᠪᠦᠷᠢ ᠶᠢ ᠴᠢᠩ ᠳᠠᠭᠠᠨ ᠵᠠᠰᠠᠬᠤ
+ᠡᠵᠡᠨ ᠨᠢ ᠤᠯᠤᠰ ᠤᠨ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠦᠨ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠵᠢᠷᠤᠮᠯᠠᠭᠰᠠᠨ ᠬᠣᠷᠢᠭ᠎ᠠ ᠶᠢ ᠴᠢᠩ ᠳᠠᠭᠠᠨ ᠪᠢᠡᠯᠡᠭᠡᠬᠦ ᠬᠡᠷᠡᠭᠲᠡᠢ:
+- 8 ᠨᠠᠰᠤ ᠡᠴᠡ ᠳᠣᠣᠷ᠎ᠠ ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ: **ᠮᠥᠩᠭᠥ ᠣᠷᠤᠭᠤᠯᠬᠤ ᠪᠣᠯᠤᠨ ᠲᠥᠯᠦᠴᠢᠯᠡᠬᠦ ᠪᠦᠷᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ**
+- 8–15 ᠨᠠᠰᠤᠲᠠᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ: ᠨᠢᠭᠡ ᠤᠳᠠᠭ᠎ᠠ ≤50 ᠶᠤᠸᠠᠨ᠂ ᠰᠠᠷ᠎ᠠ ᠲᠤ ≤200 ᠶᠤᠸᠠᠨ
+- 16–17 ᠨᠠᠰᠤᠲᠠᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ: ᠨᠢᠭᠡ ᠤᠳᠠᠭ᠎ᠠ ≤100 ᠶᠤᠸᠠᠨ᠂ ᠰᠠᠷ᠎ᠠ ᠲᠤ ≤400 ᠶᠤᠸᠠᠨ
+ᠬᠡᠷᠡᠭᠰᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠠᠯᠪᠠᠨᠢ EULA ᠳᠤ ᠡᠮᠦᠨᠡ ᠲᠠᠯ᠎ᠠ ᠶᠢᠨ ᠬᠤᠳᠠᠯᠳᠤᠭ᠎ᠠ᠂ ᠠᠰᠢᠭ ᠣᠯᠵᠠᠬᠤ᠂ ᠲᠥᠯᠦᠪᠦᠷᠢ ᠲᠡᠢ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠬᠤ ᠶᠢ ᠬᠣᠷᠢᠭᠰᠠᠨ ᠪᠣᠯᠪᠠᠯ᠂ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ **ᠡᠷᠭᠢᠯ ᠦᠭᠡᠢ ᠲᠥᠯᠦᠪᠦᠷᠢ ᠠᠪᠬᠤ᠂ ᠳᠣᠲᠠᠭ᠎ᠠ ᠬᠤᠪᠢᠶᠠᠷᠢ ᠠᠪᠬᠤ᠂ ᠰᠠᠭᠤᠳᠠᠭ ᠰᠡᠯᠡᠭᠡᠬᠦ ᠦᠢᠯᠡ ᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ**᠃
+ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠢ ᠣᠯᠠᠨ ᠮᠥᠩᠭᠥ ᠣᠷᠤᠭᠤᠯᠬᠤ᠂ ᠨᠢᠭᠤᠯᠲᠠ ᠶᠢᠨ ᠮᠥᠩᠭᠥ ᠰᠢᠯᠭᠠᠬᠤ᠂ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ ᠢ ᠨᠢᠭᠤᠬᠤ ᠶᠢ ᠳᠠᠭᠠᠯᠳᠠᠭᠤᠯᠤᠨ᠂ ᠦᠵᠡᠭᠦᠯᠡᠨ ᠪᠣᠯᠬᠤ ᠦᠭᠡᠢ᠃
+
+2.4 ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠪᠦᠯᠦᠭ ᠢ ᠵᠠᠰᠠᠬᠤ ᠶᠢᠨ ᠳᠦᠷᠢᠮ
+ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠵᠠᠰᠠᠭᠴᠢ ᠨᠢ ᠪᠦᠷᠢᠨ ᠢᠷᠭᠡᠨ ᠦ ᠦᠢᠯᠡ ᠶᠢᠨ ᠴᠢᠳᠠᠪᠤᠷᠢ ᠲᠡᠢ ᠨᠠᠰᠤᠨ ᠳᠡᠭᠦᠷᠡᠯ ᠬᠦᠮᠦᠨ ᠪᠠᠶᠢᠬᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ ᠪᠣᠯᠤᠭᠠᠳ᠂ ᠤᠷᠠᠨ ᠤ ᠴᠢᠳᠠᠪᠤᠷᠢ᠂ ᠬᠠᠷᠢᠤᠴᠠᠯᠭ᠎ᠠ ᠶᠢᠨ ᠰᠡᠳᠬᠢᠯ᠂ ᠬᠠᠤᠯᠢ ᠶᠢᠨ ᠣᠶᠢᠯᠠᠭ᠎ᠠ ᠪᠠᠷ ᠰᠣᠩᠭᠣᠵᠤ ᠲᠣᠮᠢᠶᠠᠯᠠᠬᠤ ᠶᠢ ᠪᠠᠷᠢᠮᠲ᠋ᠠᠯᠠᠨ᠎ᠠ᠃ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠳᠣᠲᠣᠷ᠎ᠠ ᠪᠦᠭᠦᠳᠡ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠤᠨ ᠪᠠᠶᠢᠷᠢ ᠨᠢ ᠠᠳᠠᠯᠢ; ᠡᠷᠬᠡ ᠶᠢᠨ ᠳᠡᠭᠡᠳᠦ ᠶᠠᠯᠭᠠᠯᠭ᠎ᠠ᠂ ᠳᠤᠷᠠᠪᠲᠠᠢ ᠬᠣᠷᠢᠭᠯᠠᠯᠭ᠎ᠠ᠂ ᠵᠠᠰᠠᠯᠭ᠎ᠠ ᠶᠢᠨ ᠡᠷᠬᠡ ᠶᠢ ᠬᠡᠷᠡᠭ ᠡᠴᠡ ᠬᠡᠲᠦᠭᠡᠷᠡ ᠠᠰᠢᠭᠯᠠᠬᠤ ᠨᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ᠃
+
+2.5 ᠨᠡᠶᠢᠭᠡᠮ ᠦᠨ ᠠᠭᠠᠯᠢ ᠪᠣᠯᠤᠨ ᠠᠭᠤᠯᠭ᠎ᠠ ᠶᠢ ᠵᠠᠰᠠᠬᠤ
+ᠡᠵᠡᠨ ᠨᠢ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠲᠡᠷᠢᠭᠦᠨ ᠬᠠᠷᠢᠤᠴᠠᠯᠭ᠎ᠠ ᠲᠠᠢ ᠬᠦᠮᠦᠨ ᠪᠣᠯᠤᠭ᠎ᠠᠳ᠂ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠠᠭᠠᠯᠢ ᠶᠢ ᠡᠰᠡᠷᠬᠡᠭᠡᠯ ᠦᠭᠡᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ:
+- ᠣᠯᠠᠨ ᠤ ᠴᠠᠲ᠋ᠢᠩ ᠤᠨ ᠠᠭᠤᠯᠭ᠎ᠠ ᠶᠢ ᠴᠢᠩ ᠳᠠᠭᠠᠨ ᠵᠠᠰᠠᠬᠤ: ᠬᠠᠷᠠᠯᠭ᠎ᠠ ᠦᠭᠡ᠂ ᠬᠦᠮᠦᠨ ᠦ ᠳᠤᠷᠠ ᠳᠤ ᠳᠠᠭᠠᠷᠢᠯᠲᠠ᠂ ᠮᠡᠰᠡᠬᠡᠯ ᠬᠢᠵᠦ ᠮᠠᠷᠭᠤᠯᠳᠤᠭᠠᠨ ᠬᠣᠲᠣᠯᠳᠤᠯᠤᠬᠤ᠂ ᠰᠤᠶᠤᠮᠪᠤ ᠶᠢᠨ ᠳᠣᠷᠠᠭᠤᠯᠠᠯᠭ᠎ᠠ ᠶᠢ ᠲᠠᠰᠤᠯᠬᠤ
+- ᠨᠢᠭᠤᠴ᠎ᠠ ᠳᠤ ᠪᠠᠶᠢᠭ᠎ᠠ ᠬᠣᠷᠢᠭᠲᠠᠢ ᠰᠢᠷ᠎ᠡ ᠦᠭᠡ᠂ ᠰᠠᠢᠨ ᠪᠤᠰᠤ ᠦᠭᠡ ᠬᠡᠯᠡ᠂ ᠪᠤᠷᠤᠭᠤ ᠦᠨᠡ ᠶᠢᠨ ᠦᠵᠡᠯ ᠦᠨ ᠦᠭᠡ ᠶᠢ ᠣᠨᠣᠯᠠᠭᠠᠲᠠᠢ ᠰᠢᠯᠭᠠᠬᠤ
+- ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠢ ᠵᠣᠬᠢᠰᠲᠠᠢ ᠠᠮᠠᠷᠬᠤ ᠪᠣᠯᠤᠨ ᠡᠷᠦᠭᠦᠯ ᠲᠣᠭᠯᠣᠬᠤ ᠳᠤ ᠳᠠᠭᠠᠯᠳᠠᠭᠤᠯᠤᠨ᠂ ᠰᠣᠨᠢ ᠳᠤ ᠨᠡᠭᠡᠵᠦ ᠲᠣᠭᠯᠣᠬᠤ᠂ ᠰᠤᠷᠭᠠᠭᠤᠯᠢ ᠪᠣᠯᠤᠨ ᠠᠵᠢᠯ ᠢ ᠬᠠᠶᠠᠭᠠᠬᠤ ᠦᠢᠯᠡ ᠳᠦ ᠡᠰᠡᠷᠭᠦᠴᠡᠬᠦ
+- ᠰᠢᠩᠭᠡᠭᠦᠯᠡᠯ ᠨᠢ ᠬᠦᠨᠳᠦ᠂ ᠬᠣᠷᠢᠭᠲᠠᠢ ᠦᠢᠯᠡ ᠶᠢ ᠳᠠᠪᠲᠠᠨ ᠵᠠᠰᠠᠭᠠ ᠦᠭᠡᠢ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠢ ᠤᠳᠠᠭᠠᠨ ᠬᠣᠷᠢᠭᠯᠠᠬᠤ ᠡᠷᠬᠡ ᠲᠡᠢ
+
+2.6 ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠡᠷᠬᠡ ᠠᠰᠢᠭ ᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ
+ᠬᠡᠨ ᠴᠤ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠪᠠᠷᠢᠯᠭ᠎ᠠ᠂ ᠬᠠᠳᠠᠭᠠᠯᠠᠭᠰᠠᠨ ᠳᠡᠳᠦᠭᠰᠡᠨ᠂ ᠲᠣᠭᠯᠣᠬᠤ ᠶᠣᠰᠤ᠂ ᠡᠷᠬᠡᠮ ᠵᠢᠷᠤᠮ ᠪᠣᠯᠤᠨ ᠰᠢᠭᠦᠮᠵᠢ ᠶᠢ ᠬᠠᠷ᠎ᠠ ᠰᠠᠨᠠᠭ᠎ᠠ ᠲᠠᠢ ᠡᠪᠳᠡᠷᠡᠬᠦ ᠨᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ; ᠡᠵᠡᠨ ᠨᠢ ᠡᠪᠳᠡᠷᠡᠭᠴᠢ ᠳᠦ ᠶᠠᠯᠠ ᠰᠢᠢᠳᠭᠡᠯ ᠦᠭᠴᠦ ᠬᠠᠷᠢᠤᠴᠠᠯᠭ᠎ᠠ ᠭᠠᠷᠭᠠᠬᠤ ᠡᠷᠬᠡ ᠲᠡᠢ᠃
+
+## 3 ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠤᠨ ᠲᠣᠭᠯᠣᠬᠤ ᠶᠢᠨ ᠳᠦᠷᠢᠮ
+3.1 ᠬᠠᠤᠯᠢ ᠳᠤ ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠨ ᠰᠢᠯᠭᠠᠬᠤ ᠦᠢᠯᠡ ᠶᠢᠨ ᠦᠴᠡᠭᠦ
+ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠢ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠳᠤ ᠣᠷᠣᠬᠤ ᠶᠢᠨ ᠡᠮᠦᠨ᠎ᠡ ᠠᠯᠪᠠᠨᠢ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠲᠠᠯᠠᠪ ᠳᠤ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠪᠠᠶᠢᠳᠠᠯ ᠢ ᠰᠢᠯᠭᠠᠬᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ; **ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠰᠢᠰᠲᠧᠮ ᠳᠤ ᠬᠣᠯᠪᠣᠭᠳᠠᠭᠰᠠᠨ᠂ ᠪᠦᠷᠢᠳᠭᠡᠯᠳᠦ ᠬᠠᠳᠠᠭᠠᠯᠠᠭᠰᠠᠨ ᠬᠤᠴᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠢ ᠲᠡᠷᠢᠭᠦᠨ ᠳᠤ ᠰᠣᠩᠭᠣᠬᠤ**; ᠪᠦᠷᠢᠳᠭᠡᠯᠳᠦ ᠦᠭᠡᠢ᠂ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠦᠭᠡᠢ᠂ ᠶᠡᠬᠡ ᠲᠡᠮᠦᠷ ᠲᠡᠢ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠳᠤ ᠪᠣᠯᠵᠤᠰᠤᠲᠠᠢ ᠬᠠᠷᠢᠴᠠᠭᠤᠯᠤᠯ ᠬᠢᠶᠡᠬᠦ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃
+
+3.2 ᠲᠣᠭᠯᠣᠬᠤ ᠴᠠᠭ ᠤᠨ ᠬᠣᠷᠢᠭ᠎ᠠ ᠶᠢ ᠴᠢᠩ ᠳᠠᠭᠠᠨ ᠡᠷᠬᠡᠮᠯᠡᠬᠦ
+ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠢ ᠦᠪᠡᠷ ᠢᠶᠡᠨ ᠦᠢᠯᠡᠴᠢᠯᠡᠵᠦ ᠲᠣᠭᠯᠣᠬᠤ ᠴᠠᠭ ᠢ ᠵᠠᠰᠠᠨ᠂ ᠤᠯᠤᠰ ᠤᠨ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠦᠨ ᠲᠣᠭᠯᠣᠬᠤ ᠴᠠᠭ ᠤᠨ ᠬᠣᠷᠢᠭ᠎ᠠ ᠶᠢᠨ ᠪᠣᠳᠤᠭᠠᠯᠢ ᠶᠢ ᠪᠢᠡᠯᠡᠭᠡᠬᠦ ᠬᠡᠷᠡᠭᠲᠡᠢ:
+- ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠨᠢ ᠵᠥᠪᠬᠡᠨ ᠭᠠᠷᠠᠭ ᠤᠨ 5᠂ 6᠂ 7 ᠡᠳᠦᠷ ᠪᠣᠯᠤᠨ ᠬᠠᠤᠯᠢ ᠶᠢᠨ ᠪᠠᠶᠢᠷ ᠤᠨ ᠡᠳᠦᠷ ᠤᠨ ᠲᠣᠭᠲᠠᠭᠠᠭᠰᠠᠨ ᠴᠠᠭ ᠲᠤ ᠲᠣᠭᠯᠣᠵᠤ ᠪᠣᠯᠤᠨ᠎ᠠ
+- ᠰᠣᠨᠢ ᠲᠤ ᠲᠣᠭᠯᠣᠬᠤ᠂ ᠬᠢᠴᠢᠶᠡᠯ ᠡᠴᠡ ᠳᠤᠯᠳᠠᠵᠤ ᠲᠣᠭᠯᠣᠬᠤ᠂ ᠰᠢᠩᠭᠡᠭᠦᠯᠡᠯ ᠲᠡᠢ ᠦᠢᠯᠡ ᠦᠭᠡᠢ ᠪᠠᠶᠢᠬᠤ ᠵᠡᠷᠭᠡ ᠰᠠᠢᠨ ᠪᠤᠰᠤ ᠦᠢᠯᠡ ᠢ ᠬᠠᠲᠠᠭᠤᠷᠠᠭᠤᠯᠤᠨ ᠲᠠᠰᠤᠯᠬᠤ
+- ᠨᠠᠰᠤᠨ ᠳᠡᠭᠦᠷᠡᠯ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠨᠢ ᠤᠬᠠᠭᠠᠨ ᠲᠠᠢ ᠲᠣᠭᠯᠣᠵᠤ᠂ ᠬᠢᠶᠠᠯᠢ ᠶᠢᠨ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠳᠤ ᠰᠢᠩᠭᠡᠵᠦ ᠪᠣᠯᠬᠤ ᠦᠭᠡᠢ
+
+3.3 ᠢᠷᠭᠡᠨᠴᠢᠯᠡᠵᠦ ᠲᠣᠭᠯᠣᠬᠤ᠂ ᠵᠠᠰᠠᠯᠭ᠎ᠠ ᠳᠤ ᠳᠠᠭᠠᠬᠤ
+ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠢ ᠤᠯᠤᠰ ᠤᠨ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠰᠢᠠᠷᠳᠠᠯᠭ᠎ᠠ᠂ ᠡᠵᠡᠨ ᠪᠣᠯᠤᠨ ᠵᠠᠰᠠᠭᠴᠢ ᠨᠠᠷ ᠤᠨ ᠬᠠᠤᠯᠢ ᠶᠢᠨ ᠵᠠᠰᠠᠯᠭ᠎ᠠ ᠳᠤ ᠰᠠᠶᠢᠳᠤᠷ ᠳᠠᠭᠠᠵᠤ᠂ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠳᠦᠷᠢᠮ ᠢ ᠡᠷᠬᠡᠮᠯᠡᠵᠦ᠂ ᠪᠤᠰᠤᠳ ᠤᠨ ᠠᠵᠢᠯ ᠤᠨ ᠦᠷ᠎ᠡ ᠶᠢ ᠬᠦᠨᠳᠦᠯᠡᠵᠦ᠂ ᠰᠠᠢᠨ ᠲᠣᠭᠯᠣᠬᠤ ᠣᠷᠴᠢᠨ ᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃
+
+3.4 ᠦᠭᠡ ᠬᠡᠯᠡ ᠶᠢᠨ ᠳᠦᠷᠢᠮ
+ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠳᠣᠲᠣᠷ᠎ᠠ ᠴᠠᠲ᠋ᠢᠩ ᠪᠣᠯᠤᠨ ᠨᠡᠶᠢᠭᠡᠮ ᠳᠦ ᠬᠡᠯᠡᠬᠦ ᠦᠭᠡ ᠨᠢ ᠢᠷᠭᠡᠨᠴᠢᠯᠡᠭᠰᠡᠨ ᠪᠠᠶᠢᠬᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ; ᠤᠯᠤᠰ ᠲᠥᠷᠦ ᠶᠢᠨ ᠬᠡᠷᠡᠭ ᠳᠤ ᠬᠣᠯᠪᠣᠭᠳᠠᠭᠰᠠᠨ᠂ ᠡᠰᠡᠷᠭᠦᠦ᠂ ᠡᠮᠡᠭᠡᠯ ᠳᠣᠭᠣᠯᠠᠩ᠂ ᠬᠠᠷᠠᠯᠭ᠎ᠠ ᠦᠭᠡ᠂ ᠮᠠᠷᠭᠤᠯᠳᠤᠭᠠᠨ ᠬᠣᠲᠣᠯᠳᠤᠯᠤᠬᠤ᠂ ᠰᠤᠶᠤᠮᠪᠤ ᠶᠢᠨ ᠳᠣᠷᠠᠭᠤᠯᠠᠯᠭ᠎ᠠ ᠵᠡᠷᠭᠡ ᠪᠦᠷᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ ᠦᠭᠡ ᠶᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ᠃
+
+3.5 ᠬᠠᠤᠯᠢ ᠲᠡᠢ ᠡᠷᠬᠡ ᠠᠰᠢᠭ ᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ
+ᠲᠣᠭᠯᠣᠭᠴᠢ ᠬᠣᠷᠢᠭᠲᠠᠢ ᠲᠥᠯᠦᠪᠦᠷᠢ ᠠᠪᠬᠤ᠂ ᠬᠠᠷ᠎ᠠ ᠰᠠᠨᠠᠭ᠎ᠠ ᠲᠠᠢ ᠬᠣᠷᠢᠭᠯᠠᠯᠭ᠎ᠠ᠂ ᠰᠤᠶᠤᠮᠪᠤ ᠶᠢᠨ ᠳᠣᠷᠠᠭᠤᠯᠠᠯᠭ᠎ᠠ᠂ ᠰᠠᠢᠨ ᠪᠤᠰᠤ ᠳᠠᠭᠠᠯᠳᠠᠭᠤᠯᠤᠯ ᠵᠡᠷᠭᠡ ᠡᠷᠬᠡ ᠶᠢ ᠵᠢᠭᠰᠢᠬᠦ ᠦᠢᠯᠡ ᠳᠦ ᠲᠤᠯᠤᠭᠠᠷᠠᠭᠰᠠᠨ ᠪᠣᠯᠪᠠᠯ᠂ ᠠᠯᠪᠠᠨᠢ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢᠨ ᠰᠤᠪᠠᠭ ᠢᠶᠠᠷ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ ᠤᠨ ᠪᠠᠲᠢᠯᠭ᠎ᠠ ᠶᠢ ᠬᠦᠯᠢᠶᠡᠭᠦᠯᠵᠦ᠂ ᠦᠪᠡᠷ ᠦᠨ ᠬᠠᠤᠯᠢ ᠲᠡᠢ ᠡᠷᠬᠡ ᠠᠰᠢᠭ ᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠵᠤ ᠪᠣᠯᠤᠨ᠎ᠠ᠃
+
+## 4 ᠬᠠᠪᠰᠤᠷᠠᠯᠲᠠ
+4.1 ᠡᠨ᠎ᠡ ᠬᠡᠯᠡᠴᠡᠯ ᠨᠢ ᠨᠡᠶᠢᠲᠡ ᠶᠢᠨ ᠠᠰᠢᠭ ᠤᠨ ᠮᠦᠷ᠎ᠡᠨ ᠦ ᠡᠷᠬᠢ ᠶᠢᠨ ᠦᠪᠡᠷ ᠦᠨ ᠵᠠᠰᠠᠯᠭ᠎ᠠ ᠪᠣᠯᠤᠭ᠎ᠠᠳ᠂ ᠬᠤᠪᠢ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠡᠷᠬᠡᠮ ᠢ ᠳᠦᠷᠢᠮᠯᠡᠬᠦ᠂ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠦᠨ ᠡᠷᠦᠭᠦᠯ ᠦᠰᠬᠦᠯ ᠢ ᠬᠠᠮᠭᠠᠭᠠᠯᠠᠬᠤ᠂ ᠰᠤᠶᠤᠮᠪᠤ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠡᠬᠣᠯᠣᠭᠢ ᠶᠢ ᠠᠷᠢᠭᠯᠠᠬᠤ ᠳᠤ ᠵᠣᠷᠢᠭᠤᠯᠤᠭᠳᠠᠭᠰᠠᠨ᠃
+4.2 ᠡᠨ᠎ᠡ ᠬᠡᠯᠡᠴᠡᠯ ᠤᠨ ᠠᠭᠤᠯᠭ᠎ᠠ ᠨᠢ ᠤᠯᠤᠰ ᠤᠨ ᠬᠠᠤᠯᠢ ᠵᠢᠷᠤᠮ ᠪᠣᠯᠤᠨ ᠠᠯᠪᠠᠨᠢ ᠪᠣᠳᠤᠭᠠᠯᠢ ᠲᠠᠢ ᠵᠡᠷᠭᠡᠯᠡᠭᠰᠡᠨ ᠪᠣᠯᠪᠠᠯ᠂ ᠤᠯᠤᠰ ᠤᠨ ᠠᠯᠪᠠᠨᠢ ᠵᠢᠷᠤᠮ ᠢ ᠪᠠᠷᠢᠮᠲ᠋ᠠᠯᠠᠨ᠎ᠠ᠃
+4.3 ᠪᠦᠭᠦᠳᠡ ᠬᠤᠪᠢ ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠡᠵᠡᠨ ᠪᠣᠯᠤᠨ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠠᠷ ᠨᠢ ᠰᠡᠷᠪᠢᠰ ᠳᠤ ᠣᠷᠣᠵᠤ ᠲᠣᠭᠯᠣᠪᠠᠯ᠂ ᠡᠨ᠎ᠡ ᠬᠡᠯᠡᠴᠡᠯ ᠤᠨ ᠪᠦᠷᠢ ᠵᠦᠢᠯ ᠢ ᠨᠢᠭᠤᠴ᠎ᠠ ᠶᠢᠨ ᠪᠠᠷᠢᠮᠲ᠋ᠠᠯᠠᠵᠤ᠂ ᠰᠠᠶᠢᠳᠤᠷ ᠳᠠᠭᠠᠵᠤ ᠪᠠᠶᠢᠨ᠎ᠠ ᠬᠡᠮᠡᠭᠡᠨ ᠦᠵᠡᠨ᠎ᠡ᠃`)" class="MC_Button MC_Button_Hero MC_Button_Style_FullWidth MC_Glyph_Link_B MC_Style_Gold_1 MC_mediaBlockF_setStorageKeys" style="width:auto">ᠡᠵᠡᠨ ᠪᠣᠯᠤᠨ ᠲᠣᠭᠯᠣᠭᠴᠢ ᠨᠤᠭᠤᠳ ᠤᠨ ᠬᠡᠯᠡᠴᠡᠯ</button>
+<script>
+   let listvar = '';
+ // 【ᠰᠠᠨᠤᠭᠤᠯᠭ᠎ᠠ】ᠲᠦᠯᠬᠢᠭᠦᠷ ᠨᠢ ᠡᠮᠦᠨᠡ ᠲᠠᠯ᠎ᠠ ᠳᠤ ᠢᠯᠡᠷᠡᠢ ᠪᠠᠶᠢᠨ᠎ᠠ᠂ ᠵᠥᠪᠬᠡᠨ ᠭᠠᠵᠠᠷ ᠤᠨ ᠳᠤᠷᠠ ᠠᠰᠠᠭᠤᠯᠠ᠂ ᠣᠯᠠᠨ ᠤᠯᠤᠰ ᠤᠨ ᠰᠤᠶᠤᠮᠪᠤ ᠳᠤ ᠬᠡᠪᠯᠡᠵᠦ ᠪᠣᠯᠬᠤ ᠦᠭᠡᠢ!
+    const DB_INFO = {
+        api: "https://tinywebdb.appinventor.space/api",
+        user: "ss2603",
+        secret: "9d748a61"
+    };
+
+    let isFetching = false; // ᠣᠯᠠᠨ ᠳᠠᠬᠢᠨ ᠰᠢᠯᠭᠠᠬᠤ ᠡᠴᠡ ᠰᠡᠷᠭᠢᠶᠢᠯᠡᠬᠦ
+
+    function showAlert(msg) {
+        alert(msg);
+    }
+
+    async function readDB(tag) {
+    const form = new FormData();
+    form.append("user", DB_INFO.user);
+    form.append("secret", DB_INFO.secret);
+    form.append("action", "get");
+    form.append("tag", tag);
+    try {
+        const res = await fetch(DB_INFO.api, {
+            method: "POST",
+            body: form
+        })
+        if (!res.ok) throw new Error(`ᠢᠨᠲᠧᠷᠹᠧᠶᠢᠰ ᠤᠨ ᠠᠯᠳᠠᠭ᠎ᠠ: ${res.status}`);
+        const rawTxt = await res.text();
+
+        let val = rawTxt.replace('{', '')
+            .replace('}', '')
+            .replace('\"', '').replace('\"', '').replace(tag, '').replace('null', '').replace(':', '');
+            ;
+
+
+        // ᠰᠠᠬᠢᠯᠭ᠎ᠠ: ᠣᠯᠵᠠᠭᠰᠠᠨ ᠨᠢ { ᠪᠣᠶᠤ ᠬᠣᠭᠣᠰᠣᠨ ᠪᠣᠯᠪᠠᠯ null ᠢ ᠪᠤᠴᠠᠭ᠎ᠠᠨ᠎ᠠ!
+        if(val.trim() === '' || val.trim() === "{"){
+            return '';
+        }
+        return val;
+    } catch (err) {
+        alert("ᠳᠡᠳᠦᠭᠰᠡᠨ ᠰᠠᠩᠭ᠎ᠠ ᠤᠨ ᠤᠨᠰᠢᠯᠲᠠ ᠶᠢᠨ ᠠᠯᠳᠠᠭ᠎ᠠ: ", err.message);
+        return null; // null ᠢ ᠪᠤᠴᠠᠭ᠎ᠠᠪᠠᠯ ᠬᠠᠭᠤᠳᠠᠰᠤ ᠢ ᠳᠠᠷᠤᠭᠤᠯᠬᠤ ᠦᠭᠡᠢ
+    }
+}
+
+    async function writeDB(tag, value) {
+        const form = new FormData();
+        form.append("user", DB_INFO.user);
+        form.append("secret", DB_INFO.secret);
+        form.append("action", "update");
+        form.append("tag", tag);
+        form.append("value", value);
+        try {
+            const res = await fetch(DB_INFO.api, {
+                method: "POST",
+                body: form
+            })
+            if (!res.ok) throw new Error(`ᠪᠢᠴᠢᠯᠲᠡ ᠪᠣᠯᠤᠭᠰᠠᠨ ᠦᠭᠡᠢ: ${res.status}`);
+            return true;
+        } catch (err) {
+            alert("ᠪᠢᠴᠢᠯᠲᠡ ᠶᠢᠨ ᠠᠯᠳᠠᠭ᠎ᠠ: " + err.message);
+            return false;
+        }
+    }
+
+    async function refreshAll() {
+        if (isFetching) return;
+        pollinationsChat([
+{role:"system", content:`ᠴᠢ Minecraft ᠰᠡᠷᠪᠢᠰ ᠤᠨ ᠳᠠᠭᠠᠯᠳᠠᠭᠴᠢ ᠪᠣᠯᠤᠭ᠎ᠠᠳ᠂ ᠤᠯᠤᠰ ᠤᠨ ᠰᠡᠷᠪᠢᠰ ᠢ ᠵᠠᠰᠠᠬᠤ ᠶᠢᠨ ᠨᠡᠶᠢᠲᠡ ᠲᠠᠯᠠᠪ ᠤᠨ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠶᠢ ᠬᠠᠷᠢᠤᠴᠠᠨ᠎ᠠ᠃ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ ᠢ ᠰᠢᠨᠵᠢᠯᠡᠵᠦ᠂ ᠬᠠᠰᠤᠭ᠌ ᠤᠨ ᠪᠠᠶᠢᠳᠠᠯ ᠪᠣᠯᠤᠨ ᠠᠭᠤᠯᠭ᠎ᠠ ᠶᠢᠨ ᠲᠣᠪᠴᠢ ᠰᠢᠨᠵᠢᠯᠭ᠎ᠠ ᠶᠢ ᠭᠠᠷᠭᠠᠨ᠎ᠠ᠃ ᠳᠣᠷᠠᠭᠠᠯᠠᠭᠳᠠᠬᠤ ᠨᠣᠬᠣᠯᠳᠣᠷᠠᠢ ᠨᠢᠭᠡ ᠣᠨᠣᠭ ᠬᠠᠰᠤᠬᠤ ᠬᠡᠷᠡᠭᠲᠡᠢ:
+1) ᠴᠢᠰᠤᠯᠠᠭ ᠳᠣᠷᠠᠭᠤᠯᠠᠯᠭ᠎ᠠ᠂ ᠵᠢᠰᠢᠶᠡᠨ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠳᠣᠲᠣᠷ᠎ᠠ ᠠᠮᠢᠲᠠᠨ ᠢ ᠭᠡᠮᠲᠦᠭᠡᠬᠦ;
+2) ᠠᠯᠳᠠᠴᠢᠯᠠᠨ ᠲᠡᠮᠡᠴᠡᠯᠳᠦᠬᠦ;
+3) ᠵᠣᠬᠢᠰ ᠪᠤᠰᠤ ᠴᠠᠲ᠋ᠢᠩ ᠤᠨ ᠠᠭᠤᠯᠭ᠎ᠠ᠂ ᠵᠢᠰᠢᠶᠡᠨ ᠲᠥᠯᠦᠪᠦᠷᠢ ᠠᠪᠬᠤ (ᠨᠢᠭᠡ ᠮᠥᠩᠭᠥ ᠴᠤ ᠠᠪᠴᠤ ᠪᠣᠯᠬᠤ ᠦᠭᠡᠢ)᠂ ᠤᠯᠤᠰ ᠲᠥᠷᠦ ᠳᠤ ᠬᠣᠯᠪᠣᠭᠳᠠᠬᠤ᠂ ᠤᠯᠤᠰ ᠤᠨ ᠨᠡᠷ᠎ᠡ ᠬᠦᠨᠳᠦ ᠢ ᠭᠡᠮᠲᠦᠭᠡᠬᠦ᠂ ᠳᠣᠷᠠᠭᠤᠯᠠᠯᠭ᠎ᠠ ᠪᠣᠯᠤᠨ ᠡᠮᠡᠭᠡᠯ ᠰᠠᠷᠨᠢᠭᠤᠯ᠂ ᠨᠠᠰᠤᠨ ᠪᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠦᠮᠦᠰ ᠦᠨ ᠡᠷᠬᠡ ᠢ ᠭᠡᠮᠲᠦᠭᠡᠬᠦ ᠵᠡᠷᠭᠡ ᠠᠭᠤᠯᠭ᠎ᠠ; ᠢᠯᠠᠩᠭᠤᠶ᠎ᠠ ᠳᠠᠭᠠᠯᠳᠠᠭ᠎ᠠ ᠡᠴᠡ ᠵᠠᠯᠠᠳᠤᠬᠤ ᠳᠤ ᠵᠣᠷᠢᠭᠤᠯᠤᠭᠰᠠᠨ ᠰᠢᠷ᠎ᠡ ᠦᠭᠡ ᠳᠦ ᠢᠯᠠᠩᠭᠤᠶ᠎ᠠ ᠠᠩᠬᠠᠷᠠᠯ ᠲᠠᠲᠤᠭᠳᠤᠨ᠎ᠠ;
+4) ᠠᠶᠤᠤᠯ ᠲᠠᠢ ᠦᠢᠯᠡ ᠳᠦ ᠵᠢᠭᠰᠠᠬᠤ ᠨᠤᠭᠤᠳ᠂ ᠵᠢᠰᠢᠶᠡᠨ ᠦᠨᠳᠦᠷ ᠡᠴᠡ ᠰᠡᠬᠡᠷᠵᠦ ᠪᠤᠤᠬᠤ;
+5) ᠬᠠᠤᠯᠢ ᠶᠢᠷ ᠬᠣᠷᠢᠭᠰᠠᠨ ᠪᠤᠰᠤᠳ ᠪᠦᠷᠢ ᠠᠭᠤᠯᠭ᠎ᠠ;
+6) ᠰᠣᠨᠢ ᠳᠤ ᠨᠡᠭᠡᠵᠦ ᠲᠣᠭᠯᠣᠬᠤ ᠪᠣᠶᠤ ᠲᠣᠭᠯᠣᠭ᠎ᠠ ᠳᠤ ᠰᠢᠩᠭᠡᠬᠦ᠃
+ᠲᠡᠮᠳᠡᠭᠯᠡᠯ ᠢᠶᠠᠷ ᠳᠡᠭᠡᠷ᠎ᠡ ᠬᠡᠯᠡᠭᠳᠡᠭᠰᠡᠨ ᠦᠢᠯᠡ ᠪᠣᠯᠤᠭᠰᠠᠨ ᠢ ᠮᠡᠳᠡᠭᠡᠳᠦᠯᠪᠡᠯ᠂ ᠵᠥᠪᠬᠡᠨ ᠦᠢᠯᠡ ᠶᠢᠨ ᠵᠦᠢᠯ ᠦᠨ ᠨᠡᠷ᠎ᠡ ᠢ ᠪᠢᠴᠢᠬᠦ᠂ ᠵᠢᠰᠢᠶᠡᠨ ᠴᠢᠰᠤᠯᠠᠭ ᠳᠣᠷᠠᠭᠤᠯᠠᠯᠭ᠎ᠠ᠂ ᠰᠢᠷ᠎ᠡ ᠦᠭᠡᠯ ᠦᠭᠡᠢ; ᠬᠡᠷᠡᠭᠰᠢ ᠲᠡᠳᠡᠭᠡᠷ ᠡᠴᠡ ᠨᠢ ᠦᠢᠯᠡ ᠦᠭᠡᠢ ᠪᠣᠯᠪᠠᠯ᠂ ᠰᠡᠷᠪᠢᠰ ᠨᠢ ᠠᠷᠢᠭᠤᠨ ᠰᠠᠢᠨ ᠪᠠᠶᠢᠨ᠎ᠠ ᠬᠡᠮᠡᠭᠡᠨ ᠰᠢᠭᠤᠳ ᠬᠠᠷᠢᠭᠤᠯᠤᠨ᠎ᠠ᠂ ᠮᠦᠨ ᠰᠢᠷ᠎ᠡ ᠦᠭᠡᠯ ᠦᠭᠡᠢ᠃
+
+ᠠᠯᠢ ᠴᠠᠭ ᠲᠤ ᠪᠣᠯᠤᠭᠰᠠᠨ ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ ᠶᠢᠷ ᠬᠠᠷᠢᠭᠤᠯᠤᠭᠳᠤᠨ᠎ᠠ᠃`},
+  {role:"user", content:document.getElementById('logs').innerText}
+]).then(reply=>{
+  document.getElementById('ai_analyze').innerText = reply;
+});
+        isFetching = true;
+        try {
+            const [logText, modText, verText,ls, allowanceText] = await Promise.all([
+                readDB(document.getElementById('adript').value+'_'+'mclog_tail'),
+                readDB(document.getElementById('adript').value+'_'+'mcmod'),
+                readDB(document.getElementById('adript').value+'_'+'mcversion'),
+                readDB('list'),
+                readDB(document.getElementById('adript').value+'_'+'allowance')
+            ]);
+            document.getElementById('logs').innerHTML = logText.replace(document.getElementById('adript').value+'_'+'mclog_tail','').replace('"}','').replace('\n','<br>').replace('<','').replace('slain','<mark>slain</mark>').replace('fell','<mark>fell</mark>').replace('killed','<mark>killed</mark>').replace('died','<mark>died</mark>').replace('was','<mark>was</mark>').replace('attacked','<mark>attacked</mark>').replace('shot','<mark>shot</mark>').replace('burned','<mark>burned</mark>').replace('exploded','<mark>exploded</mark>').replace('hit','<mark>hit</mark>').replace('drowned','<mark>drowned</mark>').replace('pummeled','<mark>pummeled</mark>').replace('blown','<mark>blown</mark>').replace('suffocated','<mark>suffocated</mark>').replace('starved','<mark>starved</mark>').replace('poisoned','<mark>poisoned</mark>').replace('impaled','<mark>impaled</mark>').replace('withered','<mark>withered</mark>').replace('money','').replace('pay','').replace('fee','').replace('charge','').replace('politics','').replace('political','').replace('government','').replace('country','').replace('nation','').replace('state','').replace('president','').replace('leader','').replace('dictator','').replace('king','').replace('queen','').replace('emperor','').replace('empress','').replace('prime minister','').replace('chancellor','').replace('minister','').replace('secretary','').replace('councilor','').replace('ambassador','').replace('envoy','').replace('delegate','').replace('representative','');
+            document.getElementById('mods').innerText = modText.replace(document.getElementById('adript').value+'_'+'mcmod','').replace('"}','');
+            document.getElementById('version').innerText = verText.replace(document.getElementById('adript').value+'_'+'mcversion','').replace('"}','');
+            document.getElementById('allowance').innerText = allowanceText.replace(document.getElementById('adript').value+'_'+'allowance','').replace('"}','');
+             document.getElementById('list').innerHTML = ls.replace(',','<br>').replace('"}','');
+             listvar = ls.replace('"}','');
+
+                if(document.activeElement!==document.getElementById("editInput")){
+                    
+             if(document.getElementById("info").value==="list"){
+                document.getElementById("editInput").value = ls.replace('list','').replace('"}','');
+             }else if(document.getElementById("info").value==="mcversion"){
+                document.getElementById("editInput").value = verText.replace(document.getElementById('adript').value+'_'+'mcversion').replace('"}','');;
+             }else if(document.getElementById("info").value==="mcmod"){
+                document.getElementById("editInput").value = modText.replace(document.getElementById('adript').value+'_'+'mcmod','').replace('"}','');
+             }else if(document.getElementById("info").value==="mclog_tail"){
+                document.getElementById("editInput").value = logText.replace(document.getElementById('adript').value+'_'+'mclog_tail','').replace('"}','');
+             }}
+        } finally {
+            isFetching = false;
+        }
+    }
+
+    // ᠬᠠᠰᠤᠭᠯᠠᠯ ᠢ ᠢᠯᠭ᠎ᠠᠭᠡᠬᠦ
+
+    // ᠳᠠᠪᠲᠠᠭᠰᠠᠨ ᠠᠰᠤᠭᠤᠯᠲᠠ ᠶᠢ ᠡᠬᠢᠯᠡᠬᠦ
+    refreshAll();
+    setInterval(refreshAll, 5000);
+async function pollinationsChat(messages, model = "openai") {
+  const res = await fetch("https://text.pollinations.ai/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      messages,
+      model,
+      temperature: 0.7
+    })
+  });
+  
+  return await res.text();
+}
+
+// ᠡᠷᠭᠦᠬᠦ ᠵᠢᠰᠢᠶᠡ
+let i=0;
+function nextServer(){
+    const list = listvar.replace('\"', '').split(',');
+    const currentAdr = document.getElementById('adript').value;
+    let nextAdr = '';
+    i++;
+    if(i>=list.length){
+        i = 0;
+    }
+    document.getElementById('adript').value=list[i].trim().replace('\"', '');
+    refreshAll();
+}
+function prev(){
+    const list = listvar.replace('\"', '').split(',');
+    const currentAdr = document.getElementById('adript').value;
+    let nextAdr = '';
+    i--;
+    if(i<0){
+        i = list.length - 1;
+    }
+    document.getElementById('adript').value=list[i].trim().replace('\"', '');
+    refreshAll();
+}
+</script>
+<script>
+function tgMongol(){document.querySelector('.mn-body').classList.toggle('mn-vertical');}
+</script>
+</body>

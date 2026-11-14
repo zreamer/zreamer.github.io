@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>私服資質查詢</title>
+<link rel="icon" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171615'/%3E%3Crect x='5' y='5' width='22' height='22' fill='%2352a535'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%23171615'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://www.minecraft.net/webui/mc-components.min.css">
+<link rel="font" href="mcae.ttf">
+<style>
+  body { font-family: 'Noto Serif SC','Songti SC',serif; line-height: 1.8; }
+  h1, h2, h3, p, li, button, strong, span, input { font-family: 'Noto Serif SC','Songti SC',serif; }
+  .mc-i18n-lang { display:inline-block; margin:0 0 10px; padding:2px 10px; border:2px solid var(--mc-core-grey-4, #6b6562); color: var(--mc-core-grey-2, #d0c5c0); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; }
+  @media (max-width: 640px) { body { padding: 8px; } }
+  .mn-vertical { writing-mode: vertical-rl; height: auto; }
+  .mn-vertical h2 { border-left: 0; border-top: 4px solid #52a535; padding-top: 8px; }
+  .mn-vertical input { max-width: 22em; }
+</style>
+</head>
+<body dir="ltr" style="
+
+margin:0;padding:10px;background-color:#000000;color:rgb(253, 255, 255)">
+<h1><b>私服資質查詢<sup>BETA</sup></b></h1>
+<style>
+    html{
+  --mc-core-green-6: #2a641c;
+  --mc-core-green-5: #3c8527;
+  --mc-core-green-4: #52a535;
+  --mc-core-green-3: #6cc349;
+  --mc-core-green-2: #86d562;
+  --mc-core-green-1: #a0e081;
+  --mc-core-grey-6: #262423;
+  --mc-core-grey-5: #3d3938;
+  --mc-core-grey-4: #6b6562;
+  --mc-core-grey-3: #aba09c;
+  --mc-core-grey-2: #d0c5c0;
+  --mc-core-grey-1: #ede5e2;
+  --mc-core-rich-black: #000;
+  --mc-core-off-black: #171615;
+  --mc-core-white: #fff;
+  --mc-core-off-white: #fcf5f1;
+  --mc-core-gradient-dark-grey: linear-gradient(180deg,#3d3938,#262423 50%,#171615);
+  --mc-core-gradient-green: linear-gradient(180deg,#6cc349,#52a535 50%,#3c8527);
+  --mc-core-gradient-light-grey: linear-gradient(180deg,#fcf5f1,#ede5e2 50%,#d0c5c0);
+  --mc-vanilla-green-6: #2a641c;
+  --mc-vanilla-green-5: #3c8527;
+  --mc-vanilla-green-4: #52a535;
+  --mc-vanilla-green-3: #6cc349;
+  --mc-vanilla-green-2: #86d562;
+  --mc-vanilla-green-1: #a0e081;
+  --mc-vanilla-brown-6: #492d1f;
+  --mc-vanilla-brown-5: #66412c;
+  --mc-vanilla-brown-4: #805539;
+  --mc-vanilla-brown-3: #976746;
+  --mc-vanilla-brown-2: #ad7a54;
+  --mc-vanilla-brown-1: #c28e64;
+  --mc-vanilla-blue-6: #002fae;
+  --mc-vanilla-blue-5: #0040c8;
+  --mc-vanilla-blue-4: #0855db;
+  --mc-vanilla-blue-3: #1e6eea;
+  --mc-vanilla-blue-2: #3a87f4;
+  --mc-vanilla-blue-1: #5b9ffb;
+  --mc-vanilla-grey-6: #262423;
+  --mc-vanilla-grey-5: #3d3938;
+  --mc-vanilla-grey-4: #6b6562;
+  --mc-vanilla-grey-3: #aba09c;
+  --mc-vanilla-grey-2: #d0c5c0;
+  --mc-vanilla-grey-1: #ede5e2;
+  --mc-vanilla-coldgrey-6: #2c2f3a;
+  --mc-vanilla-coldgrey-5: #3d4250;
+  --mc-vanilla-coldgrey-4: #4d5466;
+  --mc-vanilla-coldgrey-3: #5d647a;
+  --mc-vanilla-coldgrey-2: #6c748c;
+  --mc-vanilla-coldgrey-1: #8089a2;
+  --mc-legends-light-blue-6: #339cd7;
+  --mc-legends-light-blue-5: #39b9eb;
+  --mc-legends-light-blue-4: #4ad5ff;
+  --mc-legends-light-blue-3: #70dfff;
+  --mc-legends-light-blue-2: #95e8ff;
+  --mc-legends-light-blue-1: #acf2ff;
+  --mc-legends-dark-blue-6: #001236;
+  --mc-legends-dark-blue-5: #00215c;
+  --mc-legends-dark-blue-4: #00337d;
+  --mc-legends-dark-blue-3: #003bab;
+  --mc-legends-dark-blue-2: #005dcf;
+  --mc-legends-dark-blue-1: #007ff2;
+  --mc-legends-light-orange-6: #de7523;
+  --mc-legends-light-orange-5: #e89133;
+  --mc-legends-light-orange-4: #f1ad42;
+  --mc-legends-light-orange-3: #f6c25a;
+  --mc-legends-light-orange-2: #fad36f;
+  --mc-legends-light-orange-1: #fddf93;
+  --mc-legends-ultra-dark-blue: #071927;
+  --mc-legends-ultra-dark-orange: #271505;
+  --mc-dungeons-orange-6: #de5b0d;
+  --mc-dungeons-orange-5: #ff791a;
+  --mc-dungeons-orange-4: #ffa41f;
+  --mc-dungeons-orange-3: #ffc42b;
+  --mc-dungeons-orange-2: #ffd953;
+  --mc-dungeons-orange-1: #fff27a;
+  --mc-dungeons-red-6: #8f1f0b;
+  --mc-dungeons-red-5: #b42d10;
+  --mc-dungeons-red-4: #da3a16;
+  --mc-dungeons-red-3: #ff481b;
+  --mc-dungeons-red-2: #ff6d3a;
+  --mc-dungeons-red-1: #ff925b;
+  --mc-dungeons-mulberry-6: #190d19;
+  --mc-dungeons-mulberry-5: #32122a;
+  --mc-dungeons-mulberry-4: #4f1030;
+  --mc-dungeons-mulberry-3: #530f33;
+  --mc-dungeons-mulberry-2: #6c0e37;
+  --mc-dungeons-mulberry-1: #7b0d3a;
+  --mc-dungeons2-rich-blue: #002da5;
+  --mc-dungeons2-blue-6: #010d29;
+  --mc-dungeons2-blue-5: #011d47;
+  --mc-dungeons2-blue-4: #013565;
+  --mc-dungeons2-blue-3: #005483;
+  --mc-dungeons2-blue-2: #146f95;
+  --mc-dungeons2-blue-1: #298aa5;
+  --mc-dungeons2-cyan-6: #03bde1;
+  --mc-dungeons2-cyan-5: #03dafa;
+  --mc-dungeons2-cyan-4: #36e6ff;
+  --mc-dungeons2-cyan-3: #6cefff;
+  --mc-dungeons2-cyan-2: #a3f7ff;
+  --mc-dungeons2-cyan-1: #d9fcff;
+  --mc-dungeons2-red-6: #210d0d;
+  --mc-dungeons2-red-5: #640f0a;
+  --mc-dungeons2-red-4: #8f1f0b;
+  --mc-dungeons2-red-3: #b42d10;
+  --mc-dungeons2-red-2: #da3a16;
+  --mc-dungeons2-red-1: #ff481b;
+  --mc-dungeons2-light-orange: #fdfdc2;
+  --mc-realms-deep-blue-7: #050029;
+  --mc-realms-deep-blue-6: #0c0248;
+  --mc-realms-deep-blue-5: #210a80;
+  --mc-realms-deep-blue-4: #401cac;
+  --mc-realms-deep-blue-3: #643acb;
+  --mc-realms-deep-blue-2: #8d68e0;
+  --mc-realms-deep-blue-1: #bca4ec;
+  --mc-realms-pink-6: #7f007a;
+  --mc-realms-pink-5: #a40094;
+  --mc-realms-pink-4: #d812b4;
+  --mc-realms-pink-3: #e833c2;
+  --mc-realms-pink-2: #f460d2;
+  --mc-realms-pink-1: #fb95e2;
+  --mc-marketplace-gold-6: #94540e;
+  --mc-marketplace-gold-5: #b87918;
+  --mc-marketplace-gold-4: #db9f21;
+  --mc-marketplace-gold-3: #ffc42b;
+  --mc-marketplace-gold-2: #ffd953;
+  --mc-marketplace-gold-1: #fff27a;
+  --mc-marketplace-grey-6: #262423;
+  --mc-marketplace-grey-5: #3d3938;
+  --mc-marketplace-grey-4: #6b6562;
+  --mc-marketplace-grey-3: #aba09c;
+  --mc-marketplace-grey-2: #d0c5c0;
+  --mc-marketplace-grey-1: #ede5e2;
+  --mc-marketplace-gradient-gold: linear-gradient(270deg,#fff27a,#ffc42b);
+  --mc-default--fontlist: "Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-gellix--fontlist: "Gellix","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-vanilla-fontlist: "MinecraftTenv2","MinecraftTen","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-dungeons-fontlist: "Minecraft-Fivev2","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-dungeons2-fontlist: "MinecraftSixteen","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-realms-fontlist: "MinecraftTenv2","MinecraftTen","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-legends-fontlist: "MinecraftSeven-v2","MinecraftSeven","Noto Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+  --mc-text-highlight-fontlist: "SFMono-Regular","Menlo","Monaco","Consolas","Liberation Mono","Courier New",monospace;
+  --mc-default-focus: #1157be;
+  --mc-default-caution: #e2b923;
+  --mc-default-warning: #ca3636;
+  --mc-default-warning-2: #ff605e;
+    }
+    h2{
+        color: var(--mc-core-green-5);
+        border-inline-start: 4px solid var(--mc-core-green-5);
+        padding-inline-start: 10px;
+    }
+</style>
+
+            <h2>伺服之要</h2>
+            <ul>
+                <li>伺服地址：<input placeholder="請輸入地址" id="adript" class="MC_SearchBoxB_input" style="background-color: transparent;
+  border: 0;
+  color: var(--mc-core-white);
+  flex: 1;
+  font-family: var(--mc-legends-fontlist);
+  font-size: 1rem;
+  font-weight: 400;
+  height: auto;
+  line-height: normal;
+  width:unset;
+  margin: 0;border:#3c8527 solid 2px;"></li>
+                <li><strong>版本</strong>：<span id="version">Minecraft Java Edition 26.3 Fabric (Modded)</span></li>
+                <li><strong>所裝模組</strong>：<span id="mods">X-ray</span></li>
+                <li><strong>伺服運行之況</strong>：<span id="allowance">Allow</span></li></ul>
+               
+            <h2>伺服運行日誌</h2>
+            <p id="logs">Zreamer joined the game<br>
+            Zreamer completed the challenge [Server Environment Protector]<br>
+            Zreamer left the game
+            </p>
+            <h2>AI 析論</h2>
+            <p id="ai_analyze">此區所陳，乃 AI 析論之文。若久之無字，勿憂，蓋 AI 言語之型尚在學習。</p>
+        
+            <h2>伺服列表</h2>
+            <p id="list">katherin-featuring.tun.ply.gg</p>
+        
+             <button id="next"  style="box-shadow: inset 0 -6px 0 var(--mc-vanilla-green-6),inset 0 6px 0 var(--mc-vanilla-green-4);
+  color: var(--mc-core-white);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;border: 2px solid var(--mc-core-grey-6);
+  display: inline-flex;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  min-width: 4.75rem;
+  padding: .9375rem 1.75rem;
+    padding-right: 1.75rem;
+  text-decoration: none;background: linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--mc-vanilla-green-5);
+" class="MC_Button MC_Button_Hero MC_Glyph_Link_B MC_Button" onclick="nextServer()">次之</button>
+            <button onclick="prev()" style="box-shadow: inset 0 -6px 0 var(--mc-vanilla-green-6),inset 0 6px 0 var(--mc-vanilla-green-4);
+  color: var(--mc-core-white);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;border: 2px solid var(--mc-core-grey-6);
+  display: inline-flex;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  min-width: 4.75rem;
+  padding: .9375rem 1.75rem;
+    padding-right: 1.75rem;
+  text-decoration: none;background: linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--mc-vanilla-green-5);
+" class="MC_Button MC_Button_Hero MC_Glyph_Link_B MC_Button">前之</button>
+        <br>
+<button onclick="alert(`# 私人遊戲伺服服主玩家公約（私議）
+
+## 0 總則
+0.1 本公約依《中華人民共和國憲法》《中華人民共和國網絡安全法》《中華人民共和國未成年人保護法》《關於進一步嚴格管理切實防止未成年人沉迷網絡遊戲之通知》等國家法度與政令而訂，行於國內私服之治。
+0.2 本公約所稱「服主」，謂自建、自設、自營公網私服，以聯機之戲示於眾者；「玩家」，謂入私服而戲者。
+0.3 本公約行於中國大陸凡營私服者與戲者，為私服循法而營、文明而戲、有序而治之通則。
+
+## 1 通則
+1.1 凡營私服者，必遵該遊戲官方終端用戶許可協議（EULA），不得有違官方版權之約。
+1.2 伺服之內容、題旨、場景、文字、劇情及社群之言，必合社會主義核心價值，積極端正，康健文明。嚴禁立、傳、營涉政、悖逆、矯誣史事、猥褻色情、導人於邪及過於娛樂之違規內容。
+1.3 營者唯可採玩家之昵稱、UUID、年歲等**防沉迷與合規所需之要**，不得濫採隱私，當善藏玩家之數，嚴禁洩露、轉賣、妄用其個人之訊。
+
+## 2 服主之範
+2.1 循法接入監管
+力能及者，當自接入私服監管之臺，置監察之程序，使日誌常得上傳、監察之能安行，而自受規範之督。
+
+2.2 嚴守營運之時
+伺服必嚴行防沉迷時禁，正其開機之候：
+- 工作日（週一至週五）：唯許 17:00—22:00 開放
+- 週末及法定節假日：唯許 06:00—22:00 開放
+餘時**禁伺服開機**，以絕未成年人熬夜、逃學沉迷之弊。
+
+2.3 嚴管未成年人之費
+服主必嚴行國家未成年人之費限：
+- 八歲以下：**一切充值、付費皆禁**
+- 八至十五歲：單充不逾五十元，月累不逾二百元
+- 十六至十七歲：單充不逾百元，月累不逾四百元
+若官方 EULA 明禁商業、營利、付費之營，則私服**永禁一切收費、贊助、售物之行**。
+嚴禁誘導、引導、暗示未成年人多充、私轉、匿其費錄。
+
+2.4 團隊之範
+伺服管事必為具全民事行為之力之成人，以技、責、合規之心為選。服內玩家位皆平等，禁特權之歧、肆意之封、濫用其權。
+
+2.5 社群之風與內容之管
+服主為伺服第一之責，當自正其風：
+- 嚴管公共之談，絕穢語、人身之攻、嘲諷引戰、網絡之暴
+- 特察隱性違規之暗語、不良之言、謬誤之論
+- 導玩家作息有度、康健而戲，抑熬夜掛機、荒廢學業與正業之行
+- 有權久封沉迷甚深、屢教不改者
+
+2.6 伺服之產
+禁人惡意毀壞伺服之築、存檔、玩法、秩序與資源，服主有權罰而責之。
+
+## 3 玩家之範
+3.1 核驗之責
+玩家入私服前，當由官方監管之臺核其合規之況，**先擇已接入監管、合規備案之正服**，慎近未備案、無監管、高危之私服。
+
+3.2 嚴守防沉迷之限
+玩家當自持自律，節其戲時，行國家未成年人之限：
+- 未成年人唯可於週五、週六、週日及法定節假日所定之時而戲
+- 決絕通宵而戲、逃學而戲、沉迷掛機諸弊
+- 成人當自理性而戲，不溺於虛擬
+
+3.3 文明而戲、服其管
+玩家當自服國家監管之要、服主與管事之合規之管，遵服規，敬人勞，共維良境。
+
+3.4 言之有範
+戲內之談、社群之言，必文明合規，禁涉政、悖逆、猥褻、辱罵、引戰、網暴諸違規之言。
+
+3.5 護其權
+玩家若遇違規收費、惡意封禁、網絡之暴、不良誘導等侵權之事，可經官方監管之途陳其日誌為證，以護其正權。
+
+## 4 附則
+4.1 本公約乃公益之行業自律之規，以正私服之序、護未成年人之長、清網絡遊戲之風。
+4.2 本公約若有與國家法度、官方政令相悖者，以國家官方之規為準。
+4.3 凡服主與玩家入服而戲，即視為默認、自願遵本公約之諸款。`)" class="MC_Button MC_Button_Hero MC_Button_Style_FullWidth MC_Glyph_Link_B MC_Style_Gold_1 MC_mediaBlockF_setStorageKeys" style="width:auto">服主玩家公約</button>
+<script>
+   let listvar = '';
+ // 【誡】密鑰明書於前端，唯宜離線自用！慎勿佈於公網！
+    const DB_INFO = {
+        api: "https://tinywebdb.appinventor.space/api",
+        user: "ss2603",
+        secret: "9d748a61"
+    };
+
+    let isFetching = false; // 以防并發刷屏
+
+    function showAlert(msg) {
+        alert(msg);
+    }
+
+    async function readDB(tag) {
+    const form = new FormData();
+    form.append("user", DB_INFO.user);
+    form.append("secret", DB_INFO.secret);
+    form.append("action", "get");
+    form.append("tag", tag);
+    try {
+        const res = await fetch(DB_INFO.api, {
+            method: "POST",
+            body: form
+        })
+        if (!res.ok) throw new Error(`接口有異：${res.status}`);
+        const rawTxt = await res.text();
+
+        let val = rawTxt.replace('{', '')
+            .replace('}', '')
+            .replace('\"', '').replace('\"', '').replace(tag, '').replace('null', '').replace(':', '');
+            ;
+
+
+        // 備漏：若所得為 { 或空，則返 null！
+        if(val.trim() === '' || val.trim() === "{"){
+            return '';
+        }
+        return val;
+    } catch (err) {
+        alert("數據庫讀取有誤：", err.message);
+        return null; // 返 null 者，謂不覆頁面
+    }
+}
+
+    async function writeDB(tag, value) {
+        const form = new FormData();
+        form.append("user", DB_INFO.user);
+        form.append("secret", DB_INFO.secret);
+        form.append("action", "update");
+        form.append("tag", tag);
+        form.append("value", value);
+        try {
+            const res = await fetch(DB_INFO.api, {
+                method: "POST",
+                body: form
+            })
+            if (!res.ok) throw new Error(`寫入不成：${res.status}`);
+            return true;
+        } catch (err) {
+            alert("寫入有誤：" + err.message);
+            return false;
+        }
+    }
+
+    async function refreshAll() {
+        if (isFetching) return;
+        pollinationsChat([
+{role:"system", content:`爾為《我的世界》伺服之監察者，司國家伺服綜合管理平臺之督察。須審遊戲日誌，錄其扣分，並略陳其要。凡有下列諸事，各扣一分：
+一曰血腥暴戾，如傷戲中之生靈；
+二曰鬥毆；
+三曰言之失當，如論收費（一錢亦不可取）、涉於政事、有損國體、淫暴之色、害未成年人之權者；尤須察其避監之暗語；
+四曰危行之指，如自高處躍下；
+五曰律所禁之他事；
+六曰熬夜而戲、沉迷於戲。
+日誌可徵其上諸事者，唯書其類名，如「血腥暴力」，不加引號；若無其事，則逕答「伺服風清氣正」，亦不加引號。
+
+無論何時，皆以文言作答。`},
+  {role:"user", content:document.getElementById('logs').innerText}
+]).then(reply=>{
+  document.getElementById('ai_analyze').innerText = reply;
+});
+        isFetching = true;
+        try {
+            const [logText, modText, verText,ls, allowanceText] = await Promise.all([
+                readDB(document.getElementById('adript').value+'_'+'mclog_tail'),
+                readDB(document.getElementById('adript').value+'_'+'mcmod'),
+                readDB(document.getElementById('adript').value+'_'+'mcversion'),
+                readDB('list'),
+                readDB(document.getElementById('adript').value+'_'+'allowance')
+            ]);
+            document.getElementById('logs').innerHTML = logText.replace(document.getElementById('adript').value+'_'+'mclog_tail','').replace('"}','').replace('\n','<br>').replace('<','').replace('slain','<mark>slain</mark>').replace('fell','<mark>fell</mark>').replace('killed','<mark>killed</mark>').replace('died','<mark>died</mark>').replace('was','<mark>was</mark>').replace('attacked','<mark>attacked</mark>').replace('shot','<mark>shot</mark>').replace('burned','<mark>burned</mark>').replace('exploded','<mark>exploded</mark>').replace('hit','<mark>hit</mark>').replace('drowned','<mark>drowned</mark>').replace('pummeled','<mark>pummeled</mark>').replace('blown','<mark>blown</mark>').replace('suffocated','<mark>suffocated</mark>').replace('starved','<mark>starved</mark>').replace('poisoned','<mark>poisoned</mark>').replace('impaled','<mark>impaled</mark>').replace('withered','<mark>withered</mark>').replace('money','').replace('pay','').replace('fee','').replace('charge','').replace('politics','').replace('political','').replace('government','').replace('country','').replace('nation','').replace('state','').replace('president','').replace('leader','').replace('dictator','').replace('king','').replace('queen','').replace('emperor','').replace('empress','').replace('prime minister','').replace('chancellor','').replace('minister','').replace('secretary','').replace('councilor','').replace('ambassador','').replace('envoy','').replace('delegate','').replace('representative','');
+            document.getElementById('mods').innerText = modText.replace(document.getElementById('adript').value+'_'+'mcmod','').replace('"}','');
+            document.getElementById('version').innerText = verText.replace(document.getElementById('adript').value+'_'+'mcversion','').replace('"}','');
+            document.getElementById('allowance').innerText = allowanceText.replace(document.getElementById('adript').value+'_'+'allowance','').replace('"}','');
+             document.getElementById('list').innerHTML = ls.replace(',','<br>').replace('"}','');
+             listvar = ls.replace('"}','');
+
+                if(document.activeElement!==document.getElementById("editInput")){
+                    
+             if(document.getElementById("info").value==="list"){
+                document.getElementById("editInput").value = ls.replace('list','').replace('"}','');
+             }else if(document.getElementById("info").value==="mcversion"){
+                document.getElementById("editInput").value = verText.replace(document.getElementById('adript').value+'_'+'mcversion').replace('"}','');;
+             }else if(document.getElementById("info").value==="mcmod"){
+                document.getElementById("editInput").value = modText.replace(document.getElementById('adript').value+'_'+'mcmod','').replace('"}','');
+             }else if(document.getElementById("info").value==="mclog_tail"){
+                document.getElementById("editInput").value = logText.replace(document.getElementById('adript').value+'_'+'mclog_tail','').replace('"}','');
+             }}
+        } finally {
+            isFetching = false;
+        }
+    }
+
+    // 呈其改
+
+    // 啟輪詢
+    refreshAll();
+    setInterval(refreshAll, 5000);
+async function pollinationsChat(messages, model = "openai") {
+  const res = await fetch("https://text.pollinations.ai/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      messages,
+      model,
+      temperature: 0.7
+    })
+  });
+  
+  return await res.text();
+}
+
+// 調用之例
+let i=0;
+function nextServer(){
+    const list = listvar.replace('\"', '').split(',');
+    const currentAdr = document.getElementById('adript').value;
+    let nextAdr = '';
+    i++;
+    if(i>=list.length){
+        i = 0;
+    }
+    document.getElementById('adript').value=list[i].trim().replace('\"', '');
+    refreshAll();
+}
+function prev(){
+    const list = listvar.replace('\"', '').split(',');
+    const currentAdr = document.getElementById('adript').value;
+    let nextAdr = '';
+    i--;
+    if(i<0){
+        i = list.length - 1;
+    }
+    document.getElementById('adript').value=list[i].trim().replace('\"', '');
+    refreshAll();
+}
+</script>
+</body>
